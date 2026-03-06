@@ -11,6 +11,8 @@ website:
         text: Projects
       - href: blog.qmd
         text: Blog
+      - href: sponsor.qmd
+        text: Buy me a Coffee
       - href: about.qmd
         text: About
     logo: /files/images/worker.png
