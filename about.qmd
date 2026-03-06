@@ -1,0 +1,38 @@
+---
+title: "Renan Monteiro Barbosa"
+image: files/images/RMBarbosa4.jpg
+description-meta: data scientist portfolio
+# twitter-card: 
+#   image: /files/images/headshot_old.jpeg
+comments: false
+about:
+  template: trestles
+  links:
+    - icon: code-slash
+      text: Projects
+      href: projects.qmd
+    - icon: github
+      text: Github - Renan
+      href: https://github.com/renanmb
+    - icon: github
+      text: Github - Bored Engineer
+      href: https://github.com/boredengineering
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/renan-monteiro-barbosa/
+---
+
+Hi! My name is Renan Monteiro Barbosa. 
+
+I am a solutions Architect consultant for Robotics, Cloud (DevOPS & MLops) with a Master’s in Data Science and a foundational background in Mechanical Engineering. Specialized in pioneering Physical AI by developing end-to-end simulation pipelines, reinforcement learning algorithms, and scalable cloud architectures. Proven track record of helping NVIDIA Inception partners and global startups leverage Isaac Sim, Omniverse, and VLA models to solve complex industrial challenges. Expert in bridging the gap between virtual training and real-world robotic deployment through OpenUSD workflows, synthetic data generation, and GPU-accelerated computing.
+
+I created Bored Engineering because most software solutions are 90% boring work of configuration, IT and building the infrastructure. Through this website I share several [projects](projects.qmd) and write up [random thoughts and analyses](blog.qmd). 
+
+Please contact me at [bored2engineer@gmail.com](mailto:bored2engineer@gmail.com). Would love to connect about anything robotics, IsaacSim, data, potential collaborations, or just to share ideas.
+
+<div style="text-align:center;">
+  <a href="https://www.youtube.com/@boredengineer-_-" target="_blank">
+    <img src="/files/images/goat_conf1_renan.png" style="width:100%; border-radius:10px;">
+  </a>
+  <p>Subscribe to my YouTube channel</p>
+</div>

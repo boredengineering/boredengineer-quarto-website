@@ -1,0 +1,28 @@
+project:
+  type: website
+
+website:
+  title: "BoredEngineer"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: projects.qmd
+        text: Projects
+      - href: blog.qmd
+        text: Blog
+      - href: about.qmd
+        text: About
+    logo: /files/images/worker.png
+  favicon: /files/images/favicon.ico
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+      # light: [flatly, theme.scss]
+      # dark: [flatly, theme-dark.scss]
+    css: styles.css
+    toc: true
+
