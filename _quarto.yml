@@ -12,7 +12,7 @@ website:
       - href: blog.qmd
         text: Blog
       - href: sponsor.qmd
-        text: Buy me a Coffee
+        text: Sponsor
       - href: about.qmd
         text: About
     logo: /files/images/worker.png

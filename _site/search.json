@@ -26,5 +26,12 @@
     "title": "website",
     "section": "",
     "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "sponsor.html",
+    "href": "sponsor.html",
+    "title": "Sponsor Physical AI Research",
+    "section": "",
+    "text": "Powering the Gap Between Pixels and Actuators\nBridging simulation-to-real workflows with Isaac Sim, Omniverse, and RL.\n\n\nThe Mission\nBuilding Physical AI isn’t just a software challenge — it’s an infrastructure challenge. My work focuses on creating the simulation pipelines and reinforcement learning models that allow AI to move from the computer screen into the real world.\nYour sponsorship directly impacts the ability to:\n\nRent High-End GPUs for large-scale Isaac Sim training.\nPurchase Sensors & Actuators for “Sim-to-Real” physical validation.\nMaintain Open-Source Repositories that lower the barrier for others.\n\n\n\n\nSupport via Venmo\nIf my work has helped you, or if you believe in the future of accessible Physical AI research, consider a direct contribution via Venmo.\n\n\n📱 Scan to Donate\n(Placeholder for QR Code image - you can upload your Venmo QR code to files/images/venmo_qr.png and it will show up here)\n\n\n\nScan to Donate\n\n\n\n\n🚀 Direct Link\nSimply click the button below or search for my handle directly on Venmo.\nVenmo Handle: @renanmb (Update if different!)\nDonate via Venmo\n\nEvery contribution, no matter the size, makes a massive difference in hardware budget and cloud compute time.\n\n\n\n\n\n\nImpact Roadmap\n\n\n\n\n\n\nNoteWhat Your Funds Enable\n\n\n\n\n$10: One day of cloud GPU training time.\n$50: A high-precision sensor (ToF, IMU) for a physical robot prototype.\n$200: A full microcontroller suite and motor drivers for a new experiment.\n\n\n\n\n\nWhat’s Coming Next?\nI’m currently working on a Sim-to-Real series focusing on training quadrupedal locomotion entirely in Isaac Sim and deploying to hardware. Your support helps buy the physical components needed for this deployment!\n\n\n\nThank You!\nYour support keeps the “Bored Engineer” from actually being bored—and instead, keeps the robots moving.\nBack to Projects Check the Blog"
   }
 ]

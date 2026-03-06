@@ -1,5 +1,78 @@
 ---
-title: "Buy me a Coffe (or Beer)"
-description-meta: Help Sponsor my Projects
+title: "Sponsor Physical AI Research"
+subtitle: "Help fuel the next generation of robotic and AI development."
+description: "Directly funding compute, hardware, and open-source contributions for Physical AI."
+page-layout: article
+title-block-banner: "#002b36"
+title-block-banner-color: "white"
+toc: false
+# toc-location: left
 ---
 
+::: {.column-screen-inset .text-center .sponsor-hero}
+# Powering the Gap Between Pixels and Actuators
+*Bridging simulation-to-real workflows with Isaac Sim, Omniverse, and RL.*
+:::
+
+### The Mission
+
+Building **Physical AI** isn't just a software challenge --- it’s an infrastructure challenge. My work focuses on creating the simulation pipelines and reinforcement learning models that allow AI to move from the computer screen into the real world. 
+
+Your sponsorship directly impacts the ability to:
+
+- **Rent High-End GPUs** for large-scale Isaac Sim training.
+- **Purchase Sensors & Actuators** for "Sim-to-Real" physical validation.
+- **Maintain Open-Source Repositories** that lower the barrier for others.
+
+---
+
+### Support via Venmo
+
+If my work has helped you, or if you believe in the future of accessible Physical AI research, consider a direct contribution via Venmo.
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+#### 📱 Scan to Donate
+*(Placeholder for QR Code image - you can upload your Venmo QR code to `files/images/venmo_qr.png` and it will show up here)*
+
+![Scan to Donate](/files/images/worker.png){width=200px style="border: 1px solid #ddd; padding: 10px; border-radius: 10px;"}
+:::
+
+::: {.g-col-12 .g-col-md-6}
+#### 🚀 Direct Link
+Simply click the button below or search for my handle directly on Venmo.
+
+**Venmo Handle:** `@renanmb` *(Update if different!)*
+
+<a href="https://venmo.com/u/renanmb" class="btn btn-venmo btn-lg" role="button">Donate via Venmo</a>
+
+<p style="margin-top: 20px; font-size: 0.9em; color: #666;">
+*Every contribution, no matter the size, makes a massive difference in hardware budget and cloud compute time.*
+</p>
+:::
+
+:::
+
+---
+
+### Impact Roadmap
+
+::: {.callout-note appearance="simple"}
+## What Your Funds Enable
+- **$10:** One day of cloud GPU training time.
+- **$50:** A high-precision sensor (ToF, IMU) for a physical robot prototype.
+- **$200:** A full microcontroller suite and motor drivers for a new experiment.
+:::
+
+### What's Coming Next?
+I'm currently working on a **Sim-to-Real** series focusing on training quadrupedal locomotion entirely in Isaac Sim and deploying to hardware. Your support helps buy the physical components needed for this deployment!
+
+---
+
+::: {.text-center}
+### Thank You!
+*Your support keeps the "Bored Engineer" from actually being bored—and instead, keeps the robots moving.*
+
+[Back to Projects](projects.qmd){.btn .btn-outline-secondary} [Check the Blog](blog.qmd){.btn .btn-outline-secondary}
+:::
