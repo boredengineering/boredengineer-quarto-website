@@ -88,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
 
       .quarto-title-block .quarto-title-banner {
         color: white;
-background: #002b36;
+background: #3d95ce;
       }
 </style>
 
@@ -343,6 +343,140 @@ Fuel the next generation of robotic and AI development.</p><p></p>
 
 
 
+<div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
+
+</div>
+<script src="./particles.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  function getParticlesConfig() {
+    const isDark = document.body.classList.contains('quarto-dark');
+    
+    return {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": isDark ? "#ffffff" : "#3d95ce"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          }
+        },
+        "opacity": {
+          "value": 0.6,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 4,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": isDark ? "#ffffff" : "#3d95ce",
+          "opacity": 0.5,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 0.6,
+          "direction": "top",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": true,
+            "rotateX": 710,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "repulse"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 400,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 100,
+            "duration": 0.4
+          },
+          "push": {
+            "particles_nb": 4
+          }
+        }
+      },
+      "retina_detect": true
+    };
+  }
+
+  function initParticles() {
+    const config = getParticlesConfig();
+    particlesJS('particles-js', config);
+  }
+
+  // Initial init
+  initParticles();
+
+  // Watch for theme changes
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+        initParticles();
+      }
+    });
+  });
+
+  observer.observe(document.body, {
+    attributes: true,
+    attributeFilter: ['class']
+  });
+});
+</script>
+<div class="particles-content" style="background: transparent;">
 <section id="the-mission" class="level2">
 <h2 class="anchored" data-anchor-id="the-mission">The Mission</h2>
 <p>Building <strong>Physical AI</strong> isn’t just a software challenge — it’s an infrastructure challenge. My work focuses on creating the simulation pipelines and models (RL, DL and more) that allow AI to move from the computer screen into the real world.</p>
@@ -422,9 +556,10 @@ Fuel the next generation of robotic and AI development.</p><p></p>
 <p><em>Your support keeps the <strong>“Bored Engineer”</strong> from actually being bored — and instead, keeps the robots moving.</em></p>
 <p><a href="./projects.html" class="btn btn-outline-secondary">Back to Projects</a> <a href="./blog.html" class="btn btn-outline-secondary">Check the Blog</a></p>
 </section>
-
-
 </section>
+</div>
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
