@@ -170,23 +170,26 @@ If my work has helped you, or if you believe in the future of accessible Physica
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-6}
+::: {.glass-card}
 #### 📱 Scan to Donate
-*(Placeholder for QR Code image - you can upload your Venmo QR code to `files/images/venmo_qr.png` and it will show up here)*
 
-![Scan to Donate](/files/images/venmo_qr.png){width=200px style="border: 1px solid #ddd; padding: 10px; border-radius: 10px;"}
+![Scan to Donate](/files/images/venmo_qr.png){width=200px style="border-radius: 10px; background: white; padding: 15px;"}
+:::
 :::
 
 ::: {.g-col-12 .g-col-md-6}
+::: {.glass-card}
 #### 🚀 Direct Link
 Simply click the button below or search for my handle directly on Venmo.
 
-**Venmo Handle:** `@Renan-Barbosa` *(Update if different!)*
+**Venmo Handle:** `@Renan-Barbosa`
 
-<a href="https://venmo.com/u/Renan-Barbosa" class="btn btn-venmo btn-lg" role="button">Donate via Venmo</a>
+<a href="https://venmo.com/u/Renan-Barbosa" class="btn btn-venmo btn-lg" role="button" style="margin-top: 15px;">Donate via Venmo</a>
 
-<p style="margin-top: 20px; font-size: 0.9em; color: #666;">
+<p style="margin-top: 25px; font-size: 0.9em; opacity: 0.8;">
 *Every contribution, no matter the size, makes a massive difference in hardware budget and cloud compute time.*
 </p>
+:::
 :::
 
 :::
