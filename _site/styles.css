@@ -25,20 +25,24 @@ h2, h3 {
   color: #3d95ce; /* Matching the Venmo Blue banner color for consistency */
 }
 
-/* Glassmorphism card style */
-.glass-card {
-  background: rgba(255, 255, 255, 0.4);
+/* Glassmorphism styles */
+.glass-card, .glass-container {
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.glass-card {
   text-align: center;
 }
 
-body.quarto-dark .glass-card {
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+body.quarto-dark .glass-card, 
+body.quarto-dark .glass-container {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }

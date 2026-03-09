@@ -147,9 +147,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 ::: {.particles-content style="background: transparent;"}
 
+::: {.glass-container}
 ## The Mission
 
-Building **Physical AI** isn't just a software challenge --- it’s an infrastructure challenge. My work focuses on creating the simulation pipelines and  models (RL, DL and more) that allow AI to move from the computer screen into the real world. 
+Building **Physical AI** isn't just a software challenge --- it’s an infrastructure challenge. My work focuses on creating the simulation pipelines and models (RL, DL and more) that allow AI to move from the computer screen into the real world. 
 
 Your sponsorship directly impacts the ability to:
 
@@ -160,9 +161,9 @@ Your sponsorship directly impacts the ability to:
 ::: {.callout-note appearance="simple"}
 ## Any Help is appreciated given Increased Cost of Hardware and Cloud Computing
 :::
+:::
 
----
-
+::: {.glass-container}
 ## Support via Venmo
 
 If my work has helped you, or if you believe in the future of accessible Physical AI research, consider a direct contribution via Venmo.
@@ -193,9 +194,9 @@ Simply click the button below or search for my handle directly on Venmo.
 :::
 
 :::
+:::
 
----
-
+::: {.glass-container}
 ## Impact Roadmap
 
 ::: {.callout-note appearance="simple"}
@@ -207,14 +208,15 @@ Simply click the button below or search for my handle directly on Venmo.
 
 ## What's Coming Next?
 I'm currently working on a **Sim-to-Real** series focusing on training quadrupedal locomotion entirely in Isaac Sim and deploying to hardware. Your support helps buy the physical components needed for this deployment!
+:::
 
----
-
-::: {.text-center}
+::: {.glass-card}
 ### Thank You!
 *Your support keeps the **"Bored Engineer"** from actually being bored --- and instead, keeps the robots moving.*
 
+<div style="margin-top: 20px;">
 [Back to Projects](projects.qmd){.btn .btn-outline-secondary} [Check the Blog](blog.qmd){.btn .btn-outline-secondary}
+</div>
 :::
 
 :::
