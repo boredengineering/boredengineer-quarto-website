@@ -7,34 +7,6 @@
     "text": "No matching items"
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "My Blog",
-    "section": "",
-    "text": "No matching items"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Renan Monteiro Barbosa",
-    "section": "",
-    "text": "Hi! My name is Renan Monteiro Barbosa.\nI am a solutions Architect consultant for Robotics, Cloud (DevOPS & MLops) with a Master’s in Data Science and a foundational background in Mechanical Engineering. Specialized in pioneering Physical AI by developing end-to-end simulation pipelines, reinforcement learning algorithms, and scalable cloud architectures. Proven track record of helping NVIDIA Inception partners and global startups leverage Isaac Sim, Omniverse, and VLA models to solve complex industrial challenges. Expert in bridging the gap between virtual training and real-world robotic deployment through OpenUSD workflows, synthetic data generation, and GPU-accelerated computing.\nI created Bored Engineering because most software solutions are 90% boring work of configuration, IT and building the infrastructure. Through this website I share several projects and write up random thoughts and analyses.\nPlease contact me at bored2engineer@gmail.com. Would love to connect about anything robotics, IsaacSim, data, potential collaborations, or just to share ideas.\n\n  \n\nSubscribe to my YouTube channel"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "BoredEngineer",
-    "section": "",
-    "text": "Welcome to BoredEngineer\nThis is a Quarto website featuring the exact particle behavior from Network Science.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
-  },
-  {
-    "objectID": "sponsor.html",
-    "href": "sponsor.html",
-    "title": "Powering the Gap Between Pixels and Actuators",
-    "section": "",
-    "text": "Building Physical AI isn’t just a software challenge — it’s an infrastructure challenge. My work focuses on creating the simulation pipelines and models (RL, DL and more) that allow AI to move from the computer screen into the real world.\nYour sponsorship directly impacts the ability to:\n\nRent High-End GPUs for large-scale Isaac Sim training.\nPurchase Sensors & Actuators for “Sim-to-Real” physical validation.\nMaintain Open-Source Repositories that lower the barrier for others.\n\n\n\n\n\n\n\nNoteAny Help is appreciated given Increased Cost of Hardware and Cloud Computing"
-  },
-  {
     "objectID": "sponsor.html#the-mission",
     "href": "sponsor.html#the-mission",
     "title": "Powering the Gap Between Pixels and Actuators",
@@ -61,5 +33,26 @@
     "title": "Powering the Gap Between Pixels and Actuators",
     "section": "What’s Coming Next?",
     "text": "What’s Coming Next?\nI’m currently working on a Sim-to-Real series focusing on training quadrupedal locomotion entirely in Isaac Sim and deploying to hardware. Your support helps buy the physical components needed for this deployment!"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Renan Monteiro Barbosa",
+    "section": "",
+    "text": "Hi! My name is Renan Monteiro Barbosa.\nI am a solutions Architect consultant for Robotics, Cloud (DevOPS & MLops) with a Master’s in Data Science and a foundational background in Mechanical Engineering. Specialized in pioneering Physical AI by developing end-to-end simulation pipelines, reinforcement learning algorithms, and scalable cloud architectures. Proven track record of helping NVIDIA Inception partners and global startups leverage Isaac Sim, Omniverse, and VLA models to solve complex industrial challenges. Expert in bridging the gap between virtual training and real-world robotic deployment through OpenUSD workflows, synthetic data generation, and GPU-accelerated computing.\nI created Bored Engineering because most software solutions are 90% boring work of configuration, IT and building the infrastructure. Through this website I share several projects and write up random thoughts and analyses.\nPlease contact me at bored2engineer@gmail.com. Would love to connect about anything robotics, IsaacSim, data, potential collaborations, or just to share ideas.\n\n  \n\nSubscribe to my YouTube channel"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "My Blog",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "BoredEngineer",
+    "section": "",
+    "text": "Welcome to BoredEngineer\nThis is a Quarto website featuring the exact particle behavior from Network Science.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
   }
 ]
