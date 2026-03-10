@@ -74,32 +74,22 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<style>
-
-      .quarto-title-block .quarto-title-banner h1,
-      .quarto-title-block .quarto-title-banner h2,
-      .quarto-title-block .quarto-title-banner h3,
-      .quarto-title-block .quarto-title-banner h4,
-      .quarto-title-block .quarto-title-banner h5,
-      .quarto-title-block .quarto-title-banner h6
-      {
-        color: white;
-      }
-
-      .quarto-title-block .quarto-title-banner {
-        color: white;
-      }
-</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
 .quarto-title-block.default .quarto-title-banner {
     background: transparent !important;
-    padding-bottom: 4rem;
+    padding-bottom: 6rem;
 }
-.quarto-title-block.default .quarto-title {
-    position: relative;
-    z-index: 10;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+.quarto-title-block.default .quarto-title .title {
+    font-weight: 800 !important;
+    font-family: 'system-ui', sans-serif;
+    letter-spacing: -0.02em;
+    margin-top: 0;
+}
+.quarto-title-block.default .quarto-title .subtitle {
+    font-weight: 500 !important;
+    margin-top: 1rem;
+    line-height: 1.4;
 }
 #voxel-canvas-container {
     position: absolute;
@@ -374,13 +364,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('voxel-canvas-container');
     if (!canvas || !container) return;
 
+    const isDark = () => document.body.classList.contains('quarto-dark');
+
     const Settings = {
         density: 100,
         spread: 180,
         voxelSize: 0.8,
         waveSpeed: 0.0005,
         waveHeight: 5,
-        colorBase: new THREE.Color(0x0d1117), // Match dark theme
+        colorBase: isDark() ? new THREE.Color(0x0d1117) : new THREE.Color(0xefefef),
         colorPeak: new THREE.Color(0x3d95ce)  // Project Blue
     };
 
@@ -454,7 +446,9 @@ document.addEventListener('DOMContentLoaded', () => {
             let heightAlpha = (newY + Settings.waveHeight) / (Settings.waveHeight * 2);
             heightAlpha = Math.max(0, Math.min(1, heightAlpha));
 
-            tempColor.copy(Settings.colorBase).lerp(Settings.colorPeak, heightAlpha * 1.5);
+            // Update colorBase dynamically based on current theme
+            const currentBase = isDark() ? new THREE.Color(0x0d1117) : new THREE.Color(0xefefef);
+            tempColor.copy(currentBase).lerp(Settings.colorPeak, heightAlpha * 1.5);
 
             colorsArray[ix] = tempColor.r;
             colorsArray[ix + 1] = tempColor.g;
