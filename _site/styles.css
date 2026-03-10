@@ -22,5 +22,70 @@
 }
 
 h2, h3 {
-  color: #002b36; /* Matching the banner color for consistency */
+  color: #3d95ce; /* Matching the Venmo Blue banner color for consistency */
+}
+
+/* Glassmorphism styles */
+.glass-card, .glass-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.quarto-title-block.default .quarto-title {
+  max-width: 850px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+
+.glass-card {
+  text-align: center;
+}
+
+body.quarto-dark .glass-card, 
+body.quarto-dark .glass-container {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Title, Subtitle, and Description dynamic colors with high specificity */
+.quarto-title-block.default .quarto-title .title {
+  color: #3d95ce !important; /* Venmo Blue in light mode */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Target the subtitle paragraph specifically */
+.quarto-title-block.default .quarto-title p.subtitle + p,
+.quarto-title-block.default .quarto-title .subtitle {
+  color: #000000 !important; /* Pure black in light mode */
+  font-weight: 400 !important;
+  font-size: 1.5rem !important; /* Larger subtitle */
+}
+
+.quarto-title-block.default .description {
+  color: #000000 !important; /* Pure black in light mode */
+  font-weight: 400 !important;
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 1.25rem !important; /* Larger description */
+}
+
+/* Dark mode overrides */
+body.quarto-dark .quarto-title-block.default .quarto-title .title {
+  color: #ffffff !important; /* White in dark mode */
+  text-shadow: 0 4px 15px rgba(0,0,0,0.9), 0 0 30px rgba(61, 149, 206, 0.4);
+}
+
+body.quarto-dark .quarto-title-block.default .quarto-title p.subtitle + p,
+body.quarto-dark .quarto-title-block.default .quarto-title .subtitle,
+body.quarto-dark .quarto-title-block.default .description {
+  color: #cccccc !important; /* Light grey in dark mode */
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
 }
