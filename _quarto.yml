@@ -28,3 +28,4 @@ format:
     css: styles.css
     toc: true
 
+csl: apa-numeric-superscript-brackets.csl
