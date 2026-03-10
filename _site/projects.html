@@ -87,7 +87,7 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-title','listing-image','listing-categories','listing-subtitle','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -355,7 +355,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(0)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGF0YS1TY2llbmNl">Data-Science <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -521,7 +521,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="RGF0YS1TY2llbmNl" data-listing-file-modified-sort="1773179049977" data-listing-reading-time-sort="48" data-listing-word-count-sort="9561">
+<a href="./projects/forecasting-the-real-estate-market/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="projects/forecasting-the-real-estate-market/index_files/figure-html/unnamed-chunk-8-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Forecasting the Real Estate Market
+</h5>
+<div class="card-subtitle listing-subtitle">
+A Comparative Analysis of Classical vs.&nbsp;Modern Time Series Models on Housing Prices
+</div>
+<div class="listing-categories">
 
+<div class="listing-category" onclick="window.quartoListingCategory('RGF0YS1TY2llbmNl'); return false;">Data-Science</div>
+
+</div>
+</div>
+</div></a>
+</div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div></main> <!-- /main -->

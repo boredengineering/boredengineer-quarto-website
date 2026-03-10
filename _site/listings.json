@@ -1,7 +1,9 @@
 [
   {
     "listing": "/projects.html",
-    "items": []
+    "items": [
+      "/projects/forecasting-the-real-estate-market/index.html"
+    ]
   },
   {
     "listing": "/blog.html",
