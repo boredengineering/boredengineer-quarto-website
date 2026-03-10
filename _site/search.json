@@ -10,15 +10,15 @@
     "objectID": "sponsor.html#the-mission",
     "href": "sponsor.html#the-mission",
     "title": "Powering the Gap Between Pixels and Actuators",
-    "section": "",
-    "text": "Building Physical AI isn’t just a software challenge — it’s an infrastructure challenge. My work focuses on creating the simulation pipelines and models (RL, DL and more) that allow AI to move from the computer screen into the real world.\nYour sponsorship directly impacts the ability to:\n\nRent High-End GPUs for large-scale Isaac Sim training.\nPurchase Sensors & Actuators for “Sim-to-Real” physical validation.\nMaintain Open-Source Repositories that lower the barrier for others.\n\n\n\n\n\n\n\nNoteAny Help is appreciated given Increased Cost of Hardware and Cloud Computing"
+    "section": "The Mission",
+    "text": "The Mission\nBuilding Physical AI isn’t just a software challenge — it’s an infrastructure challenge. My work focuses on creating the simulation pipelines and models (RL, DL and more) that allow AI to move from the computer screen into the real world.\nYour sponsorship directly impacts the ability to:\n\nRent High-End GPUs for large-scale Isaac Sim training.\nPurchase Sensors & Actuators for “Sim-to-Real” physical validation.\nMaintain Open-Source Repositories that lower the barrier for others.\n\n\n\n\n\n\n\nNoteAny Help is appreciated given Increased Cost of Hardware and Cloud Computing"
   },
   {
     "objectID": "sponsor.html#support-via-venmo",
     "href": "sponsor.html#support-via-venmo",
     "title": "Powering the Gap Between Pixels and Actuators",
     "section": "Support via Venmo",
-    "text": "Support via Venmo\nIf my work has helped you, or if you believe in the future of accessible Physical AI research, consider a direct contribution via Venmo.\n\n\n📱 Scan to Donate\n(Placeholder for QR Code image - you can upload your Venmo QR code to files/images/venmo_qr.png and it will show up here)\n\n\n\nScan to Donate\n\n\n\n\n🚀 Direct Link\nSimply click the button below or search for my handle directly on Venmo.\nVenmo Handle: @Renan-Barbosa (Update if different!)\nDonate via Venmo\n\nEvery contribution, no matter the size, makes a massive difference in hardware budget and cloud compute time."
+    "text": "Support via Venmo\nIf my work has helped you, or if you believe in the future of accessible Physical AI research, consider a direct contribution via Venmo.\n\n\n\n📱 Scan to Donate\n\n\n\nScan to Donate\n\n\n\n\n\n\n🚀 Direct Link\nSimply click the button below or search for my handle directly on Venmo.\nVenmo Handle: @Renan-Barbosa\nDonate via Venmo\n\nEvery contribution, no matter the size, makes a massive difference in hardware budget and cloud compute time."
   },
   {
     "objectID": "sponsor.html#impact-roadmap",
@@ -32,7 +32,7 @@
     "href": "sponsor.html#whats-coming-next",
     "title": "Powering the Gap Between Pixels and Actuators",
     "section": "What’s Coming Next?",
-    "text": "What’s Coming Next?\nI’m currently working on a Sim-to-Real series focusing on training quadrupedal locomotion entirely in Isaac Sim and deploying to hardware. Your support helps buy the physical components needed for this deployment!\n\n\nThank You!\nYour support keeps the “Bored Engineer” from actually being bored — and instead, keeps the robots moving.\nBack to Projects Check the Blog"
+    "text": "What’s Coming Next?\nI’m currently working on a Sim-to-Real series focusing on training quadrupedal locomotion entirely in Isaac Sim and deploying to hardware. Your support helps buy the physical components needed for this deployment!"
   },
   {
     "objectID": "about.html",
