@@ -159,17 +159,35 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
+::: {.particles-content style="background: transparent;"}
+
+::: {.glass-container}
+## About Me
+
 Hi! My name is Renan Monteiro Barbosa. 
 
 I am a solutions Architect consultant for Robotics, Cloud (DevOPS & MLops) with a Master’s in Data Science and a foundational background in Mechanical Engineering. Specialized in pioneering Physical AI by developing end-to-end simulation pipelines, reinforcement learning algorithms, and scalable cloud architectures. Proven track record of helping NVIDIA Inception partners and global startups leverage Isaac Sim, Omniverse, and VLA models to solve complex industrial challenges. Expert in bridging the gap between virtual training and real-world robotic deployment through OpenUSD workflows, synthetic data generation, and GPU-accelerated computing.
+:::
+
+::: {.glass-container}
+## Bored Engineering
 
 I created Bored Engineering because most software solutions are 90% boring work of configuration, IT and building the infrastructure. Through this website I share several [projects](projects.qmd) and write up [random thoughts and analyses](blog.qmd). 
+:::
+
+::: {.glass-container}
+## Get in Touch
 
 Please contact me at [bored2engineer@gmail.com](mailto:bored2engineer@gmail.com). Would love to connect about anything robotics, IsaacSim, data, potential collaborations, or just to share ideas.
 
-<div style="text-align:center;">
+<div style="text-align:center; margin-top: 30px;">
   <a href="https://www.youtube.com/@boredengineer-_-" target="_blank">
-    <img src="/files/images/goat_conf1_renan.png" style="width:100%; border-radius:10px;">
+    <img src="/files/images/goat_conf1_renan.png" style="width:100%; border-radius:10px; max-width: 600px;">
   </a>
-  <p>Subscribe to my YouTube channel</p>
+  <p style="margin-top: 10px;">Subscribe to my YouTube channel</p>
 </div>
+:::
+
+:::
+
+
