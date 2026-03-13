@@ -2,6 +2,7 @@
   {
     "listing": "/projects.html",
     "items": [
+      "/projects/predicting-stroke-risk-logistic-regression/index.html",
       "/projects/forecasting-the-real-estate-market/index.html"
     ]
   },
