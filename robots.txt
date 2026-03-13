@@ -1,1 +1,1 @@
-Sitemap: https://boredengineer.com/sitemap.xml
+Sitemap: https://boredengineering.github.io/boredengineer-quarto-website/sitemap.xml
