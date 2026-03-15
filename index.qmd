@@ -144,9 +144,6 @@ document.addEventListener("DOMContentLoaded", function() {
 ::: {.column-screen .hero-content style="text-align: center; padding-top: 15vh; background: transparent;"}
 # Welcome to BoredEngineer
 
-This is a Quarto website featuring the exact particle behavior from Network Science.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 :::
 
 ![](files/images/caution_under_construction-removebg.png)
