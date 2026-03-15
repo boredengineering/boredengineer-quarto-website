@@ -60,14 +60,21 @@
     "href": "sponsor.html#impact-roadmap",
     "title": "Powering the Gap Between Pixels and Actuators",
     "section": "Impact Roadmap",
-    "text": "Impact Roadmap\n\n\n\n\n\n\nNoteWhat Your Funds Enable\n\n\n\n\n$10: One day of cloud GPU training time.\n$50: A high-precision sensor (ToF, IMU) for a physical robot prototype.\n$200: A full microcontroller suite and motor drivers for a new experiment."
+    "text": "Impact Roadmap\nThe idea is to raise funds until there is enough to do an End-to-End project.\n\n\n\n\n\n\nNoteWhat Your Funds Enable for example:\n\n\n\n\n$6: One hour of cloud GPU on single L40S g6e.8xlarge.\n$40: One hour of cloud GPU training time on on 8x L40S g6e.48xlarge.\n$400: A Full Kit of the robot SO-ARM101\n$500: A Depth Vision Camera IntelRealsense D455\n\nValues are an approximation, donation of hardware and cloud credits are extremely helpful too."
+  },
+  {
+    "objectID": "sponsor.html#free-workshops",
+    "href": "sponsor.html#free-workshops",
+    "title": "Powering the Gap Between Pixels and Actuators",
+    "section": "Free Workshops",
+    "text": "Free Workshops\nCurrently hold hands-on workshops at Panera Bread every other week: Gathering of Aspiring Technologists (GOAT) Club\nUnused Hardware (after project completion) are given away to help students and cloud credits lower the barrier of entry."
   },
   {
     "objectID": "sponsor.html#whats-coming-next",
     "href": "sponsor.html#whats-coming-next",
     "title": "Powering the Gap Between Pixels and Actuators",
     "section": "What’s Coming Next?",
-    "text": "What’s Coming Next?\nI’m currently working on a Sim-to-Real series focusing on training quadrupedal locomotion entirely in Isaac Sim and deploying to hardware. Your support helps buy the physical components needed for this deployment!"
+    "text": "What’s Coming Next?\nI’m currently working on my trip to GTC 2026\nThe idea is to make an open Poll plus a discussion forum so we can plan together and vote on which projects to piroritize.\nSome projects can be very demanding, for example:\n\nMaking a decent VLA project that goes beyond the demos, lets say, replace the backbone VLM model and implement a new skill (within model capability) can take 2-3 weeks and cost around $300 - $500 in cloud computing assuming everything goes according to plan.\nSim2Real projects involve hardware and are naturally more expensive.\n\n\n\n\n\n\nExperimental Poll features:\n  🗳️ Cast Your Vote on GitHub"
   },
   {
     "objectID": "about.html#about-me",
