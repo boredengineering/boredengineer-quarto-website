@@ -7,6 +7,7 @@ description: "Bridging simulation-to-real workflows with Isaac Sim, Omniverse, a
 page-layout: article
 title-block-banner: true
 toc: false
+
 format:
   html:
     include-in-header:
@@ -290,20 +291,72 @@ Simply click the button below or search for my handle directly on Venmo.
 ::: {.glass-container}
 ## Impact Roadmap
 
+The idea is to raise funds until there is enough to do an End-to-End project.
+
 ::: {.callout-note appearance="simple"}
-## What Your Funds Enable
-- **$10:** One day of cloud GPU training time.
-- **$50:** A high-precision sensor (ToF, IMU) for a physical robot prototype.
-- **$200:** A full microcontroller suite and motor drivers for a new experiment.
+## What Your Funds Enable for example:
+- **$6:** One hour of cloud GPU on single L40S [g6e.8xlarge](https://instances.vantage.sh/aws/ec2/g6e.8xlarge?currency=USD).
+- **$40:** One hour of cloud GPU training time on on 8x L40S [g6e.48xlarge](https://instances.vantage.sh/aws/ec2/g6e.48xlarge?currency=USD).
+- **$400:** A Full Kit of the robot [SO-ARM101](https://partabot.com/products/so-arm101?variant=43026077155443)
+- **$500:** A Depth Vision Camera [IntelRealsense D455](https://www.digikey.com/en/products/detail/realsense/99AVPN/16915893?gclsrc=aw.ds&gad_source=1&gad_campaignid=20243136172&gbraid=0AAAAADrbLlgg6JeqOI_ryfsw4-RQHcSM6&gclid=CjwKCAjwjtTNBhB0EiwAuswYhlglUQRNpKKRkbJKUYt3xxywzPRwzOkYFM7jwVraaKYH5Xc_JGeNQBoCFOoQAvD_BwE) 
+
+Values are an approximation, donation of hardware and cloud credits are extremely helpful too. 
 :::
 
+## Free Workshops
+
+Currently hold hands-on workshops at **Panera Bread** every other week: [Gathering of Aspiring Technologists (GOAT) Club](https://www.meetup.com/gathering-of-aspiring-technologists-goat-club/)
+
+Unused Hardware (after project completion) are given away to help students and cloud credits lower the barrier of entry.
+
+::: {.bento-wrapper}
+
+::: {.bento-item .tall-left}
+![](files/images/panera01.jpg)
+:::
+
+::: {.bento-item .wide-top}
+![](files/images/panera03.jpg)
+:::
+
+::: {.bento-item .tall-right}
+![](files/images/panera02.jpg)
+:::
+
+::: {.bento-item .wide-bottom}
+![](files/images/panera04.jpg)
+:::
+
+:::
+
+
 ## What's Coming Next?
-I'm currently working on a **Sim-to-Real** series focusing on training quadrupedal locomotion entirely in Isaac Sim and deploying to hardware. Your support helps buy the physical components needed for this deployment!
+
+I'm currently working on my trip to [GTC 2026](https://www.nvidia.com/gtc/)
+
+The idea is to make an open Poll plus a discussion forum so we can plan together and vote on which projects to piroritize.
+
+Some projects can be very demanding, for example: 
+
+- Making a decent VLA project that goes beyond the demos, lets say, replace the backbone VLM model and implement a new skill (within model capability) can take 2-3 weeks and cost around **$300 - $500** in cloud computing assuming everything goes according to plan.
+- **Sim2Real** projects involve hardware and are naturally more expensive.
+
+![](files/images/caution_under_construction-removebg.png){fig-align="center" width="300px"}
+
+Experimental Poll features:
+
+<a href="https://github.com/renanmb/boredengineer-quarto-website-test/discussions/2" target="_blank">
+  <button style="background-color: #2ea44f; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+    🗳️ Cast Your Vote on GitHub
+  </button>
+</a>
 :::
 
 ::: {.glass-card}
 ### Thank You!
 *Your support keeps the **"Bored Engineer"** from actually being bored --- and instead, keeps the robots moving.*
+
+![This is my animated chart](files/gifs/poor-robot_v5.gif)
 
 <div style="margin-top: 20px;">
 [Back to Projects](projects.qmd){.btn .btn-outline-secondary} [Check the Blog](blog.qmd){.btn .btn-outline-secondary}

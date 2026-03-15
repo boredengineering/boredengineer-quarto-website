@@ -3,3 +3,14 @@
 # freeze computational output
 # (see https://quarto.org/docs/projects/code-execution.html#freeze)
 freeze: true
+comments:
+    giscus:
+      repo: "renanmb/boredengineer-quarto-website-test"      # Replace with your data-repo
+      repo-id: "R_kgDORin_Zw"                # Replace with your data-repo-id
+      category: "Announcements"            # Replace with your data-category
+      category-id: "DIC_kwDORin_Z84C4YyK"             # Replace with your data-category-id
+      mapping: "pathname"
+      reactions-enabled: true
+      input-position: "bottom"
+      theme: "dark_high_contrast"                       # Other options: dark, preferred_color_scheme, dark_high_contrast
+      loading: "lazy"
