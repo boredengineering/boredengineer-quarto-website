@@ -8,6 +8,8 @@
   },
   {
     "listing": "/blog.html",
-    "items": []
+    "items": [
+      "/posts/to-vibe-code-or-not-to-vibe-code/index.html"
+    ]
   }
 ]

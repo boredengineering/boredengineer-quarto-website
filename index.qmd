@@ -147,3 +147,7 @@ document.addEventListener("DOMContentLoaded", function() {
 :::
 
 ![](files/images/caution_under_construction-removebg.png)
+
+::: {.glass-container}
+![](files/images/goat_conf1_renan.png)
+:::
