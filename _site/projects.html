@@ -85,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-image','listing-categories','listing-subtitle','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-date','listing-title','listing-description','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
@@ -350,14 +350,14 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
     <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="RGF0YS1TY2llbmNl">Data-Science <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -367,7 +367,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -520,41 +520,65 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title" data-direction="asc">
+        Title
+      </option>
+      <option value="listing-date-sort" data-direction="asc">
+        Date - Oldest
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Date - Newest
+      </option>
+    </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="RGF0YS1TY2llbmNl" data-listing-file-modified-sort="1773388384316" data-listing-reading-time-sort="55" data-listing-word-count-sort="10960">
+<div class="g-col-1" data-index="0" data-categories="RGF0YS1TY2llbmNl" data-listing-file-modified-sort="1774265085944" data-listing-reading-time-sort="55" data-listing-word-count-sort="10960">
 <a href="./projects/predicting-stroke-risk-logistic-regression/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="projects/predicting-stroke-risk-logistic-regression/index_files/figure-html/unnamed-chunk-6-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="projects/predicting-stroke-risk-logistic-regression/index_files/figure-html/unnamed-chunk-6-1.png" style="height: 300px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Predicting stroke risk from common health indicators:
 </h5>
-<div class="card-subtitle listing-subtitle">
-a binary logistic regression analysis
-</div>
+<div class="listing-reading-time card-text text-muted">55 min</div>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('RGF0YS1TY2llbmNl'); return false;">Data-Science</div>
 
+</div>
+<div class="card-text listing-description delink">
+<p>Development and evaluation of a Logistic Regression model to predict stroke risk using common health indicators, with a focus on addressing class imbalance using SMOTE.</p>
 </div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="RGF0YS1TY2llbmNl" data-listing-file-modified-sort="1773381584812" data-listing-reading-time-sort="48" data-listing-word-count-sort="9561">
+<div class="g-col-1" data-index="1" data-categories="RGF0YS1TY2llbmNl" data-listing-file-modified-sort="1774267715927" data-listing-reading-time-sort="36" data-listing-word-count-sort="7169">
 <a href="./projects/forecasting-the-real-estate-market/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="projects/forecasting-the-real-estate-market/index_files/figure-html/unnamed-chunk-8-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="projects/forecasting-the-real-estate-market/index_files/figure-html/unnamed-chunk-8-1.png" style="height: 300px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Forecasting the Real Estate Market
 </h5>
-<div class="card-subtitle listing-subtitle">
-A Comparative Analysis of Classical vs.&nbsp;Modern Time Series Models on Housing Prices
-</div>
+<div class="listing-reading-time card-text text-muted">36 min</div>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('RGF0YS1TY2llbmNl'); return false;">Data-Science</div>
 
+</div>
+<div class="card-text listing-description delink">
+<p>A comparative analysis of classical vs.&nbsp;modern time series models (ARIMA, SARIMA, Prophet) for predicting housing prices using Zillow Economics Data.</p>
 </div>
 </div>
 </div></a>
@@ -648,7 +672,7 @@ A Comparative Analysis of Classical vs.&nbsp;Modern Time Series Models on Housin
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/boredengineer\.com");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

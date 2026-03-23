@@ -4,6 +4,7 @@ subtitle: "a binary logistic regression analysis"
 author:
   - name: Renan Monteiro Barbosa
 categories: [Data-Science]
+description: "Development and evaluation of a Logistic Regression model to predict stroke risk using common health indicators, with a focus on addressing class imbalance using SMOTE."
 draft: false
 bibliography: references.bib
 link-citations: true

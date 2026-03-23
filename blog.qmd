@@ -7,8 +7,8 @@ listing:
   categories: true
   sort-ui: false
   filter-ui: false
-  fields: [title, image, categories, author, date]
-page-layout: article
+  fields: [image, date, title, description, categories, reading-time]
+page-layout: full
 comments: false
 # twitter-card:
 #   image: /about_files/site_photo.jpg

@@ -4,11 +4,13 @@ listing:
   contents: projects
   sort: "date desc"
   type: grid
+  # grid-columns: 2
   categories: true
-  sort-ui: false
-  filter-ui: false
-  fields: [title, image, categories, subtitle, date]
-page-layout: article
+  sort-ui: true
+  filter-ui: true
+  fields: [image, date, title, description, categories, reading-time]
+  image-height: 300px
+page-layout: full
 comments: false
 # twitter-card:
 #   image: /about_files/site_photo.jpg
