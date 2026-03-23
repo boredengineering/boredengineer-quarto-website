@@ -13,7 +13,7 @@ link-citations: true
 ![](/files/images/vibe_or_not_to_vibe.png)
 
 
-This publication is the first of a series where I perform an exhaustive analysis on how AI Coding Tools are powerful—but context-dependent and often misunderstood. In the next publication I intend to show how AI coding tools helped to produce this work given the evidence and supporting material raised in the article.
+In this publication I perform an exhaustive analysis on how AI Coding Tools are powerful—but context-dependent and often misunderstood. It is an Evidence-Based Look at Productivity, Reasoning, and the Limits of AI Coding Tools to bring awareness on how to make the most of these tools.
 
 This is a collection of personal thoughts, research articles and blog posts I have been accumulating over several years to bring the awareness on the Limits of AI Coding Tools.
 
