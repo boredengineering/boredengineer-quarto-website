@@ -10,7 +10,7 @@ link-citations: true
 # csl: apa-numeric-superscript-brackets.csl
 ---
 
-![](/files/images/caution_under_construction-removebg.png)
+![](/files/images/vibe_or_not_to_vibe.png)
 
 
 This publication is the first of a series where I perform an exhaustive analysis on how AI Coding Tools are powerful—but context-dependent and often misunderstood. In the next publication I intend to show how AI coding tools helped to produce this work given the evidence and supporting material raised in the article.

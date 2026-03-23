@@ -521,10 +521,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="QWdlbnRpYy1BSQ==" data-listing-file-modified-sort="1774263004613" data-listing-reading-time-sort="32" data-listing-word-count-sort="6229">
+<div class="quarto-post image-right" data-index="0" data-categories="QWdlbnRpYy1BSQ==" data-listing-file-modified-sort="1774276928920" data-listing-reading-time-sort="32" data-listing-word-count-sort="6229">
 <div class="thumbnail"><a href="./posts/to-vibe-code-or-not-to-vibe-code/index.html" class="no-external">
 
-<p class="card-img-top"><img src="files/images/caution_under_construction-removebg.png"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="files/images/vibe_or_not_to_vibe.png"  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
@@ -635,7 +635,7 @@ This publication is the first of a series where I perform an exhaustive analysis
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/boredengineer\.com");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
