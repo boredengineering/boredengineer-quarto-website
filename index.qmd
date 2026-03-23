@@ -1,5 +1,5 @@
 ---
-title: "BoredEngineer"
+title: "Welcome to BoredEngineer"
 toc: false
 # toc-location: left
 ---
@@ -141,11 +141,10 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-::: {.column-screen .hero-content style="text-align: center; padding-top: 15vh; background: transparent;"}
-# Welcome to BoredEngineer
-
-:::
+::: {.column-screen .hero-content style="text-align: center; padding-top: 5vh; background: transparent;"}
 
 ::: {.glass-container}
 ![](files/images/goat_conf1_renan.png)
+:::
+
 :::
