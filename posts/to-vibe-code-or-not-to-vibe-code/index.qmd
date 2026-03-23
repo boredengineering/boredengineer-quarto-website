@@ -15,6 +15,8 @@ link-citations: true
 
 This publication is the first of a series where I perform an exhaustive analysis on how AI Coding Tools are powerful—but context-dependent and often misunderstood. In the next publication I intend to show how AI coding tools helped to produce this work given the evidence and supporting material raised in the article.
 
+This is a collection of personal thoughts, research articles and blog posts I have been accumulating over several years to bring the awareness on the Limits of AI Coding Tools.
+
 ::: {.callout-important}
 ## Disclosure
 
@@ -23,7 +25,7 @@ This publication is still under construction as I need to gather and verify all 
 
 ## 1. Introduction
 
-The discipline of software engineering is currently undergoing a structural and epistemological paradigm shift, driven by the rapid evolution and deployment of Large Language Models and agentic artificial intelligence. What began as simple, single-shot code completion utilities has rapidly matured into autonomous, multi-step agentic workflows. These advanced systems are capable of navigating sprawling legacy repositories, interacting dynamically with external application programming interfaces, maintaining persistent memory buffers, and executing complex development tasks with minimal human intervention. This technological transition has catalyzed the emergence of a highly debated development methodology colloquially termed "vibe-coding." This practice is characterized by the use of natural language prompts to guide artificial intelligence agents in writing, refining, and deploying software, effectively abstracting away the manual generation of syntax.
+The discipline of software engineering is currently undergoing a structural and epistemological paradigm shift, driven by the rapid evolution and deployment of Large Language Models and agentic artificial intelligence. What began as simple, single-shot code completion utilities has rapidly matured into autonomous, multi-step agentic workflows. These advanced systems are capable of navigating sprawling legacy repositories, interacting dynamically with external application programming interfaces, maintaining persistent memory buffers, and executing complex development tasks with minimal human intervention. This technological transition has catalyzed the emergence of a highly debated development methodology colloquially termed "vibe-coding." This practice is characterized by the use of natural language prompts to guide artificial intelligence agents in writing, refining, and deploying software, effectively abstracting away the manual generation of syntax. @rentmeister
 
 The discourse surrounding agentic coding frameworks is sharply polarized. Proponents argue that these tools fundamentally democratize software creation, exponentially increase delivery throughput, and allow engineers to operate at higher conceptual levels of abstraction. A robust ecosystem of startups and venture capital firms has rallied behind this narrative, pointing to unprecedented development speeds and the ability for non-technical founders to deploy production-ready applications in mere days. Conversely, a growing body of rigorous, reproducible research—including randomized controlled trials and deep empirical observations—suggests a significantly more complex, and frequently contradictory, reality. While perceived productivity often surges, actual task completion times in complex, legacy environments can severely deteriorate when developers rely too heavily on generative models.
 
