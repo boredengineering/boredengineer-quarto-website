@@ -9,7 +9,8 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/posts/to-vibe-code-or-not-to-vibe-code/index.html"
+      "/posts/to-vibe-code-or-not-to-vibe-code/index.html",
+      "/posts/worker-safety-cosmos-reason-2/index.html"
     ]
   }
 ]
