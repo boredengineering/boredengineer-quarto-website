@@ -10,7 +10,7 @@ bibliography: references.bib
 link-citations: true
 ---
 
-![](/files/images/caution_under_construction_v2.png)
+![](images/featured.png)
 
 Creating a modern, reproducible, and aesthetically pleasing technical website requires more than just a good content management system. It requires a robust development environment and a forward-thinking approach to design. This project documents the setup of this very website, leveraging **Quarto**, **VS Code DevContainers**, **renv**, and the power of **Agentic AI** for rapid iteration and design orchestration.
 
@@ -31,6 +31,7 @@ Our configuration utilizes the official Playwright image as a base, which provid
 ```json
 {
   "name": "Gemini Playwright Sandbox",
+  // Use the official Playwright image. It includes Node.js and all browser binaries.
   "image": "mcr.microsoft.com/playwright:v1.58.2-jammy",
   "features": {
     "ghcr.io/rocker-org/devcontainer-features/r-apt:latest": {
@@ -54,7 +55,7 @@ Our configuration utilizes the official Playwright image as a base, which provid
         "python.defaultInterpreterPath": "/usr/local/bin/python"
       },
       "extensions": [
-        "google.geminicode", 
+        "google.geminicode", // Optional: Google's AI assistant extension
         "REditorSupport.r",
         "ms-python.python",
         "quarto.quarto",
@@ -62,6 +63,8 @@ Our configuration utilizes the official Playwright image as a base, which provid
       ]
     }
   },
+
+  // Install the Gemini CLI automatically when the container builds
   "postCreateCommand": "apt update && apt install -y libmagick++-dev && npm install -g @google/gemini-cli && echo 'Gemini CLI installed!' && Rscript -e 'install.packages(c(\"languageserver\", \"renv\"), repos=\"https://cloud.r-project.org\")' && if [ -f renv.lock ]; then Rscript -e 'renv::restore()'; fi && pip install jupyter ipykernel"
 }
 ```
@@ -110,7 +113,7 @@ To replicate this setup on your local machine, follow these steps:
 
 1.  **Install VS Code** and the **Dev Containers extension**.
 2.  **Install Docker** on your host system.
-3.  **Clone this repository.**
+3.  **Clone this repository.** (if you want a sample)
 4.  **Open the folder in VS Code.**
 5.  When prompted, click **"Reopen in Container"**.
 
