@@ -354,11 +354,18 @@ div.csl-indent {
    
   <ul>
   <li><a href="#the-incident-a-sourcemap-in-the-wild" id="toc-the-incident-a-sourcemap-in-the-wild" class="nav-link active" data-scroll-target="#the-incident-a-sourcemap-in-the-wild">1. The Incident: A Sourcemap in the Wild</a></li>
-  <li><a href="#reconstructing-the-ghost-the-rise-of-shadow-agents" id="toc-reconstructing-the-ghost-the-rise-of-shadow-agents" class="nav-link" data-scroll-target="#reconstructing-the-ghost-the-rise-of-shadow-agents">2. Reconstructing the Ghost: The Rise of Shadow Agents</a></li>
-  <li><a href="#under-the-hood-what-the-leak-revealed" id="toc-under-the-hood-what-the-leak-revealed" class="nav-link" data-scroll-target="#under-the-hood-what-the-leak-revealed">3. Under the Hood: What the Leak Revealed</a></li>
-  <li><a href="#the-copyright-conundrum-who-owns-an-ai-assisted-agent" id="toc-the-copyright-conundrum-who-owns-an-ai-assisted-agent" class="nav-link" data-scroll-target="#the-copyright-conundrum-who-owns-an-ai-assisted-agent">4. The Copyright Conundrum: Who Owns an AI-Assisted Agent?</a></li>
-  <li><a href="#security-trust-and-the-agentic-leak" id="toc-security-trust-and-the-agentic-leak" class="nav-link" data-scroll-target="#security-trust-and-the-agentic-leak">5. Security, Trust, and the “Agentic Leak”</a></li>
-  <li><a href="#conclusion-a-new-paradigm-for-open-source-agents" id="toc-conclusion-a-new-paradigm-for-open-source-agents" class="nav-link" data-scroll-target="#conclusion-a-new-paradigm-for-open-source-agents">6. Conclusion: A New Paradigm for Open-Source Agents</a>
+  <li><a href="#under-the-hood-the-secret-sauce-revealed" id="toc-under-the-hood-the-secret-sauce-revealed" class="nav-link" data-scroll-target="#under-the-hood-the-secret-sauce-revealed">2. Under the Hood: The “Secret Sauce” Revealed</a>
+  <ul class="collapse">
+  <li><a href="#kairos-the-autonomous-ghost-in-the-machine" id="toc-kairos-the-autonomous-ghost-in-the-machine" class="nav-link" data-scroll-target="#kairos-the-autonomous-ghost-in-the-machine">KAIROS: The Autonomous Ghost in the Machine</a></li>
+  <li><a href="#anti-distillation-poisoning-the-well" id="toc-anti-distillation-poisoning-the-well" class="nav-link" data-scroll-target="#anti-distillation-poisoning-the-well">Anti-Distillation: Poisoning the Well</a></li>
+  <li><a href="#the-frustration-regex" id="toc-the-frustration-regex" class="nav-link" data-scroll-target="#the-frustration-regex">The “Frustration” Regex</a></li>
+  </ul></li>
+  <li><a href="#the-drm-layer-native-client-attestation" id="toc-the-drm-layer-native-client-attestation" class="nav-link" data-scroll-target="#the-drm-layer-native-client-attestation">3. The DRM Layer: Native Client Attestation</a></li>
+  <li><a href="#the-irony-anthropic-on-the-other-side-of-the-fence" id="toc-the-irony-anthropic-on-the-other-side-of-the-fence" class="nav-link" data-scroll-target="#the-irony-anthropic-on-the-other-side-of-the-fence">4. The Irony: Anthropic on the Other Side of the Fence</a>
+  <ul class="collapse">
+  <li><a href="#the-opencode-crackdown" id="toc-the-opencode-crackdown" class="nav-link" data-scroll-target="#the-opencode-crackdown">The OpenCode Crackdown</a></li>
+  </ul></li>
+  <li><a href="#conclusion-a-new-paradigm-for-open-source-agents" id="toc-conclusion-a-new-paradigm-for-open-source-agents" class="nav-link" data-scroll-target="#conclusion-a-new-paradigm-for-open-source-agents">5. Conclusion: A New Paradigm for Open-Source Agents</a>
   <ul class="collapse">
   <li><a href="#stay-updated" id="toc-stay-updated" class="nav-link" data-scroll-target="#stay-updated">Stay Updated</a></li>
   </ul></li>
@@ -373,57 +380,46 @@ div.csl-indent {
 
 
 
-<p><img src="images/green_claw_jacked.png" class="img-fluid" style="width:30.0%"></p>
-<p>In the rapidly evolving world of agentic AI, Anthropic’s release of “Claude Code” was meant to be a landmark moment for proprietary coding tools. However, what followed was a masterclass in how a single configuration oversight can alter the trajectory of a product launch. This article explores the recent leak of Claude Code’s source code, the emergence of community projects like <code>clawd-code</code>, and the profound questions this event raises for the future of AI development.</p>
+<p><img src="images/claude_code_meme01.png" class="img-fluid"></p>
+<p>In the rapidly evolving world of agentic AI, Anthropic’s release of “Claude Code” was meant to be a landmark moment for proprietary coding tools. However, what followed was a masterclass in how a single configuration oversight—and perhaps a runtime bug—can alter the trajectory of a product launch. This article explores the recent leak of Claude Code’s source code, the emergence of community projects like <code>clawd-code</code>, and the profound questions this event raises for the future of AI development.</p>
 <section id="the-incident-a-sourcemap-in-the-wild" class="level2">
 <h2 class="anchored" data-anchor-id="the-incident-a-sourcemap-in-the-wild">1. The Incident: A Sourcemap in the Wild</h2>
-<p>In late March 2026, Anthropic released Claude Code, a highly anticipated agentic CLI tool designed to allow developers to build and refactor codebases using Claude 3.7 Sonnet. Within hours of its release on the npm registry, security researchers and curious developers discovered something unexpected: the production package contained full sourcemaps.<span class="citation" data-cites="kuber_claude_leak"><sup>[<a href="#ref-kuber_claude_leak" role="doc-biblioref">1</a>]</sup></span></p>
-<p>For the uninitiated, sourcemaps are files that map transpiled, minified JavaScript back to its original source code (in this case, TypeScript). While essential for debugging during development, they are rarely intended for production releases of proprietary software. By providing these sourcemaps, Anthropic inadvertently handed the world a blueprint of their flagship agentic tool.<span class="citation" data-cites="kuber_claude_leak"><sup>[<a href="#ref-kuber_claude_leak" role="doc-biblioref">1</a>]</sup></span> <span class="citation" data-cites="x_gergelyorosz"><sup>[<a href="#ref-x_gergelyorosz" role="doc-biblioref">2</a>]</sup></span></p>
+<p>In late March 2026, Anthropic released Claude Code, a highly anticipated agentic CLI tool designed to allow developers to build and refactor codebases using Claude 3.7 Sonnet. Within hours of its release on the npm registry, security researchers discovered that the production package contained a massive 60MB sourcemap.<span class="citation" data-cites="kuber_claude_leak"><sup>[<a href="#ref-kuber_claude_leak" role="doc-biblioref">1</a>]</sup></span></p>
+<p>While initially blamed on a CI/CD packaging error, some researchers pointed to a potential production sourcemap bug in <strong>Bun</strong>, the runtime Anthropic recently acquired.<span class="citation" data-cites="alex_kim_leak"><sup>[<a href="#ref-alex_kim_leak" role="doc-biblioref">2</a>]</sup></span> This irony wasn’t lost on the community: the very toolchain Anthropic purchased to build their “walled garden” was the one that accidentally opened the gates.</p>
 </section>
-<section id="reconstructing-the-ghost-the-rise-of-shadow-agents" class="level2">
-<h2 class="anchored" data-anchor-id="reconstructing-the-ghost-the-rise-of-shadow-agents">2. Reconstructing the Ghost: The Rise of Shadow Agents</h2>
-<p>The community response was near-instantaneous. Leveraging the leaked sourcemaps, developers began reconstructing the original source code, revealing the intricate internal logic that powers Claude Code. This led to a flurry of activity on GitHub, with several notable projects emerging:</p>
-<ul>
-<li><strong>Clawd-code:</strong> A project that seeks to wrap or reimplement the core logic discovered in the leak, effectively creating an “open” alternative to the proprietary tool.<span class="citation" data-cites="clawd_code_repo"><sup>[<a href="#ref-clawd_code_repo" role="doc-biblioref">3</a>]</sup></span></li>
-<li><strong>Claude Code Source Snapshot:</strong> Repository created for security research and historical preservation of the leaked logic.<span class="citation" data-cites="claude_code_snapshot"><sup>[<a href="#ref-claude_code_snapshot" role="doc-biblioref">4</a>]</sup></span></li>
-<li><strong>Claurst:</strong> A Rust-based implementation inspired by the leaked architectural patterns, demonstrating how quickly the industry can adapt proprietary insights into new languages.<span class="citation" data-cites="claurst_repo"><sup>[<a href="#ref-claurst_repo" role="doc-biblioref">5</a>]</sup></span></li>
-</ul>
-<p>The speed at which these “shadow agents” appeared highlights a significant shift in the developer ecosystem: when a high-value AI tool is exposed, the community can and will clone its functionality in a matter of hours.<span class="citation" data-cites="x_yuchenj_uw"><sup>[<a href="#ref-x_yuchenj_uw" role="doc-biblioref">6</a>]</sup></span></p>
+<section id="under-the-hood-the-secret-sauce-revealed" class="level2">
+<h2 class="anchored" data-anchor-id="under-the-hood-the-secret-sauce-revealed">2. Under the Hood: The “Secret Sauce” Revealed</h2>
+<p>The leaked source code (v2.1.88) provided a rare, unfiltered glimpse into Anthropic’s agentic reasoning and their commercial defensive strategies.<span class="citation" data-cites="alex_kim_leak"><sup>[<a href="#ref-alex_kim_leak" role="doc-biblioref">2</a>]</sup></span></p>
+<section id="kairos-the-autonomous-ghost-in-the-machine" class="level3">
+<h3 class="anchored" data-anchor-id="kairos-the-autonomous-ghost-in-the-machine">KAIROS: The Autonomous Ghost in the Machine</h3>
+<p>Perhaps the most significant discovery was <strong>KAIROS</strong>, an unreleased autonomous agent mode. Unlike the standard interactive CLI, KAIROS appears designed to run as a background daemon, featuring: * <strong>Nightly Memory Distillation:</strong> A process where the agent summarizes its daily learnings into a persistent long-term memory buffer. * <strong>Background Workers:</strong> The ability to execute long-running tasks without blocking the user’s terminal.</p>
 </section>
-<section id="under-the-hood-what-the-leak-revealed" class="level2">
-<h2 class="anchored" data-anchor-id="under-the-hood-what-the-leak-revealed">3. Under the Hood: What the Leak Revealed</h2>
-<p>Beyond the code itself, the leak provided a rare glimpse into the “secret sauce” of Anthropic’s agentic reasoning. Security researchers analyzed the leaked traces and revealed several key components:<span class="citation" data-cites="x_paoloanzn"><sup>[<a href="#ref-x_paoloanzn" role="doc-biblioref">7</a>]</sup></span></p>
-<ul>
-<li><strong>Internal Tooling:</strong> The specific tool definitions Claude uses to interact with the file system, shell, and external APIs.</li>
-<li><strong>System Prompts:</strong> The meticulously crafted instructions that guide the model to behave as a competent, safe, and helpful software engineer.</li>
-<li><strong>Agentic Workflows:</strong> The multi-step orchestration logic that allows Claude to plan, execute, and verify complex changes across multiple files.</li>
-</ul>
-<p>This transparency has sparked a debate about the value of proprietary AI “wrappers.” If the primary value of an agentic tool lies in its system prompts and tool definitions—both of which are now public—what prevents the commoditization of agentic AI?<span class="citation" data-cites="x_paoloanzn"><sup>[<a href="#ref-x_paoloanzn" role="doc-biblioref">7</a>]</sup></span></p>
+<section id="anti-distillation-poisoning-the-well" class="level3">
+<h3 class="anchored" data-anchor-id="anti-distillation-poisoning-the-well">Anti-Distillation: Poisoning the Well</h3>
+<p>To protect their intellectual property, the leak revealed that Anthropic implemented <strong>“Anti-Distillation”</strong> measures. These are decoy tool definitions and synthetic reasoning traces designed to “poison” the training data of any competitor attempting to scrape or “distill” Claude’s output to train their own models.<span class="citation" data-cites="alex_kim_leak"><sup>[<a href="#ref-alex_kim_leak" role="doc-biblioref">2</a>]</sup></span></p>
 </section>
-<section id="the-copyright-conundrum-who-owns-an-ai-assisted-agent" class="level2">
-<h2 class="anchored" data-anchor-id="the-copyright-conundrum-who-owns-an-ai-assisted-agent">4. The Copyright Conundrum: Who Owns an AI-Assisted Agent?</h2>
-<p>The leak of Claude Code has reignited one of the most contentious debates in modern software development: the copyrightability of AI-assisted code.</p>
-<p>Under current US Copyright Office guidelines, purely AI-generated content cannot be copyrighted; human authorship is a strict requirement. This creates a fascinating legal gray area for tools like Claude Code and its open-source “shadow agents.” The community response has heavily leaned into a controversial premise: if an AI company used its own AI models to generate large portions of its codebase, how much of that leaked source code is actually protected by copyright?</p>
-<p>While Anthropic undoubtedly holds the copyright to the CLI’s overarching architecture and orchestration—the human “sweat of the brow” that ties the agent together—the specifics become murky when examining individual functions or system prompts.</p>
-<p>This ambiguity acts as a shield for community projects like clawd-code. When developers reverse-engineer and clone Anthropic’s leaked logic using their own LLMs, they are forcing the industry to ask difficult questions:</p>
-<p>Are System Prompts Code or Ideas? If the true value of Claude Code lies in its meticulously crafted system prompts, can those text instructions be copyrighted, or are they unprotectable ideas?</p>
-<p>The AI-Washing of Reverse Engineering: If a developer reads Anthropic’s leaked TypeScript, but asks Claude 3.7 to rewrite it in Rust (as seen in projects like claurst), who owns the output?</p>
-<p>As AI labs push for tighter intellectual property protections, the community is weaponizing the very nature of AI-generated content against them. If AI code cannot be copyrighted, the moat protecting proprietary agentic tools may be shallower than anyone realized.</p>
+<section id="the-frustration-regex" class="level3">
+<h3 class="anchored" data-anchor-id="the-frustration-regex">The “Frustration” Regex</h3>
+<p>In a moment of humanizing transparency, researchers found sentiment analysis logic in the source code—utilizing regex, of all things—specifically designed to detect user frustration. If a user’s prompt matches certain patterns of anger or disappointment, the agent is instructed to shift into a more conciliatory “recovery mode.”</p>
 </section>
-<section id="security-trust-and-the-agentic-leak" class="level2">
-<h2 class="anchored" data-anchor-id="security-trust-and-the-agentic-leak">5. Security, Trust, and the “Agentic Leak”</h2>
-<p>The Claude Code incident isn’t just a story about a technical mishap; it’s a cautionary tale about the security of AI-powered systems. Several critical questions have been raised by the community:</p>
-<ul>
-<li><strong>Security through Obscurity:</strong> Can proprietary AI tools survive in an environment where their core logic can be reverse-engineered so easily?<span class="citation" data-cites="kuber_claude_leak"><sup>[<a href="#ref-kuber_claude_leak" role="doc-biblioref">1</a>]</sup></span></li>
-<li><strong>Credential Safety:</strong> While no API keys were leaked in the source code itself, the incident highlights the risks of agentic tools having broad shell access. If a tool’s logic can be modified in a cloned version, what security guarantees do users have?</li>
-<li><strong>The Future of Proprietary Agents:</strong> Will this event force AI labs like Anthropic, OpenAI, and Google to move their agentic logic entirely server-side, sacrificing the speed and local context of CLI tools?</li>
-</ul>
+</section>
+<section id="the-drm-layer-native-client-attestation" class="level2">
+<h2 class="anchored" data-anchor-id="the-drm-layer-native-client-attestation">3. The DRM Layer: Native Client Attestation</h2>
+<p>The leak confirmed a controversial theory regarding Anthropic’s “technical warfare” against third-party tools. Inside the <strong>Bun/Zig</strong> layer, Anthropic implemented <strong>Native Client Attestation</strong>.<span class="citation" data-cites="winbuzzer_opencode"><sup>[<a href="#ref-winbuzzer_opencode" role="doc-biblioref">3</a>]</sup></span></p>
+<p>This system works by injecting a cryptographic hash (the <code>cch</code> header) into outgoing API requests directly at the HTTP stack level, below the reach of JavaScript. This ensures that only the official, unmodified Claude Code binary can access specific high-end models at subscription-based rates, effectively blocking third-party open-source tools from “spoofing” the client to avoid expensive per-token API costs.</p>
+</section>
+<section id="the-irony-anthropic-on-the-other-side-of-the-fence" class="level2">
+<h2 class="anchored" data-anchor-id="the-irony-anthropic-on-the-other-side-of-the-fence">4. The Irony: Anthropic on the Other Side of the Fence</h2>
+<p>For a company that built its brand on AI safety, transparency, and “Constitutional AI,” this incident has sparked intense debate. Anthropic now finds itself on the “other side of the fence,” employing the very tactics—obfuscation, DRM-like enforcement, and legal threats—that many in the open-source community criticize.</p>
+<section id="the-opencode-crackdown" class="level3">
+<h3 class="anchored" data-anchor-id="the-opencode-crackdown">The OpenCode Crackdown</h3>
+<p>Just weeks before the leak, Anthropic issued <strong>legal threats</strong> to the maintainers of <strong>OpenCode</strong>, a popular open-source alternative.<span class="citation" data-cites="winbuzzer_opencode"><sup>[<a href="#ref-winbuzzer_opencode" role="doc-biblioref">3</a>]</sup></span> OpenCode was forced to remove features that allowed users to use their Claude Pro subscriptions instead of official API keys. The leak has now exposed the exact technical mechanisms Anthropic used to enforce this “walled garden,” turning their secret enforcement code into public knowledge.</p>
+</section>
 </section>
 <section id="conclusion-a-new-paradigm-for-open-source-agents" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion-a-new-paradigm-for-open-source-agents">6. Conclusion: A New Paradigm for Open-Source Agents</h2>
+<h2 class="anchored" data-anchor-id="conclusion-a-new-paradigm-for-open-source-agents">5. Conclusion: A New Paradigm for Open-Source Agents</h2>
 <p>The leak of Claude Code via an npm sourcemap may be remembered as a turning point in the AI era. It has accelerated the development of open-source agentic tools and forced a reckoning with the fragility of proprietary software in the age of LLMs.</p>
-<p>As projects like <code>clawd-code</code> continue to evolve, the line between proprietary and open-source AI is blurring. For developers, this means more choices and greater transparency. For AI labs, it’s a stark reminder that in the world of software, the “vibes” are only as strong as your build configuration.</p>
-<p>The incident serves as a powerful lesson for all of us: in our rush to build the future of agentic AI, we must not forget the foundational principles of secure software delivery.</p>
+<p>As projects like <code>clawd-code</code> continue to evolve by leveraging these leaked insights, the line between proprietary and open-source AI is blurring. For developers, this means more choices and greater transparency. For AI labs, it’s a stark reminder that in the world of software, the “vibes” are only as strong as your build configuration—and your commitment to the community you serve.</p>
 <hr>
 <section id="stay-updated" class="level3">
 <h3 class="anchored" data-anchor-id="stay-updated">Stay Updated</h3>
@@ -432,23 +428,11 @@ div.csl-indent {
 <div id="ref-kuber_claude_leak" class="csl-entry" role="listitem">
 1. Kuber. (2026). <em>Claude code’s entire source code got leaked via a sourcemap in npm, let’s talk about it</em>. <a href="https://kuber.studio/blog/AI/Claude-Code's-Entire-Source-Code-Got-Leaked-via-a-Sourcemap-in-npm,-Let's-Talk-About-it">https://kuber.studio/blog/AI/Claude-Code's-Entire-Source-Code-Got-Leaked-via-a-Sourcemap-in-npm,-Let's-Talk-About-it</a>
 </div>
-<div id="ref-x_gergelyorosz" class="csl-entry" role="listitem">
-2. Orosz, G. (2026). <em>Analysis of anthropic’s claude code leak</em>. <a href="https://x.com/GergelyOrosz/status/2038985760175505491">https://x.com/GergelyOrosz/status/2038985760175505491</a>
+<div id="ref-alex_kim_leak" class="csl-entry" role="listitem">
+2. Kim, A. (2026). <em>The claude code source leak: Fake tools, frustration regexes, and bun’s hidden zig layers</em>. <a href="https://alex000kim.com/posts/2026-03-31-claude-code-source-leak/">https://alex000kim.com/posts/2026-03-31-claude-code-source-leak/</a>
 </div>
-<div id="ref-clawd_code_repo" class="csl-entry" role="listitem">
-3. instructkr. (2026). <em>Clawd-code: A project exploring the leaked claude code logic</em>. <a href="https://github.com/instructkr/claw-code">https://github.com/instructkr/claw-code</a>
-</div>
-<div id="ref-claude_code_snapshot" class="csl-entry" role="listitem">
-4. Tornikeo. (2026). <em>Claude code source snapshot for security research</em>. <a href="https://github.com/tornikeo/claude-code/">https://github.com/tornikeo/claude-code/</a>
-</div>
-<div id="ref-claurst_repo" class="csl-entry" role="listitem">
-5. Kuberwastaken. (2026). <em>Claurst: A rust implementation inspired by claude code</em>. <a href="https://github.com/Kuberwastaken/claurst">https://github.com/Kuberwastaken/claurst</a>
-</div>
-<div id="ref-x_yuchenj_uw" class="csl-entry" role="listitem">
-6. Yuchenj_UW. (2026). <em>Commentary on claude code leak</em>. <a href="https://x.com/Yuchenj_UW/status/2038996920845430815">https://x.com/Yuchenj_UW/status/2038996920845430815</a>
-</div>
-<div id="ref-x_paoloanzn" class="csl-entry" role="listitem">
-7. Anziano, P. (2026). <em>The security implications of leaking agentic AI source code</em>. <a href="https://x.com/paoloanzn/status/2039022418698907949">https://x.com/paoloanzn/status/2039022418698907949</a>
+<div id="ref-winbuzzer_opencode" class="csl-entry" role="listitem">
+3. WinBuzzer. (2026). <em>Anthropic crackdown on OpenCode: Legal threats and zig-level DRM</em>. <a href="https://winbuzzer.com/2026/03/anthropic-opencode-legal-threats/">https://winbuzzer.com/2026/03/anthropic-opencode-legal-threats/</a>
 </div>
 </div>
 
