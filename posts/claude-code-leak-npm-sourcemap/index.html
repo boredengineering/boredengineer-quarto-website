@@ -356,8 +356,9 @@ div.csl-indent {
   <li><a href="#the-incident-a-sourcemap-in-the-wild" id="toc-the-incident-a-sourcemap-in-the-wild" class="nav-link active" data-scroll-target="#the-incident-a-sourcemap-in-the-wild">1. The Incident: A Sourcemap in the Wild</a></li>
   <li><a href="#reconstructing-the-ghost-the-rise-of-shadow-agents" id="toc-reconstructing-the-ghost-the-rise-of-shadow-agents" class="nav-link" data-scroll-target="#reconstructing-the-ghost-the-rise-of-shadow-agents">2. Reconstructing the Ghost: The Rise of Shadow Agents</a></li>
   <li><a href="#under-the-hood-what-the-leak-revealed" id="toc-under-the-hood-what-the-leak-revealed" class="nav-link" data-scroll-target="#under-the-hood-what-the-leak-revealed">3. Under the Hood: What the Leak Revealed</a></li>
-  <li><a href="#security-trust-and-the-agentic-leak" id="toc-security-trust-and-the-agentic-leak" class="nav-link" data-scroll-target="#security-trust-and-the-agentic-leak">4. Security, Trust, and the “Agentic Leak”</a></li>
-  <li><a href="#conclusion-a-new-paradigm-for-open-source-agents" id="toc-conclusion-a-new-paradigm-for-open-source-agents" class="nav-link" data-scroll-target="#conclusion-a-new-paradigm-for-open-source-agents">5. Conclusion: A New Paradigm for Open-Source Agents</a>
+  <li><a href="#the-copyright-conundrum-who-owns-an-ai-assisted-agent" id="toc-the-copyright-conundrum-who-owns-an-ai-assisted-agent" class="nav-link" data-scroll-target="#the-copyright-conundrum-who-owns-an-ai-assisted-agent">4. The Copyright Conundrum: Who Owns an AI-Assisted Agent?</a></li>
+  <li><a href="#security-trust-and-the-agentic-leak" id="toc-security-trust-and-the-agentic-leak" class="nav-link" data-scroll-target="#security-trust-and-the-agentic-leak">5. Security, Trust, and the “Agentic Leak”</a></li>
+  <li><a href="#conclusion-a-new-paradigm-for-open-source-agents" id="toc-conclusion-a-new-paradigm-for-open-source-agents" class="nav-link" data-scroll-target="#conclusion-a-new-paradigm-for-open-source-agents">6. Conclusion: A New Paradigm for Open-Source Agents</a>
   <ul class="collapse">
   <li><a href="#stay-updated" id="toc-stay-updated" class="nav-link" data-scroll-target="#stay-updated">Stay Updated</a></li>
   </ul></li>
@@ -399,8 +400,18 @@ div.csl-indent {
 </ul>
 <p>This transparency has sparked a debate about the value of proprietary AI “wrappers.” If the primary value of an agentic tool lies in its system prompts and tool definitions—both of which are now public—what prevents the commoditization of agentic AI?<span class="citation" data-cites="x_paoloanzn"><sup>[<a href="#ref-x_paoloanzn" role="doc-biblioref">7</a>]</sup></span></p>
 </section>
+<section id="the-copyright-conundrum-who-owns-an-ai-assisted-agent" class="level2">
+<h2 class="anchored" data-anchor-id="the-copyright-conundrum-who-owns-an-ai-assisted-agent">4. The Copyright Conundrum: Who Owns an AI-Assisted Agent?</h2>
+<p>The leak of Claude Code has reignited one of the most contentious debates in modern software development: the copyrightability of AI-assisted code.</p>
+<p>Under current US Copyright Office guidelines, purely AI-generated content cannot be copyrighted; human authorship is a strict requirement. This creates a fascinating legal gray area for tools like Claude Code and its open-source “shadow agents.” The community response has heavily leaned into a controversial premise: if an AI company used its own AI models to generate large portions of its codebase, how much of that leaked source code is actually protected by copyright?</p>
+<p>While Anthropic undoubtedly holds the copyright to the CLI’s overarching architecture and orchestration—the human “sweat of the brow” that ties the agent together—the specifics become murky when examining individual functions or system prompts.</p>
+<p>This ambiguity acts as a shield for community projects like clawd-code. When developers reverse-engineer and clone Anthropic’s leaked logic using their own LLMs, they are forcing the industry to ask difficult questions:</p>
+<p>Are System Prompts Code or Ideas? If the true value of Claude Code lies in its meticulously crafted system prompts, can those text instructions be copyrighted, or are they unprotectable ideas?</p>
+<p>The AI-Washing of Reverse Engineering: If a developer reads Anthropic’s leaked TypeScript, but asks Claude 3.7 to rewrite it in Rust (as seen in projects like claurst), who owns the output?</p>
+<p>As AI labs push for tighter intellectual property protections, the community is weaponizing the very nature of AI-generated content against them. If AI code cannot be copyrighted, the moat protecting proprietary agentic tools may be shallower than anyone realized.</p>
+</section>
 <section id="security-trust-and-the-agentic-leak" class="level2">
-<h2 class="anchored" data-anchor-id="security-trust-and-the-agentic-leak">4. Security, Trust, and the “Agentic Leak”</h2>
+<h2 class="anchored" data-anchor-id="security-trust-and-the-agentic-leak">5. Security, Trust, and the “Agentic Leak”</h2>
 <p>The Claude Code incident isn’t just a story about a technical mishap; it’s a cautionary tale about the security of AI-powered systems. Several critical questions have been raised by the community:</p>
 <ul>
 <li><strong>Security through Obscurity:</strong> Can proprietary AI tools survive in an environment where their core logic can be reverse-engineered so easily?<span class="citation" data-cites="kuber_claude_leak"><sup>[<a href="#ref-kuber_claude_leak" role="doc-biblioref">1</a>]</sup></span></li>
@@ -409,7 +420,7 @@ div.csl-indent {
 </ul>
 </section>
 <section id="conclusion-a-new-paradigm-for-open-source-agents" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion-a-new-paradigm-for-open-source-agents">5. Conclusion: A New Paradigm for Open-Source Agents</h2>
+<h2 class="anchored" data-anchor-id="conclusion-a-new-paradigm-for-open-source-agents">6. Conclusion: A New Paradigm for Open-Source Agents</h2>
 <p>The leak of Claude Code via an npm sourcemap may be remembered as a turning point in the AI era. It has accelerated the development of open-source agentic tools and forced a reckoning with the fragility of proprietary software in the age of LLMs.</p>
 <p>As projects like <code>clawd-code</code> continue to evolve, the line between proprietary and open-source AI is blurring. For developers, this means more choices and greater transparency. For AI labs, it’s a stark reminder that in the world of software, the “vibes” are only as strong as your build configuration.</p>
 <p>The incident serves as a powerful lesson for all of us: in our rush to build the future of agentic AI, we must not forget the foundational principles of secure software delivery.</p>

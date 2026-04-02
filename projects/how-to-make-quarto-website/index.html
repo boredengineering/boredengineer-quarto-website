@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Renan Monteiro Barbosa">
+<meta name="dcterms.date" content="2026-04-02">
 
-<title>My Projects – BoredEngineer</title>
+<title>Making an Awesome Quarto Website – BoredEngineer</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,34 +22,87 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href=".//files/images/favicon.ico" rel="icon">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-20e21bca0d046588e63e4208287e1715.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-8d659ec753a771ba9678235caaecc63f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-20e21bca0d046588e63e4208287e1715.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../..//files/images/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-20e21bca0d046588e63e4208287e1715.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-8d659ec753a771ba9678235caaecc63f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-20e21bca0d046588e63e4208287e1715.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,67 +130,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-description','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -307,11 +304,11 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./files/images/worker.png" alt="" class="navbar-logo light-content">
-    <img src="./files/images/worker.png" alt="" class="navbar-logo dark-content">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../files/images/worker.png" alt="" class="navbar-logo light-content">
+    <img src="../../files/images/worker.png" alt="" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">BoredEngineer</span>
     </a>
   </div>
@@ -322,23 +319,23 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./projects.html" aria-current="page"> 
+    <a class="nav-link" href="../../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
+    <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./sponsor.html"> 
+    <a class="nav-link" href="../../sponsor.html"> 
 <span class="menu-text">Sponsor</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -350,26 +347,62 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="QWdlbnRpYy1BSQ==">Agentic-AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGF0YS1TY2llbmNl">Data-Science <span class="quarto-category-count">(3)</span></div><div class="category" data-category="RGV2T3Bz">DevOps <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UXVhcnRv">Quarto <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-foundation-quarto" id="toc-the-foundation-quarto" class="nav-link active" data-scroll-target="#the-foundation-quarto">1. The Foundation: Quarto</a></li>
+  <li><a href="#reproducibility-with-vs-code-devcontainers" id="toc-reproducibility-with-vs-code-devcontainers" class="nav-link" data-scroll-target="#reproducibility-with-vs-code-devcontainers">2. Reproducibility with VS Code DevContainers</a>
+  <ul class="collapse">
+  <li><a href="#the-devcontainer.json-configuration" id="toc-the-devcontainer.json-configuration" class="nav-link" data-scroll-target="#the-devcontainer.json-configuration">The <code>devcontainer.json</code> Configuration</a></li>
+  </ul></li>
+  <li><a href="#managing-r-dependencies-with-renv" id="toc-managing-r-dependencies-with-renv" class="nav-link" data-scroll-target="#managing-r-dependencies-with-renv">3. Managing R Dependencies with <code>renv</code></a></li>
+  <li><a href="#enhancing-the-developer-experience-r-language-server" id="toc-enhancing-the-developer-experience-r-language-server" class="nav-link" data-scroll-target="#enhancing-the-developer-experience-r-language-server">4. Enhancing the Developer Experience: R Language Server</a></li>
+  <li><a href="#agentic-ai-the-secret-to-rapid-design" id="toc-agentic-ai-the-secret-to-rapid-design" class="nav-link" data-scroll-target="#agentic-ai-the-secret-to-rapid-design">5. Agentic AI: The Secret to Rapid Design</a>
+  <ul class="collapse">
+  <li><a href="#the-intent-based-workflow" id="toc-the-intent-based-workflow" class="nav-link" data-scroll-target="#the-intent-based-workflow">The “Intent-Based” Workflow</a></li>
+  </ul></li>
+  <li><a href="#installation-and-setup" id="toc-installation-and-setup" class="nav-link" data-scroll-target="#installation-and-setup">6. Installation and Setup</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">My Projects</h1>
-</div>
+<h1 class="title">Making an Awesome Quarto Website</h1>
+<p class="subtitle lead">A Comprehensive Guide to DevContainers, renv, and Agentic AI-Driven Design</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Agentic-AI</div>
+    <div class="quarto-category">Quarto</div>
+    <div class="quarto-category">DevOps</div>
+  </div>
+  </div>
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Renan Monteiro Barbosa </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 2, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -379,262 +412,123 @@ window.Quarto = {
 </header>
 
 
-<div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
-
+<p><img src="../../files/images/caution_under_construction_v2.png" class="img-fluid"></p>
+<p>Creating a modern, reproducible, and aesthetically pleasing technical website requires more than just a good content management system. It requires a robust development environment and a forward-thinking approach to design. This project documents the setup of this very website, leveraging <strong>Quarto</strong>, <strong>VS Code DevContainers</strong>, <strong>renv</strong>, and the power of <strong>Agentic AI</strong> for rapid iteration and design orchestration.</p>
+<section id="the-foundation-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="the-foundation-quarto">1. The Foundation: Quarto</h2>
+<p>Quarto is an open-source scientific and technical publishing system built on Pandoc. It allows you to weave together narrative text and code to produce high-quality articles, reports, presentations, websites, and more.<span class="citation" data-cites="Allaire_Quarto_2022"><sup>[<a href="#ref-Allaire_Quarto_2022" role="doc-biblioref">1</a>]</sup></span></p>
+<p>One of the primary advantages of Quarto is its ability to support multiple languages, including R, Python, Julia, and Observable. For this website, we primarily use Quarto’s website project type, which provides a flexible structure for organizing posts and projects.</p>
+</section>
+<section id="reproducibility-with-vs-code-devcontainers" class="level2">
+<h2 class="anchored" data-anchor-id="reproducibility-with-vs-code-devcontainers">2. Reproducibility with VS Code DevContainers</h2>
+<p>To ensure that the development environment is consistent across different machines and for different contributors, we use <strong>VS Code DevContainers</strong>. A DevContainer is a Docker container that is used as your development environment, containing all the tools and dependencies needed for the project.</p>
+<section id="the-devcontainer.json-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="the-devcontainer.json-configuration">The <code>devcontainer.json</code> Configuration</h3>
+<p>Our configuration utilizes the official Playwright image as a base, which provides a rich set of browser binaries essential for testing and certain agentic workflows. We then layer on several “Features” to install R, Python, and the Quarto CLI.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Gemini Playwright Sandbox"</span><span class="fu">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"image"</span><span class="fu">:</span> <span class="st">"mcr.microsoft.com/playwright:v1.58.2-jammy"</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"features"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"ghcr.io/rocker-org/devcontainer-features/r-apt:latest"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"installRStudio"</span><span class="fu">:</span> <span class="kw">false</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"ghcr.io/devcontainers/features/python:1"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"version"</span><span class="fu">:</span> <span class="st">"latest"</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"ghcr.io/rocker-org/devcontainer-features/quarto-cli:1"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"version"</span><span class="fu">:</span> <span class="st">"latest"</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"ghcr.io/devcontainers/features/github-cli:1"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"version"</span><span class="fu">:</span> <span class="st">"latest"</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"customizations"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"vscode"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"settings"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"terminal.integrated.defaultProfile.linux"</span><span class="fu">:</span> <span class="st">"bash"</span><span class="fu">,</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"r.lsp.enabled"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"python.defaultInterpreterPath"</span><span class="fu">:</span> <span class="st">"/usr/local/bin/python"</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">},</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"extensions"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">"google.geminicode"</span><span class="ot">,</span> </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">"REditorSupport.r"</span><span class="ot">,</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="st">"ms-python.python"</span><span class="ot">,</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="st">"quarto.quarto"</span><span class="ot">,</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        <span class="st">"ms-toolsai.jupyter"</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"postCreateCommand"</span><span class="fu">:</span> <span class="st">"apt update &amp;&amp; apt install -y libmagick++-dev &amp;&amp; npm install -g @google/gemini-cli &amp;&amp; echo 'Gemini CLI installed!' &amp;&amp; Rscript -e 'install.packages(c(</span><span class="ch">\"</span><span class="st">languageserver</span><span class="ch">\"</span><span class="st">, </span><span class="ch">\"</span><span class="st">renv</span><span class="ch">\"</span><span class="st">), repos=</span><span class="ch">\"</span><span class="st">https://cloud.r-project.org</span><span class="ch">\"</span><span class="st">)' &amp;&amp; if [ -f renv.lock ]; then Rscript -e 'renv::restore()'; fi &amp;&amp; pip install jupyter ipykernel"</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="managing-r-dependencies-with-renv" class="level2">
+<h2 class="anchored" data-anchor-id="managing-r-dependencies-with-renv">3. Managing R Dependencies with <code>renv</code></h2>
+<p>In the R ecosystem, package management is critical for reproducibility. The <strong>renv</strong> package provides a way to create project-local environments, ensuring that the exact versions of packages used during development are recorded and can be restored later.<span class="citation" data-cites="renv_package"><sup>[<a href="#ref-renv_package" role="doc-biblioref">2</a>]</sup></span></p>
+<p>Our <code>postCreateCommand</code> in the <code>devcontainer.json</code> automatically installs <code>renv</code> and attempts to restore the environment if a <code>renv.lock</code> file is present:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">'install.packages("renv", repos="https://cloud.r-project.org")'</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">'renv::restore()'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This ensures that every time the DevContainer is built, the R environment is perfectly synchronized with the project’s requirements.</p>
+</section>
+<section id="enhancing-the-developer-experience-r-language-server" class="level2">
+<h2 class="anchored" data-anchor-id="enhancing-the-developer-experience-r-language-server">4. Enhancing the Developer Experience: R Language Server</h2>
+<p>To provide a modern IDE experience within VS Code, we install the <strong>languageserver</strong> package.<span class="citation" data-cites="languageserver_package"><sup>[<a href="#ref-languageserver_package" role="doc-biblioref">3</a>]</sup></span> This package implements the Language Server Protocol (LSP) for R, providing features such as:</p>
+<ul>
+<li><strong>IntelliSense:</strong> Smart completions for functions and variables.</li>
+<li><strong>Linting:</strong> Real-time error and style checking.</li>
+<li><strong>Go-to-Definition:</strong> Quickly navigate to the source code of functions.</li>
+<li><strong>Formatting:</strong> Consistent code styling.</li>
+</ul>
+<p>By setting <code>"r.lsp.enabled": true</code> in our VS Code settings, we activate these features within the DevContainer.</p>
+</section>
+<section id="agentic-ai-the-secret-to-rapid-design" class="level2">
+<h2 class="anchored" data-anchor-id="agentic-ai-the-secret-to-rapid-design">5. Agentic AI: The Secret to Rapid Design</h2>
+<p>The design and structure of this website were heavily influenced and accelerated by <strong>Agentic AI</strong>, specifically the <strong>Gemini CLI</strong>.<span class="citation" data-cites="gemini_cli"><sup>[<a href="#ref-gemini_cli" role="doc-biblioref">4</a>]</sup></span></p>
+<p>Instead of manually editing every CSS file or Quarto configuration, we use the Gemini CLI as a “pair programmer” for design. For example, the particle background on the blog page and the specific layout of the project cards were orchestrated by issuing high-level directives to the AI agent.</p>
+<section id="the-intent-based-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="the-intent-based-workflow">The “Intent-Based” Workflow</h3>
+<ol type="1">
+<li><strong>Describe the Goal:</strong> “Create a particle background for the blog page using particles.js, ensuring it respects the website’s light and dark themes.”</li>
+<li><strong>Iterative Refinement:</strong> The AI agent generates the necessary JavaScript and CSS, which is then refined through follow-up prompts until the “vibe” is correct.</li>
+<li><strong>Autonomous Execution:</strong> The agent can even handle the creation of files and the modification of the <code>_quarto.yml</code> configuration to integrate the new features.</li>
+</ol>
+<p>This approach, colloquially known as <strong>vibe-coding</strong>, allows for a much faster iteration cycle, enabling the developer to focus on high-level intent rather than the minutiae of syntax.</p>
+</section>
+</section>
+<section id="installation-and-setup" class="level2">
+<h2 class="anchored" data-anchor-id="installation-and-setup">6. Installation and Setup</h2>
+<p>To replicate this setup on your local machine, follow these steps:</p>
+<ol type="1">
+<li><strong>Install VS Code</strong> and the <strong>Dev Containers extension</strong>.</li>
+<li><strong>Install Docker</strong> on your host system.</li>
+<li><strong>Clone this repository.</strong></li>
+<li><strong>Open the folder in VS Code.</strong></li>
+<li>When prompted, click <strong>“Reopen in Container”</strong>.</li>
+</ol>
+<p>The DevContainer will handle the installation of: * <strong>Quarto CLI:</strong> For rendering the website. * <strong>R and R Language Server:</strong> For R-based data analysis and IDE support. * <strong>renv:</strong> For R package management. * <strong>Gemini CLI:</strong> For agentic AI assistance.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>By combining the structural power of Quarto with the reproducibility of DevContainers and the creative acceleration of Agentic AI, we have created a development workflow that is both robust and incredibly fast. This setup allows us to focus on what matters most: sharing technical insights and building awesome projects.</p>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-Allaire_Quarto_2022" class="csl-entry" role="listitem">
+1. Allaire, J. J., Teague, C., Scheidegger, C., Xie, Y., &amp; Dervieux, C. (2022). <em><span>Quarto</span></em> (Version 1.2) [Computer software]. <a href="https://doi.org/10.5281/zenodo.5960048">https://doi.org/10.5281/zenodo.5960048</a>
 </div>
-<script src="./particles.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  function getParticlesConfig() {
-    const isDark = document.body.classList.contains('quarto-dark');
-    
-    // Exact behavior from networksciencebook.com
-    // with color adjustments for light/dark visibility
-    return {
-      "particles": {
-        "number": {
-          "value": 80,
-          "density": {
-            "enable": true,
-            "value_area": 800
-          }
-        },
-        "color": {
-          "value": isDark ? "#ffffff" : "#3d95ce"
-        },
-        "shape": {
-          "type": "circle",
-          "stroke": {
-            "width": 0,
-            "color": "#000000"
-          }
-        },
-        "opacity": {
-          "value": 0.6,
-          "random": false,
-          "anim": {
-            "enable": false,
-            "speed": 1,
-            "opacity_min": 0.1,
-            "sync": false
-          }
-        },
-        "size": {
-          "value": 4,
-          "random": true,
-          "anim": {
-            "enable": false,
-            "speed": 40,
-            "size_min": 0.1,
-            "sync": false
-          }
-        },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": isDark ? "#ffffff" : "#3d95ce",
-          "opacity": 0.5,
-          "width": 1
-        },
-        "move": {
-          "enable": true,
-          "speed": 0.6,
-          "direction": "top",
-          "random": false,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false,
-          "attract": {
-            "enable": true,
-            "rotateX": 710,
-            "rotateY": 1200
-          }
-        }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": {
-            "enable": true,
-            "mode": "repulse"
-          },
-          "onclick": {
-            "enable": true,
-            "mode": "push"
-          },
-          "resize": true
-        },
-        "modes": {
-          "grab": {
-            "distance": 400,
-            "line_linked": {
-              "opacity": 1
-            }
-          },
-          "bubble": {
-            "distance": 400,
-            "size": 40,
-            "duration": 2,
-            "opacity": 8,
-            "speed": 3
-          },
-          "repulse": {
-            "distance": 100,
-            "duration": 0.4
-          },
-          "push": {
-            "particles_nb": 4
-          }
-        }
-      },
-      "retina_detect": true
-    };
-  }
-
-  function initParticles() {
-    const config = getParticlesConfig();
-    particlesJS('particles-js', config);
-  }
-
-  // Initial init
-  initParticles();
-
-  // Watch for theme changes
-  const observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
-      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-        // We re-init to apply new colors
-        initParticles();
-      }
-    });
-  });
-
-  observer.observe(document.body, {
-    attributes: true,
-    attributeFilter: ['class']
-  });
-});
-</script>
+<div id="ref-renv_package" class="csl-entry" role="listitem">
+2. Ushey, K., &amp; Wickham, H. (2026). <em>Renv: Project environments</em>. <a href="https://CRAN.R-project.org/package=renv">https://CRAN.R-project.org/package=renv</a>
+</div>
+<div id="ref-languageserver_package" class="csl-entry" role="listitem">
+3. Lai, R. (2024). <em>Languageserver: An implementation of the language server protocol for r</em>. <a href="https://github.com/REditorSupport/languageserver">https://github.com/REditorSupport/languageserver</a>
+</div>
+<div id="ref-gemini_cli" class="csl-entry" role="listitem">
+4. Google. (2025). <em>Gemini CLI</em> [Computer software]. <a href="https://github.com/google/gemini-cli">https://github.com/google/gemini-cli</a>
+</div>
+</div>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-title" data-direction="asc">
-        Title
-      </option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
-    </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="RGF0YS1TY2llbmNl" data-listing-file-modified-sort="1774265085944" data-listing-reading-time-sort="55" data-listing-word-count-sort="10960">
-<a href="./projects/predicting-stroke-risk-logistic-regression/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="projects/predicting-stroke-risk-logistic-regression/index_files/figure-html/unnamed-chunk-6-1.png" style="height: 300px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Predicting stroke risk from common health indicators:
-</h5>
-<div class="listing-reading-time card-text text-muted">55 min</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YS1TY2llbmNl'); return false;">Data-Science</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Development and evaluation of a Logistic Regression model to predict stroke risk using common health indicators, with a focus on addressing class imbalance using SMOTE.</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="RGF0YS1TY2llbmNl" data-listing-file-modified-sort="1775077135948" data-listing-reading-time-sort="9" data-listing-word-count-sort="1664">
-<a href="./projects/Power-Grid-Vulnerability-Analysis-A-Complex-Network-Story/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="projects/Power-Grid-Vulnerability-Analysis-A-Complex-Network-Story/images/power_grid01.jpg" style="height: 300px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Power Grid Vulnerability Analysis, A Complex Network Story
-</h5>
-<div class="listing-reading-time card-text text-muted">9 min</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YS1TY2llbmNl'); return false;">Data-Science</div>
-
-</div>
-<div class="card-text listing-description delink">
-This paper examines the structural vulnerability of power grid infrastructure through the lens of complex network theory. By modeling the grid as a graph, the study employs…
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="RGF0YS1TY2llbmNl" data-listing-file-modified-sort="1774267715927" data-listing-reading-time-sort="36" data-listing-word-count-sort="7169">
-<a href="./projects/forecasting-the-real-estate-market/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="projects/forecasting-the-real-estate-market/index_files/figure-html/unnamed-chunk-8-1.png" style="height: 300px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Forecasting the Real Estate Market
-</h5>
-<div class="listing-reading-time card-text text-muted">36 min</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YS1TY2llbmNl'); return false;">Data-Science</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A comparative analysis of classical vs.&nbsp;modern time series models (ARIMA, SARIMA, Prophet) for predicting housing prices using Zillow Economics Data.</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="QWdlbnRpYy1BSSUyQ1F1YXJ0byUyQ0Rldk9wcw==" data-listing-date-sort="1775088000000" data-listing-file-modified-sort="1775143377491" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="927">
-<a href="./projects/how-to-make-quarto-website/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="files/images/caution_under_construction_v2.png" style="height: 300px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Making an Awesome Quarto Website
-</h5>
-<div class="listing-reading-time card-text text-muted">5 min</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('QWdlbnRpYy1BSQ=='); return false;">Agentic-AI</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UXVhcnRv'); return false;">Quarto</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGV2T3Bz'); return false;">DevOps</div>
-
-</div>
-<div class="card-text listing-description delink">
-Creating a modern, reproducible, and aesthetically pleasing technical website requires more than just a good content management system. It requires a robust development…<strong></strong><strong></strong><strong></strong><strong></strong>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Apr 2, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -1048,6 +942,38 @@ Apr 2, 2026
     }
   });
   </script>
+<input type="hidden" id="giscus-base-theme" value="dark_high_contrast">
+<input type="hidden" id="giscus-alt-theme" value="dark_high_contrast">
+<script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      if (authorPrefersDark) {
+          [baseTheme, altTheme] = [altTheme, baseTheme];
+      }
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "renanmb/boredengineer-quarto-website-test";
+    script.dataset.repoId = "R_kgDORin_Zw";
+    script.dataset.category = "Announcements";
+    script.dataset.categoryId = "DIC_kwDORin_Z84C4YyK";
+    script.dataset.mapping = "pathname";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "bottom";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
+  }
+  loadGiscus();
+</script>
 </div> <!-- /content -->
 
 
