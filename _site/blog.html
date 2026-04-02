@@ -87,7 +87,7 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-image','listing-date','listing-title','listing-description','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -355,7 +355,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="QWdlbnRpYy1BSQ==">Agentic-AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q29tcHV0ZXItVmlzaW9u">Computer-Vision <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SW5kdXN0cmlhbC1BSQ==">Industrial-AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TlZJRElBLUNvc21vcw==">NVIDIA-Cosmos <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="QWdlbnRpYy1BSQ==">Agentic-AI <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Q29tcHV0ZXItVmlzaW9u">Computer-Vision <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SW5kdXN0cmlhbC1BSQ==">Industrial-AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TlZJRElBLUNvc21vcw==">NVIDIA-Cosmos <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U2VjdXJpdHk=">Security <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
@@ -575,6 +575,36 @@ This post explores how to leverage <strong>NVIDIA Cosmos Reason 2</strong> to au
 </a>
 </div>
 </div>
+<div class="quarto-post image-right" data-index="2" data-categories="QWdlbnRpYy1BSSUyQ1NlY3VyaXR5" data-listing-date-sort="1775001600000" data-listing-file-modified-sort="1775093524957" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="768">
+<div class="thumbnail"><a href="./posts/claude-code-leak-npm-sourcemap/index.html" class="no-external">
+
+<p class="card-img-top"><img src="posts/claude-code-leak-npm-sourcemap/images/green_claw_jacked.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/claude-code-leak-npm-sourcemap/index.html" class="no-external">The Sourcemap Slip: Deconstructing the Claude Code Leak and the Rise of Shadow Agents</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('QWdlbnRpYy1BSQ=='); return false;">Agentic-AI</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('U2VjdXJpdHk='); return false;">Security</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/claude-code-leak-npm-sourcemap/index.html" class="no-external">
+In the rapidly evolving world of agentic AI, Anthropic’s release of “Claude Code” was meant to be a landmark moment for proprietary coding tools. However, what followed was…<code></code>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/claude-code-leak-npm-sourcemap/index.html" class="no-external">
+<div class="listing-date">
+Apr 1, 2026
+</div>
+<div class="listing-reading-time">4 min</div>
+</a>
+</div>
+</div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div></main> <!-- /main -->
@@ -664,7 +694,7 @@ This post explores how to leverage <strong>NVIDIA Cosmos Reason 2</strong> to au
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/boredengineer\.com");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
