@@ -3,6 +3,7 @@
     "listing": "/projects.html",
     "items": [
       "/projects/predicting-stroke-risk-logistic-regression/index.html",
+      "/projects/Power-Grid-Vulnerability-Analysis-A-Complex-Network-Story/index.html",
       "/projects/forecasting-the-real-estate-market/index.html"
     ]
   },
@@ -10,7 +11,8 @@
     "listing": "/blog.html",
     "items": [
       "/posts/to-vibe-code-or-not-to-vibe-code/index.html",
-      "/posts/worker-safety-cosmos-reason-2/index.html"
+      "/posts/worker-safety-cosmos-reason-2/index.html",
+      "/posts/claude-code-leak-npm-sourcemap/index.html"
     ]
   }
 ]
