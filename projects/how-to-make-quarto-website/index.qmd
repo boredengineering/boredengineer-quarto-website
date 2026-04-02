@@ -10,7 +10,7 @@ bibliography: references.bib
 link-citations: true
 ---
 
-![](/files/images/caution_under_construction_v2.png)
+![](images/featured.png)
 
 Creating a modern, reproducible, and aesthetically pleasing technical website requires more than just a good content management system. It requires a robust development environment and a forward-thinking approach to design. This project documents the setup of this very website, leveraging **Quarto**, **VS Code DevContainers**, **renv**, and the power of **Agentic AI** for rapid iteration and design orchestration.
 
