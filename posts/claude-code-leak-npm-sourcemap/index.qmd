@@ -40,7 +40,23 @@ Beyond the code itself, the leak provided a rare glimpse into the "secret sauce"
 
 This transparency has sparked a debate about the value of proprietary AI "wrappers." If the primary value of an agentic tool lies in its system prompts and tool definitions—both of which are now public—what prevents the commoditization of agentic AI? @x_paoloanzn
 
-## 4. Security, Trust, and the "Agentic Leak"
+## 4. The Copyright Conundrum: Who Owns an AI-Assisted Agent?
+
+The leak of Claude Code has reignited one of the most contentious debates in modern software development: the copyrightability of AI-assisted code.
+
+Under current US Copyright Office guidelines, purely AI-generated content cannot be copyrighted; human authorship is a strict requirement. This creates a fascinating legal gray area for tools like Claude Code and its open-source "shadow agents." The community response has heavily leaned into a controversial premise: if an AI company used its own AI models to generate large portions of its codebase, how much of that leaked source code is actually protected by copyright?
+
+While Anthropic undoubtedly holds the copyright to the CLI's overarching architecture and orchestration—the human "sweat of the brow" that ties the agent together—the specifics become murky when examining individual functions or system prompts.
+
+This ambiguity acts as a shield for community projects like clawd-code. When developers reverse-engineer and clone Anthropic’s leaked logic using their own LLMs, they are forcing the industry to ask difficult questions:
+
+Are System Prompts Code or Ideas? If the true value of Claude Code lies in its meticulously crafted system prompts, can those text instructions be copyrighted, or are they unprotectable ideas?
+
+The AI-Washing of Reverse Engineering: If a developer reads Anthropic's leaked TypeScript, but asks Claude 3.7 to rewrite it in Rust (as seen in projects like claurst), who owns the output?
+
+As AI labs push for tighter intellectual property protections, the community is weaponizing the very nature of AI-generated content against them. If AI code cannot be copyrighted, the moat protecting proprietary agentic tools may be shallower than anyone realized.
+
+## 5. Security, Trust, and the "Agentic Leak"
 
 The Claude Code incident isn't just a story about a technical mishap; it's a cautionary tale about the security of AI-powered systems. Several critical questions have been raised by the community:
 
@@ -48,7 +64,7 @@ The Claude Code incident isn't just a story about a technical mishap; it's a cau
 *   **Credential Safety:** While no API keys were leaked in the source code itself, the incident highlights the risks of agentic tools having broad shell access. If a tool's logic can be modified in a cloned version, what security guarantees do users have?
 *   **The Future of Proprietary Agents:** Will this event force AI labs like Anthropic, OpenAI, and Google to move their agentic logic entirely server-side, sacrificing the speed and local context of CLI tools?
 
-## 5. Conclusion: A New Paradigm for Open-Source Agents
+## 6. Conclusion: A New Paradigm for Open-Source Agents
 
 The leak of Claude Code via an npm sourcemap may be remembered as a turning point in the AI era. It has accelerated the development of open-source agentic tools and forced a reckoning with the fragility of proprietary software in the age of LLMs.
 
