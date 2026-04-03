@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -392,21 +427,57 @@ div.csl-indent {
 <p>The leaked source code (v2.1.88) provided a rare, unfiltered glimpse into Anthropic’s agentic reasoning and their commercial defensive strategies.<span class="citation" data-cites="alex_kim_leak"><sup>[<a href="#ref-alex_kim_leak" role="doc-biblioref">2</a>]</sup></span></p>
 <section id="kairos-the-autonomous-ghost-in-the-machine" class="level3">
 <h3 class="anchored" data-anchor-id="kairos-the-autonomous-ghost-in-the-machine">KAIROS: The Autonomous Ghost in the Machine</h3>
-<p>Perhaps the most significant discovery was <strong>KAIROS</strong>, an unreleased autonomous agent mode. Unlike the standard interactive CLI, KAIROS appears designed to run as a background daemon, featuring: * <strong>Nightly Memory Distillation:</strong> A process where the agent summarizes its daily learnings into a persistent long-term memory buffer. * <strong>Background Workers:</strong> The ability to execute long-running tasks without blocking the user’s terminal.</p>
+<p>Perhaps the most significant discovery was <strong>KAIROS</strong>, an unreleased autonomous agent mode. Unlike the standard interactive CLI, KAIROS appears designed to run as a background daemon, featuring:</p>
+<ul>
+<li><strong>Nightly Memory Distillation:</strong> A process where the agent summarizes its daily learnings into a persistent long-term memory buffer.</li>
+<li><strong>Background Workers:</strong> The ability to execute long-running tasks without blocking the user’s terminal.</li>
+</ul>
 </section>
 <section id="anti-distillation-poisoning-the-well" class="level3">
 <h3 class="anchored" data-anchor-id="anti-distillation-poisoning-the-well">Anti-Distillation: Poisoning the Well</h3>
 <p>To protect their intellectual property, the leak revealed that Anthropic implemented <strong>“Anti-Distillation”</strong> measures. These are decoy tool definitions and synthetic reasoning traces designed to “poison” the training data of any competitor attempting to scrape or “distill” Claude’s output to train their own models.<span class="citation" data-cites="alex_kim_leak"><sup>[<a href="#ref-alex_kim_leak" role="doc-biblioref">2</a>]</sup></span></p>
+<p>This can be found in <code>claude.ts</code> (line 301-313), there’s a flag called <code>ANTI_DISTILLATION_CC</code>. When enabled, Claude Code sends anti_distillation: [‘fake_tools’] in its API requests. This tells the server to silently inject decoy tool definitions into the system prompt.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Anti-distillation: send fake_tools opt-in for 1P CLI only</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">feature</span>(<span class="st">'ANTI_DISTILLATION_CC'</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      <span class="op">?</span> <span class="bu">process</span><span class="op">.</span><span class="at">env</span><span class="op">.</span><span class="at">CLAUDE_CODE_ENTRYPOINT</span> <span class="op">===</span> <span class="st">'cli'</span> <span class="op">&amp;&amp;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">shouldIncludeFirstPartyOnlyBetas</span>() <span class="op">&amp;&amp;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">getFeatureValue_CACHED_MAY_BE_STALE</span>(</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>          <span class="st">'tengu_anti_distill_fake_tool_injection'</span><span class="op">,</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>          <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      <span class="op">:</span> <span class="kw">false</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  ) {</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    result<span class="op">.</span><span class="at">anti_distillation</span> <span class="op">=</span> [<span class="st">'fake_tools'</span>]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This is done so in theory if someone is recording Code’s API traffic to train a competing model, the fake tools pollute that training data. It’s gated behind a GrowthBook feature flag (<strong>tengu_anti_distill_fake_tool_injection</strong>) and only active for first-party CLI sessions.</p>
+<p>There is also another mechanism in betas.ts (lines 279-298), server-side connector-text summarization. This tool, when enabled, the API buffers the assistant’s text between tool calls, summarizes it, and returns the summary with a cryptographic signature. On subsequent turns, the original text can be restored from the signature. If you’re recording API traffic, you only get the summaries, not the full reasoning chain.</p>
+<p>Eventought these mechanisms exist, circumventing them is fairly easy. The activation logic in claude.ts, the fake tools injection requires all four conditions to be true:</p>
+<p>The ANTI_DISTILLATION_CC compile-time flag, the cli entrypoint, a first-party API provider, and the tengu_anti_distill_fake_tool_injection GrowthBook flag returning true.</p>
+<p>A MITM proxy that strips the anti_distillation field from request bodies before they reach the API would bypass it entirely, since the injection is server-side and opt-in.</p>
+<ul>
+<li><p>The shouldIncludeFirstPartyOnlyBetas() function also checks for CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS, so setting that env var to a truthy value disables the whole thing.</p></li>
+<li><p>And if you’re using a third-party API provider or the SDK entrypoint instead of the CLI, the check never fires at all.</p></li>
+</ul>
+<p>The connector-text summarization is even more narrowly scoped, Anthropic-internal-only (USER_TYPE === ‘ant’), so external users won’t encounter it regardless.</p>
+<p>With very little effort one can find the workarounds in about an hour of reading the source. The real protection is probably legal, not technical. But that there are issues too regarding legal protection as we will see later.</p>
 </section>
 <section id="the-frustration-regex" class="level3">
 <h3 class="anchored" data-anchor-id="the-frustration-regex">The “Frustration” Regex</h3>
-<p>In a moment of humanizing transparency, researchers found sentiment analysis logic in the source code—utilizing regex, of all things—specifically designed to detect user frustration. If a user’s prompt matches certain patterns of anger or disappointment, the agent is instructed to shift into a more conciliatory “recovery mode.”</p>
+<p>One of the top LLM companies using regex for sentiment analysis is nothing short of hilarious, of all things—specifically designed to detect user frustration. If a user’s prompt matches certain patterns of anger or disappointment, the agent is instructed to shift into a more conciliatory <strong>“recovery mode.”</strong></p>
+<p><code>userPromptKeywords.ts</code> contains a regex pattern that detects user frustration:</p>
+<pre class="regex"><code>/\b(wtf|wth|ffs|omfg|shit(ty|tiest)?|dumbass|horrible|awful|
+piss(ed|ing)? off|piece of (shit|crap|junk)|what the (fuck|hell)|
+fucking? (broken|useless|terrible|awful|horrible)|fuck you|
+screw (this|you)|so frustrating|this sucks|damn it)\b/</code></pre>
 </section>
 </section>
 <section id="the-drm-layer-native-client-attestation" class="level2">
 <h2 class="anchored" data-anchor-id="the-drm-layer-native-client-attestation">3. The DRM Layer: Native Client Attestation</h2>
 <p>The leak confirmed a controversial theory regarding Anthropic’s “technical warfare” against third-party tools. Inside the <strong>Bun/Zig</strong> layer, Anthropic implemented <strong>Native Client Attestation</strong>.<span class="citation" data-cites="winbuzzer_opencode"><sup>[<a href="#ref-winbuzzer_opencode" role="doc-biblioref">3</a>]</sup></span></p>
+<p>This can be found in <code>system.ts</code> (lines 59-95), API requests include a cch=00000 placeholder.</p>
 <p>This system works by injecting a cryptographic hash (the <code>cch</code> header) into outgoing API requests directly at the HTTP stack level, below the reach of JavaScript. This ensures that only the official, unmodified Claude Code binary can access specific high-end models at subscription-based rates, effectively blocking third-party open-source tools from “spoofing” the client to avoid expensive per-token API costs.</p>
+<p>This is the technical enforcement behind the OpenCode legal fight. Anthropic doesn’t just ask third-party tools not to use their APIs; the binary itself cryptographically proves it’s the real Claude Code client. Now that this mechanism has been uncovered it seems great.</p>
 </section>
 <section id="the-irony-anthropic-on-the-other-side-of-the-fence" class="level2">
 <h2 class="anchored" data-anchor-id="the-irony-anthropic-on-the-other-side-of-the-fence">4. The Irony: Anthropic on the Other Side of the Fence</h2>
