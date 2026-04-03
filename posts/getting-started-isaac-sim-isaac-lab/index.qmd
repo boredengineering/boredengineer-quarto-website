@@ -45,14 +45,42 @@ With the deprecation of the Omniverse Launcher, NVIDIA now provides standalone b
     *   **Windows:** `isaac-sim-post-install.bat`
 4.  **Launching:** Use the **Isaac Sim Selector** (`isaac-sim-selector.sh`) to launch the simulator in your desired mode (UI, Headless, or ROS).
 
-### Method 3: Built from Source / Containerized
-While the core physics engine is proprietary, NVIDIA provides scripts and Dockerfiles for advanced users who need custom environments or cloud deployments.
+### Method 3: Containerized Deployment (NVIDIA NGC)
+For cloud-scale training or headless server deployments, NVIDIA provides official container images through the **NVIDIA NGC (NVIDIA GPU Cloud)** catalog. This method is preferred for remote workstations and high-performance computing (HPC) clusters.
 
-1.  **Clone Repository:** `git clone https://github.com/isaac-sim/IsaacSim.git`
-2.  **Docker Setup:** Use the scripts in the `Docker/` directory to build a container image tailored to your hardware.
-3.  **Local Setup:** Run the provided setup scripts to link the repository to a local binary installation, enabling deeper customization of the extensions and python layers.
+1.  **Pull the Image:**
+    ```bash
+    docker pull nvcr.io/nvidia/isaac-sim:5.1.0
+    ```
+2.  **Launch Headless:** Containers are typically run headless with livestreaming enabled:
+    ```bash
+    docker run --name isaac-sim --runtime=nvidia -it --rm -e "ACCEPT_EULA=Y" \
+               -p 8211:8211 -p 8212:8212 -p 8213:8213 \
+               nvcr.io/nvidia/isaac-sim:5.1.0
+    ```
+3.  **Custom Container Builds:** While the NGC images are ready to use, NVIDIA also provides Dockerfiles in the [Isaac Sim repository](https://github.com/isaac-sim/IsaacSim) to help you build custom images. This is useful if you need to bake in specific ROS 2 packages or custom Python dependencies.
 
-## 2. Running Engaging Robotics Examples
+## 2. Fast-Tracking with NVIDIA Brev "Launchables"
+
+If you want to skip the manual setup entirely, **NVIDIA Brev "Launchables"** offer a "one-click" solution. These are pre-configured, cloud-based compute environments tailored for robotics research.
+
+*   **Integrated Workflow:** A single Brev deployment provides a web-based VS Code instance and a separate browser tab for the Isaac Sim viewport.
+*   **Zero Configuration:** All drivers, Docker environments, and libraries (including Isaac Lab) are automatically set up. It’s the fastest way to get from zero to training a reinforcement learning agent.
+*   **The Viewer Experience:** These launchables often leverage the [Omniverse Web Viewer Sample Application](https://github.com/NVIDIA-Omniverse/web-viewer-sample) to provide a responsive, browser-based 3D interface for interacting with your simulation without needing a native client.
+
+## 3. Containerized Simulation: Advantages & Trade-offs
+
+Using containers for Isaac Sim and Isaac Lab introduces several benefits and challenges that you should consider:
+
+| Feature | Advantages | Disadvantages |
+| :--- | :--- | :--- |
+| **Portability** | Run the exact same environment on AWS, GCP, or a local server. | Large image sizes (often >10GB) can make distribution slow. |
+| **Isolation** | Avoid "dependency hell" by keeping Isaac Sim separate from your host OS. | Requires NVIDIA Container Toolkit and matching host drivers. |
+| **Scaling** | Easily spin up multiple instances for parallel RL training. | Initial startup involves shader compilation (requires volume mounting for persistence). |
+
+**Pro Tip:** To avoid long startup times in containers, always mount local folders for `/root/.cache/nvidia/GLCache` and `/root/.nv/ComputeCache`. This ensures that compiled shaders persist across container restarts.
+
+## 4. Running Engaging Robotics Examples
 
 Once Isaac Sim is running, you can explore several built-in examples that showcase its capabilities in manipulation, navigation, and learning.
 
