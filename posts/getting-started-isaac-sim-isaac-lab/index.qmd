@@ -1,0 +1,104 @@
+---
+title: "Getting Started on IsaacSim and IsaacLab"
+subtitle: "A Comprehensive Guide to Installing and Running NVIDIA's Next-Gen Robotics Simulation Tools"
+author:
+  - name: Renan Monteiro Barbosa
+date: "2026-04-03"
+categories: [Robotics, Simulation, AI]
+draft: false
+bibliography: references.bib
+link-citations: true
+---
+
+![](images/featured.png)
+
+In the current era of robotics and artificial intelligence, high-fidelity simulation has become a cornerstone for research and development. NVIDIA’s Isaac Sim and Isaac Lab are at the forefront of this revolution, providing researchers and engineers with the tools needed to train sophisticated agents in photorealistic and physically accurate environments. This guide will walk you through the essential steps to get started with these powerful platforms, from installation to running your first robotics examples. @isaac_sim_repo
+
+## 1. Installing Isaac Sim: Three Approaches
+
+NVIDIA offers multiple ways to install Isaac Sim, catering to different workflows ranging from simple workstation use to scalable server deployments. @isaac_sim_docs
+
+### Method 1: The Pip Package Method (Preferred)
+The `pip` installation is the modern, preferred approach for developers, especially those integrating with Isaac Lab or CI/CD pipelines. It treats the simulator as a standard Python module and manages dependencies cleanly.
+
+1.  **Environment Setup:** Create a clean virtual environment. 
+    *   For Isaac Sim 4.x: Use **Python 3.10**.
+    *   For Isaac Sim 5.x: Use **Python 3.11**.
+2.  **Installation:** Use the NVIDIA PyPI index to pull the package:
+    ```bash
+    pip install --upgrade pip
+    pip install --extra-index-url https://pypi.nvidia.com isaacsim
+    ```
+3.  **Verification:** You can verify the installation by importing the library in a script:
+    ```python
+    import isaacsim
+    print("Isaac Sim is ready!")
+    ```
+
+### Method 2: Standalone Binaries (Direct Download)
+With the deprecation of the Omniverse Launcher, NVIDIA now provides standalone binary packages for workstation installations. This is the direct way to get the full simulator with all local assets and the Isaac Sim Selector.
+
+1.  **Download:** Visit the [NVIDIA Isaac Sim Download Page](https://docs.isaacsim.omniverse.nvidia.com/latest/installation/download.html) and download the compressed package (`.zip` for Windows, `.tar.xz` for Linux).
+2.  **Extraction:** Extract the files to a permanent location (e.g., `~/isaacsim` on Linux). *Note: Do not move the folder after installation to avoid breaking internal paths.*
+3.  **Post-Installation:** Run the post-install script to set up the environment:
+    *   **Linux:** `./isaac-sim-post-install.sh`
+    *   **Windows:** `isaac-sim-post-install.bat`
+4.  **Launching:** Use the **Isaac Sim Selector** (`isaac-sim-selector.sh`) to launch the simulator in your desired mode (UI, Headless, or ROS).
+
+### Method 3: Built from Source / Containerized
+While the core physics engine is proprietary, NVIDIA provides scripts and Dockerfiles for advanced users who need custom environments or cloud deployments.
+
+1.  **Clone Repository:** `git clone https://github.com/isaac-sim/IsaacSim.git`
+2.  **Docker Setup:** Use the scripts in the `Docker/` directory to build a container image tailored to your hardware.
+3.  **Local Setup:** Run the provided setup scripts to link the repository to a local binary installation, enabling deeper customization of the extensions and python layers.
+
+## 2. Running Engaging Robotics Examples
+
+Once Isaac Sim is running, you can explore several built-in examples that showcase its capabilities in manipulation, navigation, and learning.
+
+*   **Manipulation:** Explore the **Franka Emika Panda** and **UR10** workflows. These examples demonstrate high-fidelity contact modeling and path planning for robotic arms.
+*   **Mobile Robots:** Try out **NVIDIA Carter** or **JetBot** in a warehouse environment. These are perfect for testing SLAM (Simultaneous Localization and Mapping) and autonomous navigation algorithms.
+*   **Reinforcement Learning:** Isaac Sim integrates deeply with RL frameworks. You can run classic tasks like **Cartpole** or more complex locomotion tasks like training an **ANYmal** quadruped to walk on uneven terrain.
+
+## 3. Getting Started with Isaac Lab
+
+Isaac Lab (formerly OmniIsaacGymEnvs) is a unified framework for robot learning built on top of Isaac Sim. It simplifies the process of creating complex RL environments. @isaac_lab_repo
+
+### Installation with Conda and UV
+For the most robust experience, it is highly recommended to use **pre-built binaries** of Isaac Sim combined with a managed Python environment like **Conda** or the high-speed **UV** package manager. @isaac_lab_docs
+
+1.  **Clone Isaac Lab:**
+    ```bash
+    git clone https://github.com/isaac-sim/IsaacLab.git
+    cd IsaacLab
+    ```
+2.  **Environment Creation:**
+    Using Conda:
+    ```bash
+    conda create -n isaaclab python=3.10
+    conda activate isaaclab
+    ```
+3.  **Install Dependencies:** Install the Isaac Lab package in editable mode:
+    ```bash
+    pip install -e .
+    ```
+
+### The Versatility of `isaaclab.sh`
+
+One of the most powerful tools in the repository is the `isaaclab.sh` script. It acts as a multi-functional entry point for both internal development and external projects.
+
+*   **Environment Management:** Running `./isaaclab.sh -p` ensures that all necessary environment variables (`PYTHONPATH`, `LD_LIBRARY_PATH`) are correctly set for Isaac Sim to run.
+*   **Workflow Automation:**
+    *   `./isaaclab.sh --install`: Quickly sets up the environment and dependencies.
+    *   `./isaaclab.sh --test`: Runs the suite of unit tests to ensure your installation is stable.
+    *   `./isaaclab.sh --docs`: Builds the documentation locally for offline reference.
+*   **External Projects:** You can use `isaaclab.sh` to run scripts located in completely different repositories while still leveraging the full Isaac Lab stack, making it an excellent tool for modular project structures.
+
+## Conclusion
+
+Getting started with Isaac Sim and Isaac Lab opens up a world of possibilities for robotics research. Whether you are building autonomous drones, complex robotic hands, or humanoid agents, these tools provide the foundation for robust, scalable simulation. By leveraging the various installation methods and the powerful `isaaclab.sh` utility, you can tailor the environment to your specific needs and focus on what matters most: building the future of robotics.
+
+---
+## References
+::: {#refs}
+:::
