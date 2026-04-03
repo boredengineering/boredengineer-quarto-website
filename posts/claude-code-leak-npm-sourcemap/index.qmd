@@ -25,7 +25,9 @@ While initially blamed on a CI/CD packaging error, some researchers pointed to a
 The leaked source code (v2.1.88) provided a rare, unfiltered glimpse into Anthropic's agentic reasoning and their commercial defensive strategies. @alex_kim_leak
 
 ### KAIROS: The Autonomous Ghost in the Machine
+
 Perhaps the most significant discovery was **KAIROS**, an unreleased autonomous agent mode. Unlike the standard interactive CLI, KAIROS appears designed to run as a background daemon, featuring:
+
 *   **Nightly Memory Distillation:** A process where the agent summarizes its daily learnings into a persistent long-term memory buffer.
 *   **Background Workers:** The ability to execute long-running tasks without blocking the user's terminal.
 
@@ -33,15 +35,66 @@ Perhaps the most significant discovery was **KAIROS**, an unreleased autonomous 
 
 To protect their intellectual property, the leak revealed that Anthropic implemented **"Anti-Distillation"** measures. These are decoy tool definitions and synthetic reasoning traces designed to "poison" the training data of any competitor attempting to scrape or "distill" Claude's output to train their own models. @alex_kim_leak
 
+This can be found in ```claude.ts``` (line 301-313), there’s a flag called ```ANTI_DISTILLATION_CC```. When enabled, Claude Code sends anti_distillation: ['fake_tools'] in its API requests. This tells the server to silently inject decoy tool definitions into the system prompt.
+
+```typescript
+  // Anti-distillation: send fake_tools opt-in for 1P CLI only
+  if (
+    feature('ANTI_DISTILLATION_CC')
+      ? process.env.CLAUDE_CODE_ENTRYPOINT === 'cli' &&
+        shouldIncludeFirstPartyOnlyBetas() &&
+        getFeatureValue_CACHED_MAY_BE_STALE(
+          'tengu_anti_distill_fake_tool_injection',
+          false,
+        )
+      : false
+  ) {
+    result.anti_distillation = ['fake_tools']
+  }
+```
+
+This is done so in theory if someone is recording Code’s API traffic to train a competing model, the fake tools pollute that training data. It’s gated behind a GrowthBook feature flag (**tengu_anti_distill_fake_tool_injection**) and only active for first-party CLI sessions.
+
+There is also another mechanism in betas.ts (lines 279-298), server-side connector-text summarization. This tool, when enabled, the API buffers the assistant’s text between tool calls, summarizes it, and returns the summary with a cryptographic signature. On subsequent turns, the original text can be restored from the signature. If you’re recording API traffic, you only get the summaries, not the full reasoning chain.
+
+Eventought these mechanisms exist, circumventing them is fairly easy. The activation logic in claude.ts, the fake tools injection requires all four conditions to be true:
+
+The ANTI_DISTILLATION_CC compile-time flag, the cli entrypoint, a first-party API provider, and the tengu_anti_distill_fake_tool_injection GrowthBook flag returning true.
+
+A MITM proxy that strips the anti_distillation field from request bodies before they reach the API would bypass it entirely, since the injection is server-side and opt-in.
+
+- The shouldIncludeFirstPartyOnlyBetas() function also checks for CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS, so setting that env var to a truthy value disables the whole thing. 
+
+- And if you’re using a third-party API provider or the SDK entrypoint instead of the CLI, the check never fires at all. 
+
+
+The connector-text summarization is even more narrowly scoped, Anthropic-internal-only (USER_TYPE === 'ant'), so external users won’t encounter it regardless.
+
+With very little effort one can find the workarounds in about an hour of reading the source. The real protection is probably legal, not technical. But that there are issues too regarding legal protection as we will see later.
+
+
 ### The "Frustration" Regex
 
-In a moment of humanizing transparency, researchers found sentiment analysis logic in the source code—utilizing regex, of all things—specifically designed to detect user frustration. If a user's prompt matches certain patterns of anger or disappointment, the agent is instructed to shift into a more conciliatory "recovery mode."
+One of the top LLM companies using regex for sentiment analysis is nothing short of hilarious, of all things—specifically designed to detect user frustration. If a user's prompt matches certain patterns of anger or disappointment, the agent is instructed to shift into a more conciliatory **"recovery mode."**
+
+```userPromptKeywords.ts``` contains a regex pattern that detects user frustration:
+
+```regex
+/\b(wtf|wth|ffs|omfg|shit(ty|tiest)?|dumbass|horrible|awful|
+piss(ed|ing)? off|piece of (shit|crap|junk)|what the (fuck|hell)|
+fucking? (broken|useless|terrible|awful|horrible)|fuck you|
+screw (this|you)|so frustrating|this sucks|damn it)\b/
+```
 
 ## 3. The DRM Layer: Native Client Attestation
 
 The leak confirmed a controversial theory regarding Anthropic's "technical warfare" against third-party tools. Inside the **Bun/Zig** layer, Anthropic implemented **Native Client Attestation**. @winbuzzer_opencode
 
+This can be found in ```system.ts``` (lines 59-95), API requests include a cch=00000 placeholder.
+
 This system works by injecting a cryptographic hash (the `cch` header) into outgoing API requests directly at the HTTP stack level, below the reach of JavaScript. This ensures that only the official, unmodified Claude Code binary can access specific high-end models at subscription-based rates, effectively blocking third-party open-source tools from "spoofing" the client to avoid expensive per-token API costs.
+
+This is the technical enforcement behind the OpenCode legal fight. Anthropic doesn’t just ask third-party tools not to use their APIs; the binary itself cryptographically proves it’s the real Claude Code client. Now that this mechanism has been uncovered it seems great.
 
 ## 4. The Irony: Anthropic on the Other Side of the Fence
 
