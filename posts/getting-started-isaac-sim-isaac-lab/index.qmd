@@ -19,7 +19,8 @@ In the current era of robotics and artificial intelligence, high-fidelity simula
 NVIDIA offers multiple ways to install Isaac Sim, catering to different workflows ranging from simple workstation use to scalable server deployments. @isaac_sim_docs
 
 ### Method 1: The Pip Package Method (Preferred)
-The `pip` installation is the modern, preferred approach for developers, especially those integrating with Isaac Lab or CI/CD pipelines. It treats the simulator as a standard Python module and manages dependencies cleanly.
+
+The `pip` installation is the entry level "easy" approach for those trying to get started. Later I will touch on the issues with this approach. It treats the simulator as a standard Python module and manages dependencies automatically as long the project is built correctly.
 
 1.  **Environment Setup:** Create a clean virtual environment. 
     *   For Isaac Sim 4.x: Use **Python 3.10**.
@@ -36,7 +37,8 @@ The `pip` installation is the modern, preferred approach for developers, especia
     ```
 
 ### Method 2: Standalone Binaries (Direct Download)
-With the deprecation of the Omniverse Launcher, NVIDIA now provides standalone binary packages for workstation installations. This is the direct way to get the full simulator with all local assets and the Isaac Sim Selector.
+
+In my personal opinion this is the cleanest, easiest and the most reliable way to install IsaacSim. NVIDIA provides the IsaacSim standalone binary packages for workstation installations. This is the direct way to get the full simulator with all local assets and the Isaac Sim Selector.
 
 1.  **Download:** Visit the [NVIDIA Isaac Sim Download Page](https://docs.isaacsim.omniverse.nvidia.com/latest/installation/download.html) and download the compressed package (`.zip` for Windows, `.tar.xz` for Linux).
 2.  **Extraction:** Extract the files to a permanent location (e.g., `~/isaacsim` on Linux). *Note: Do not move the folder after installation to avoid breaking internal paths.*
@@ -45,7 +47,14 @@ With the deprecation of the Omniverse Launcher, NVIDIA now provides standalone b
     *   **Windows:** `isaac-sim-post-install.bat`
 4.  **Launching:** Use the **Isaac Sim Selector** (`isaac-sim-selector.sh`) to launch the simulator in your desired mode (UI, Headless, or ROS).
 
+:::{.callout-tip}
+## Why Standalone Binaries ?
+
+This is the best way to install because you can manage the python dependencies and fix any issues that arise with the Python Wheel.
+:::
+
 ### Method 3: Containerized Deployment (NVIDIA NGC)
+
 For cloud-scale training or headless server deployments, NVIDIA provides official container images through the **NVIDIA NGC (NVIDIA GPU Cloud)** catalog. This method is preferred for remote workstations and high-performance computing (HPC) clusters.
 
 1.  **Pull the Image:**
@@ -93,6 +102,7 @@ Once Isaac Sim is running, you can explore several built-in examples that showca
 Isaac Lab (formerly OmniIsaacGymEnvs) is a unified framework for robot learning built on top of Isaac Sim. It simplifies the process of creating complex RL environments. @isaac_lab_repo
 
 ### Installation with Conda and UV
+
 For the most robust experience, it is highly recommended to use **pre-built binaries** of Isaac Sim combined with a managed Python environment like **Conda** or the high-speed **UV** package manager. @isaac_lab_docs
 
 1.  **Clone Isaac Lab:**
