@@ -393,6 +393,7 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#kairos-the-autonomous-ghost-in-the-machine" id="toc-kairos-the-autonomous-ghost-in-the-machine" class="nav-link" data-scroll-target="#kairos-the-autonomous-ghost-in-the-machine">KAIROS: The Autonomous Ghost in the Machine</a></li>
   <li><a href="#anti-distillation-poisoning-the-well" id="toc-anti-distillation-poisoning-the-well" class="nav-link" data-scroll-target="#anti-distillation-poisoning-the-well">Anti-Distillation: Poisoning the Well</a></li>
+  <li><a href="#provider-aware-thinking" id="toc-provider-aware-thinking" class="nav-link" data-scroll-target="#provider-aware-thinking">Provider-Aware thinking</a></li>
   <li><a href="#the-frustration-regex" id="toc-the-frustration-regex" class="nav-link" data-scroll-target="#the-frustration-regex">The “Frustration” Regex</a></li>
   </ul></li>
   <li><a href="#the-drm-layer-native-client-attestation" id="toc-the-drm-layer-native-client-attestation" class="nav-link" data-scroll-target="#the-drm-layer-native-client-attestation">3. The DRM Layer: Native Client Attestation</a></li>
@@ -451,16 +452,64 @@ div.csl-indent {
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    result<span class="op">.</span><span class="at">anti_distillation</span> <span class="op">=</span> [<span class="st">'fake_tools'</span>]</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This is done so in theory if someone is recording Code’s API traffic to train a competing model, the fake tools pollute that training data. It’s gated behind a GrowthBook feature flag (<strong>tengu_anti_distill_fake_tool_injection</strong>) and only active for first-party CLI sessions.</p>
-<p>There is also another mechanism in betas.ts (lines 279-298), server-side connector-text summarization. This tool, when enabled, the API buffers the assistant’s text between tool calls, summarizes it, and returns the summary with a cryptographic signature. On subsequent turns, the original text can be restored from the signature. If you’re recording API traffic, you only get the summaries, not the full reasoning chain.</p>
+<p>There is also another mechanism in <code>betas.ts</code> (lines 279-298), server-side connector-text summarization. This tool, when enabled, the API buffers the assistant’s text between tool calls, summarizes it, and returns the summary with a cryptographic signature. On subsequent turns, the original text can be restored from the signature. If you’re recording API traffic, you only get the summaries, not the full reasoning chain.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">// POC: server-side connector-text summarization (anti-distillation). The</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// API buffers assistant text between tool calls, summarizes it, and returns</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">// the summary with a signature so the original can be restored on subsequent</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// turns — same mechanism as thinking blocks. Ant-only while we measure</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">// TTFT/TTLT/capacity; betas already flow to tengu_api_success for splitting.</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Backend independently requires Capability.ANTHROPIC_INTERNAL_RESEARCH.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">//</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">// USE_CONNECTOR_TEXT_SUMMARIZATION is tri-state: =1 forces on (opt-in even</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">// if GB is off), =0 forces off (opt-out of a GB rollout you were bucketed</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">// into), unset defers to GB.</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    SUMMARIZE_CONNECTOR_TEXT_BETA_HEADER <span class="op">&amp;&amp;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">process</span><span class="op">.</span><span class="at">env</span><span class="op">.</span><span class="at">USER_TYPE</span> <span class="op">===</span> <span class="st">'ant'</span> <span class="op">&amp;&amp;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    includeFirstPartyOnlyBetas <span class="op">&amp;&amp;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">!</span><span class="fu">isEnvDefinedFalsy</span>(<span class="bu">process</span><span class="op">.</span><span class="at">env</span><span class="op">.</span><span class="at">USE_CONNECTOR_TEXT_SUMMARIZATION</span>) <span class="op">&amp;&amp;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    (<span class="fu">isEnvTruthy</span>(<span class="bu">process</span><span class="op">.</span><span class="at">env</span><span class="op">.</span><span class="at">USE_CONNECTOR_TEXT_SUMMARIZATION</span>) <span class="op">||</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">getFeatureValue_CACHED_MAY_BE_STALE</span>(<span class="st">'tengu_slate_prism'</span><span class="op">,</span> <span class="kw">false</span>))</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  ) {</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    betaHeaders<span class="op">.</span><span class="fu">push</span>(SUMMARIZE_CONNECTOR_TEXT_BETA_HEADER)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Eventought these mechanisms exist, circumventing them is fairly easy. The activation logic in claude.ts, the fake tools injection requires all four conditions to be true:</p>
-<p>The ANTI_DISTILLATION_CC compile-time flag, the cli entrypoint, a first-party API provider, and the tengu_anti_distill_fake_tool_injection GrowthBook flag returning true.</p>
+<p>The <code>ANTI_DISTILLATION_CC</code> compile-time flag, the cli entrypoint, a first-party API provider, and the tengu_anti_distill_fake_tool_injection GrowthBook flag returning true.</p>
 <p>A MITM proxy that strips the anti_distillation field from request bodies before they reach the API would bypass it entirely, since the injection is server-side and opt-in.</p>
 <ul>
-<li><p>The shouldIncludeFirstPartyOnlyBetas() function also checks for CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS, so setting that env var to a truthy value disables the whole thing.</p></li>
+<li><p>The <code>shouldIncludeFirstPartyOnlyBetas()</code> function also checks for CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS, so setting that env var to a truthy value disables the whole thing.</p></li>
 <li><p>And if you’re using a third-party API provider or the SDK entrypoint instead of the CLI, the check never fires at all.</p></li>
 </ul>
-<p>The connector-text summarization is even more narrowly scoped, Anthropic-internal-only (USER_TYPE === ‘ant’), so external users won’t encounter it regardless.</p>
+<p>The connector-text summarization is even more narrowly scoped, Anthropic-internal-only <code>(USER_TYPE === 'ant'),</code> so external users won’t encounter it regardless.</p>
 <p>With very little effort one can find the workarounds in about an hour of reading the source. The real protection is probably legal, not technical. But that there are issues too regarding legal protection as we will see later.</p>
+</section>
+<section id="provider-aware-thinking" class="level3">
+<h3 class="anchored" data-anchor-id="provider-aware-thinking">Provider-Aware thinking</h3>
+<p>We can see in the thinking.ts (lines 88-110) that there is logic to detect the model provider and ANthropic even has work in progress towards strategies like probing unknown models via API error detection.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// </span><span class="al">TODO</span><span class="co">(inigo): add support for probing unknown models via API error detection</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">// Provider-aware thinking support detection (aligns with modelSupportsISP in betas.ts)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">function</span> <span class="fu">modelSupportsThinking</span>(model<span class="op">:</span> <span class="dt">string</span>)<span class="op">:</span> <span class="dt">boolean</span> {</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> supported3P <span class="op">=</span> <span class="fu">get3PModelCapabilityOverride</span>(model<span class="op">,</span> <span class="st">'thinking'</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (supported3P <span class="op">!==</span> <span class="kw">undefined</span>) {</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> supported3P</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="bu">process</span><span class="op">.</span><span class="at">env</span><span class="op">.</span><span class="at">USER_TYPE</span> <span class="op">===</span> <span class="st">'ant'</span>) {</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">resolveAntModel</span>(model<span class="op">.</span><span class="fu">toLowerCase</span>())) {</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="kw">true</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">// IMPORTANT: Do not change thinking support without notifying the model</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">// launch DRI and research. This can greatly affect model quality and bashing.</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> canonical <span class="op">=</span> <span class="fu">getCanonicalName</span>(model)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> provider <span class="op">=</span> <span class="fu">getAPIProvider</span>()</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 1P and Foundry: all Claude 4+ models (including Haiku 4.5)</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (provider <span class="op">===</span> <span class="st">'foundry'</span> <span class="op">||</span> provider <span class="op">===</span> <span class="st">'firstParty'</span>) {</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">!</span>canonical<span class="op">.</span><span class="fu">includes</span>(<span class="st">'claude-3-'</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 3P (Bedrock/Vertex): only Opus 4+ and Sonnet 4+</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> canonical<span class="op">.</span><span class="fu">includes</span>(<span class="st">'sonnet-4'</span>) <span class="op">||</span> canonical<span class="op">.</span><span class="fu">includes</span>(<span class="st">'opus-4'</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This is interesting find, because allows them to control the performance of other models using their tool. Even they allegedly support using custom models <a href="https://code.claude.com/docs/en/model-config#add-a-custom-model-option">Add a custom model option</a> by using environment variables (<code>ANTHROPIC_CUSTOM_MODEL_OPTION</code>) to configure custom endpoints, or by using tools like LiteLLM or Claudish to route requests to OpenAI, Gemini, or local models via Ollama. The /model command allows switching within the terminal. They have code in place to detect the model and more logic in place to gatekeep its performance.</p>
 </section>
 <section id="the-frustration-regex" class="level3">
 <h3 class="anchored" data-anchor-id="the-frustration-regex">The “Frustration” Regex</h3>
@@ -476,6 +525,43 @@ screw (this|you)|so frustrating|this sucks|damn it)\b/</code></pre>
 <h2 class="anchored" data-anchor-id="the-drm-layer-native-client-attestation">3. The DRM Layer: Native Client Attestation</h2>
 <p>The leak confirmed a controversial theory regarding Anthropic’s “technical warfare” against third-party tools. Inside the <strong>Bun/Zig</strong> layer, Anthropic implemented <strong>Native Client Attestation</strong>.<span class="citation" data-cites="winbuzzer_opencode"><sup>[<a href="#ref-winbuzzer_opencode" role="doc-biblioref">3</a>]</sup></span></p>
 <p>This can be found in <code>system.ts</code> (lines 59-95), API requests include a cch=00000 placeholder.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">/**</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"> * Get attribution header for API requests.</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"> * Returns a header string with cc_version (including fingerprint) and cc_entrypoint.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"> * Enabled by default, can be disabled via env var or GrowthBook killswitch.</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"> *</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"> * When NATIVE_CLIENT_ATTESTATION is enabled, includes a `cch=00000` placeholder.</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"> * Before the request is sent, Bun's native HTTP stack finds this placeholder</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"> * in the request body and overwrites the zeros with a computed hash. The</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"> * server verifies this token to confirm the request came from a real Claude</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"> * Code client. See bun-anthropic/src/http/Attestation.zig for implementation.</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"> *</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"> * We use a placeholder (instead of injecting from Zig) because same-length</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"> * replacement avoids Content-Length changes and buffer reallocation.</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"> */</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">function</span> <span class="fu">getAttributionHeader</span>(fingerprint<span class="op">:</span> <span class="dt">string</span>)<span class="op">:</span> <span class="dt">string</span> {</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span><span class="fu">isAttributionHeaderEnabled</span>()) {</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">''</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> version <span class="op">=</span> <span class="vs">`</span><span class="sc">${</span>MACRO<span class="op">.</span><span class="at">VERSION</span><span class="sc">}</span><span class="vs">.</span><span class="sc">${</span>fingerprint<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> entrypoint <span class="op">=</span> <span class="bu">process</span><span class="op">.</span><span class="at">env</span><span class="op">.</span><span class="at">CLAUDE_CODE_ENTRYPOINT</span> <span class="op">??</span> <span class="st">'unknown'</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="co">// cch=00000 placeholder is overwritten by Bun's HTTP stack with attestation token</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> cch <span class="op">=</span> <span class="fu">feature</span>(<span class="st">'NATIVE_CLIENT_ATTESTATION'</span>) <span class="op">?</span> <span class="st">' cch=00000;'</span> <span class="op">:</span> <span class="st">''</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="co">// cc_workload: turn-scoped hint so the API can route e.g. cron-initiated</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="co">// requests to a lower QoS pool. Absent = interactive default. Safe re:</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="co">// fingerprint (computed from msg chars + version only, line 78 above) and</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  <span class="co">// cch attestation (placeholder overwritten in serialized body bytes after</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="co">// this string is built). Server _parse_cc_header tolerates unknown extra</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="co">// fields so old API deploys silently ignore this.</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> workload <span class="op">=</span> <span class="fu">getWorkload</span>()</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> workloadPair <span class="op">=</span> workload <span class="op">?</span> <span class="vs">` cc_workload=</span><span class="sc">${</span>workload<span class="sc">}</span><span class="vs">;`</span> <span class="op">:</span> <span class="st">''</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> header <span class="op">=</span> <span class="vs">`x-anthropic-billing-header: cc_version=</span><span class="sc">${</span>version<span class="sc">}</span><span class="vs">; cc_entrypoint=</span><span class="sc">${</span>entrypoint<span class="sc">}</span><span class="vs">;</span><span class="sc">${</span>cch<span class="sc">}${</span>workloadPair<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">logForDebugging</span>(<span class="vs">`attribution header </span><span class="sc">${</span>header<span class="sc">}</span><span class="vs">`</span>)</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> header</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This system works by injecting a cryptographic hash (the <code>cch</code> header) into outgoing API requests directly at the HTTP stack level, below the reach of JavaScript. This ensures that only the official, unmodified Claude Code binary can access specific high-end models at subscription-based rates, effectively blocking third-party open-source tools from “spoofing” the client to avoid expensive per-token API costs.</p>
 <p>This is the technical enforcement behind the OpenCode legal fight. Anthropic doesn’t just ask third-party tools not to use their APIs; the binary itself cryptographically proves it’s the real Claude Code client. Now that this mechanism has been uncovered it seems great.</p>
 </section>
