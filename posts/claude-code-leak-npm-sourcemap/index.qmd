@@ -55,23 +55,77 @@ This can be found in ```claude.ts``` (line 301-313), there’s a flag called ```
 
 This is done so in theory if someone is recording Code’s API traffic to train a competing model, the fake tools pollute that training data. It’s gated behind a GrowthBook feature flag (**tengu_anti_distill_fake_tool_injection**) and only active for first-party CLI sessions.
 
-There is also another mechanism in betas.ts (lines 279-298), server-side connector-text summarization. This tool, when enabled, the API buffers the assistant’s text between tool calls, summarizes it, and returns the summary with a cryptographic signature. On subsequent turns, the original text can be restored from the signature. If you’re recording API traffic, you only get the summaries, not the full reasoning chain.
+There is also another mechanism in ```betas.ts``` (lines 279-298), server-side connector-text summarization. This tool, when enabled, the API buffers the assistant’s text between tool calls, summarizes it, and returns the summary with a cryptographic signature. On subsequent turns, the original text can be restored from the signature. If you’re recording API traffic, you only get the summaries, not the full reasoning chain.
+
+```typescript
+  // POC: server-side connector-text summarization (anti-distillation). The
+  // API buffers assistant text between tool calls, summarizes it, and returns
+  // the summary with a signature so the original can be restored on subsequent
+  // turns — same mechanism as thinking blocks. Ant-only while we measure
+  // TTFT/TTLT/capacity; betas already flow to tengu_api_success for splitting.
+  // Backend independently requires Capability.ANTHROPIC_INTERNAL_RESEARCH.
+  //
+  // USE_CONNECTOR_TEXT_SUMMARIZATION is tri-state: =1 forces on (opt-in even
+  // if GB is off), =0 forces off (opt-out of a GB rollout you were bucketed
+  // into), unset defers to GB.
+  if (
+    SUMMARIZE_CONNECTOR_TEXT_BETA_HEADER &&
+    process.env.USER_TYPE === 'ant' &&
+    includeFirstPartyOnlyBetas &&
+    !isEnvDefinedFalsy(process.env.USE_CONNECTOR_TEXT_SUMMARIZATION) &&
+    (isEnvTruthy(process.env.USE_CONNECTOR_TEXT_SUMMARIZATION) ||
+      getFeatureValue_CACHED_MAY_BE_STALE('tengu_slate_prism', false))
+  ) {
+    betaHeaders.push(SUMMARIZE_CONNECTOR_TEXT_BETA_HEADER)
+  }
+```
 
 Eventought these mechanisms exist, circumventing them is fairly easy. The activation logic in claude.ts, the fake tools injection requires all four conditions to be true:
 
-The ANTI_DISTILLATION_CC compile-time flag, the cli entrypoint, a first-party API provider, and the tengu_anti_distill_fake_tool_injection GrowthBook flag returning true.
+The ```ANTI_DISTILLATION_CC``` compile-time flag, the cli entrypoint, a first-party API provider, and the tengu_anti_distill_fake_tool_injection GrowthBook flag returning true.
 
 A MITM proxy that strips the anti_distillation field from request bodies before they reach the API would bypass it entirely, since the injection is server-side and opt-in.
 
-- The shouldIncludeFirstPartyOnlyBetas() function also checks for CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS, so setting that env var to a truthy value disables the whole thing. 
+- The ```shouldIncludeFirstPartyOnlyBetas()``` function also checks for CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS, so setting that env var to a truthy value disables the whole thing. 
 
 - And if you’re using a third-party API provider or the SDK entrypoint instead of the CLI, the check never fires at all. 
 
 
-The connector-text summarization is even more narrowly scoped, Anthropic-internal-only (USER_TYPE === 'ant'), so external users won’t encounter it regardless.
+The connector-text summarization is even more narrowly scoped, Anthropic-internal-only ```(USER_TYPE === 'ant'),``` so external users won’t encounter it regardless.
 
 With very little effort one can find the workarounds in about an hour of reading the source. The real protection is probably legal, not technical. But that there are issues too regarding legal protection as we will see later.
 
+### Provider-Aware thinking
+
+We can see in the thinking.ts (lines 88-110) that there is logic to detect the model provider and ANthropic even has work in progress towards strategies like probing unknown models via API error detection.
+
+```typescript
+// TODO(inigo): add support for probing unknown models via API error detection
+// Provider-aware thinking support detection (aligns with modelSupportsISP in betas.ts)
+export function modelSupportsThinking(model: string): boolean {
+  const supported3P = get3PModelCapabilityOverride(model, 'thinking')
+  if (supported3P !== undefined) {
+    return supported3P
+  }
+  if (process.env.USER_TYPE === 'ant') {
+    if (resolveAntModel(model.toLowerCase())) {
+      return true
+    }
+  }
+  // IMPORTANT: Do not change thinking support without notifying the model
+  // launch DRI and research. This can greatly affect model quality and bashing.
+  const canonical = getCanonicalName(model)
+  const provider = getAPIProvider()
+  // 1P and Foundry: all Claude 4+ models (including Haiku 4.5)
+  if (provider === 'foundry' || provider === 'firstParty') {
+    return !canonical.includes('claude-3-')
+  }
+  // 3P (Bedrock/Vertex): only Opus 4+ and Sonnet 4+
+  return canonical.includes('sonnet-4') || canonical.includes('opus-4')
+}
+```
+
+This is interesting find, because allows them to control the performance of other models using their tool. Even they allegedly support using custom models [Add a custom model option](https://code.claude.com/docs/en/model-config#add-a-custom-model-option) by using environment variables (```ANTHROPIC_CUSTOM_MODEL_OPTION```) to configure custom endpoints, or by using tools like LiteLLM or Claudish to route requests to OpenAI, Gemini, or local models via Ollama. The /model command allows switching within the terminal. They have code in place to detect the model and more logic in place to gatekeep its performance.
 
 ### The "Frustration" Regex
 
@@ -91,6 +145,46 @@ screw (this|you)|so frustrating|this sucks|damn it)\b/
 The leak confirmed a controversial theory regarding Anthropic's "technical warfare" against third-party tools. Inside the **Bun/Zig** layer, Anthropic implemented **Native Client Attestation**. @winbuzzer_opencode
 
 This can be found in ```system.ts``` (lines 59-95), API requests include a cch=00000 placeholder.
+
+```typescript
+/**
+ * Get attribution header for API requests.
+ * Returns a header string with cc_version (including fingerprint) and cc_entrypoint.
+ * Enabled by default, can be disabled via env var or GrowthBook killswitch.
+ *
+ * When NATIVE_CLIENT_ATTESTATION is enabled, includes a `cch=00000` placeholder.
+ * Before the request is sent, Bun's native HTTP stack finds this placeholder
+ * in the request body and overwrites the zeros with a computed hash. The
+ * server verifies this token to confirm the request came from a real Claude
+ * Code client. See bun-anthropic/src/http/Attestation.zig for implementation.
+ *
+ * We use a placeholder (instead of injecting from Zig) because same-length
+ * replacement avoids Content-Length changes and buffer reallocation.
+ */
+export function getAttributionHeader(fingerprint: string): string {
+  if (!isAttributionHeaderEnabled()) {
+    return ''
+  }
+
+  const version = `${MACRO.VERSION}.${fingerprint}`
+  const entrypoint = process.env.CLAUDE_CODE_ENTRYPOINT ?? 'unknown'
+
+  // cch=00000 placeholder is overwritten by Bun's HTTP stack with attestation token
+  const cch = feature('NATIVE_CLIENT_ATTESTATION') ? ' cch=00000;' : ''
+  // cc_workload: turn-scoped hint so the API can route e.g. cron-initiated
+  // requests to a lower QoS pool. Absent = interactive default. Safe re:
+  // fingerprint (computed from msg chars + version only, line 78 above) and
+  // cch attestation (placeholder overwritten in serialized body bytes after
+  // this string is built). Server _parse_cc_header tolerates unknown extra
+  // fields so old API deploys silently ignore this.
+  const workload = getWorkload()
+  const workloadPair = workload ? ` cc_workload=${workload};` : ''
+  const header = `x-anthropic-billing-header: cc_version=${version}; cc_entrypoint=${entrypoint};${cch}${workloadPair}`
+
+  logForDebugging(`attribution header ${header}`)
+  return header
+}
+```
 
 This system works by injecting a cryptographic hash (the `cch` header) into outgoing API requests directly at the HTTP stack level, below the reach of JavaScript. This ensures that only the official, unmodified Claude Code binary can access specific high-end models at subscription-based rates, effectively blocking third-party open-source tools from "spoofing" the client to avoid expensive per-token API costs.
 
