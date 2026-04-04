@@ -388,7 +388,7 @@ div.csl-indent {
 <p>NVIDIA offers multiple ways to install Isaac Sim, catering to different workflows ranging from simple workstation use to scalable server deployments.<span class="citation" data-cites="isaac_sim_docs"><sup>[<a href="#ref-isaac_sim_docs" role="doc-biblioref">2</a>]</sup></span></p>
 <section id="method-1-the-pip-package-method-preferred" class="level3">
 <h3 class="anchored" data-anchor-id="method-1-the-pip-package-method-preferred">Method 1: The Pip Package Method (Preferred)</h3>
-<p>The <code>pip</code> installation is the modern, preferred approach for developers, especially those integrating with Isaac Lab or CI/CD pipelines. It treats the simulator as a standard Python module and manages dependencies cleanly.</p>
+<p>The <code>pip</code> installation is the entry level “easy” approach for those trying to get started. Later I will touch on the issues with this approach. It treats the simulator as a standard Python module and manages dependencies automatically as long the project is built correctly.</p>
 <ol type="1">
 <li><strong>Environment Setup:</strong> Create a clean virtual environment.
 <ul>
@@ -401,7 +401,7 @@ div.csl-indent {
 </section>
 <section id="method-2-standalone-binaries-direct-download" class="level3">
 <h3 class="anchored" data-anchor-id="method-2-standalone-binaries-direct-download">Method 2: Standalone Binaries (Direct Download)</h3>
-<p>With the deprecation of the Omniverse Launcher, NVIDIA now provides standalone binary packages for workstation installations. This is the direct way to get the full simulator with all local assets and the Isaac Sim Selector.</p>
+<p>In my personal opinion this is the cleanest, easiest and the most reliable way to install IsaacSim. NVIDIA provides the IsaacSim standalone binary packages for workstation installations. This is the direct way to get the full simulator with all local assets and the Isaac Sim Selector.</p>
 <ol type="1">
 <li><strong>Download:</strong> Visit the <a href="https://docs.isaacsim.omniverse.nvidia.com/latest/installation/download.html">NVIDIA Isaac Sim Download Page</a> and download the compressed package (<code>.zip</code> for Windows, <code>.tar.xz</code> for Linux).</li>
 <li><strong>Extraction:</strong> Extract the files to a permanent location (e.g., <code>~/isaacsim</code> on Linux). <em>Note: Do not move the folder after installation to avoid breaking internal paths.</em></li>
@@ -412,6 +412,19 @@ div.csl-indent {
 </ul></li>
 <li><strong>Launching:</strong> Use the <strong>Isaac Sim Selector</strong> (<code>isaac-sim-selector.sh</code>) to launch the simulator in your desired mode (UI, Headless, or ROS).</li>
 </ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Why Standalone Binaries ?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is the best way to install because you can manage the python dependencies and fix any issues that arise with the Python Wheel.</p>
+</div>
+</div>
 </section>
 <section id="method-3-containerized-deployment-nvidia-ngc" class="level3">
 <h3 class="anchored" data-anchor-id="method-3-containerized-deployment-nvidia-ngc">Method 3: Containerized Deployment (NVIDIA NGC)</h3>
