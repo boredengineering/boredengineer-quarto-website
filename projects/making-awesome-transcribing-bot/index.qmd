@@ -1,0 +1,112 @@
+---
+title: "Making an Awesome Transcribing Bot"
+subtitle: "Harnessing NVIDIA Parakeet for High-Throughput Multilingual Speech-to-Text"
+author:
+  - name: Renan Monteiro Barbosa
+date: "2026-04-04"
+categories: [AI, ASR, NVIDIA, Transcription]
+image: /files/images/worker.png
+draft: false
+bibliography: references.bib
+link-citations: true
+---
+
+Transcription used to be a tedious task, often requiring expensive services or clunky software that struggled with accents and multiple languages. Today, we have access to state-of-the-art models that can handle these challenges with ease. In this project, we'll explore how to build a powerful transcribing bot using **NVIDIA Parakeet**.
+
+## What is Parakeet?
+
+**Parakeet** is a family of state-of-the-art Automatic Speech Recognition (ASR) models developed by NVIDIA. Specifically, we'll be looking at the `parakeet-tdt-0.6b-v3` model. 
+
+This model is a **Token-and-Duration Transducer (TDT)**, a breakthrough architecture that is significantly faster than traditional models while maintaining incredible accuracy. It's multilingual, supporting 25 European languages, and it's designed for high-throughput transcription—perfect for processing large volumes of audio or video content.
+
+### Key Features:
+*   **Multilingual Support:** Handles English, Spanish, French, German, and many more.
+*   **High Speed:** Up to 10x faster than traditional models.
+*   **Precision:** Provides accurate word-level timestamps and punctuation.
+*   **Robustness:** Works well across various audio qualities and accents.
+
+## Installation Guide
+
+Setting up a modern ASR pipeline can be intimidating, but I've broken it down into a few simple options depending on your preferred environment.
+
+::: {.panel-tabset}
+
+#### Option A: Using `uv` (Recommended)
+
+`uv` is the modern way to manage Python environments. It's fast and reliable.
+
+```bash
+# Install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.local/bin/env
+
+# Create environment and install NeMo
+uv venv
+source .venv/bin/activate
+uv pip install -U nemo_toolkit['asr'] torch
+```
+
+#### Option B: Using `conda`
+
+If you prefer a more traditional data science environment:
+
+```bash
+# Create and activate environment
+conda create -n transcribing-bot python=3.10 -y
+conda activate transcribing-bot
+
+# Install dependencies
+pip install -U nemo_toolkit['asr'] torch
+```
+
+#### Option C: Using Docker
+
+For a "set it and forget it" setup with all drivers pre-configured:
+
+```bash
+# Pull the NVIDIA PyTorch container
+docker pull nvcr.io/nvidia/pytorch:24.01-py3
+
+# Run with GPU access
+docker run --gpus all -it --rm -v $(pwd):/workspace nvcr.io/nvidia/pytorch:24.01-py3
+```
+
+:::
+
+## Using the Bot
+
+Once you have your environment set up, transcribing audio is remarkably simple with the **NeMo** library. Here is a basic script to get you started:
+
+```python
+import nemo.collections.asr as nemo_asr
+
+# 1. Load the Parakeet model
+# This will automatically download the weights from HuggingFace
+model_name = "nvidia/parakeet-tdt-0.6b-v3"
+asr_model = nemo_asr.models.ASRModel.from_pretrained(model_name=model_name)
+
+# 2. Transcribe your audio file
+# Note: 16kHz mono .wav files are recommended for best results
+audio_file = "my_meeting_recording.wav"
+transcription = asr_model.transcribe([audio_file])
+
+# 3. See the results!
+print(f"Result: {transcription[0]}")
+```
+
+### Pro Tip: Timestamps
+If you need to know *when* exactly a word was said (e.g., for generating subtitles), the TDT architecture allows you to extract timestamps with high precision. You can enable this by passing extra parameters to the `transcribe` method.
+
+## Why This Matters
+
+For engineers, ASR is a building block for countless applications:
+*   **Meeting Summarizers:** Automatically capture and summarize team discussions.
+*   **Accessibility Tools:** Provide real-time captions for video content.
+*   **Searchable Archives:** Turn years of audio recordings into a searchable database.
+
+By using an open-source, high-performance model like Parakeet, you're not just building a bot; you're creating a scalable solution that respects data privacy and offers professional-grade performance.
+
+The world is full of audio waiting to be understood—let's get to work!
+
+::: {#refs}
+:::
