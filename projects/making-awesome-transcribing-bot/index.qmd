@@ -68,7 +68,7 @@ For a "set it and forget it" setup with all drivers pre-configured:
 docker pull nvcr.io/nvidia/pytorch:24.01-py3
 
 # Run with GPU access
-docker run --gpus all -it --rm -v $(pwd):/workspace nvcr.io/nvidia/pytorch:24.01-py3
+docker run --gpus all -it --rm -v "$(pwd):/workspace" nvcr.io/nvidia/pytorch:24.01-py3
 ```
 
 :::
@@ -107,6 +107,14 @@ For engineers, ASR is a building block for countless applications:
 By using an open-source, high-performance model like Parakeet, you're not just building a bot; you're creating a scalable solution that respects data privacy and offers professional-grade performance.
 
 The world is full of audio waiting to be understood—let's get to work!
+
+## Putting what we learned in Practice
+
+There is a very insightful segment from the movie Waking Life (2001) @WakingLife_IMDb that I think captures a lot of the recent events and how fast we seem to evolving.
+
+[Telescopic Evolution Waking Life](https://www.youtube.com/watch?v=iJHXDfVFlZs)
+
+
 
 ::: {#refs}
 :::
