@@ -4,7 +4,7 @@
     "href": "projects.html",
     "title": "My Projects",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\nPredicting stroke risk from common health indicators:\n\n55 min\n\n\nData-Science\n\n\n\nDevelopment and evaluation of a Logistic Regression model to predict stroke risk using common health indicators, with a focus on addressing class imbalance using SMOTE.\n\n\n\n\n\n\n\n\n\n\nPower Grid Vulnerability Analysis, A Complex Network Story\n\n9 min\n\n\nData-Science\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nForecasting the Real Estate Market\n\n36 min\n\n\nData-Science\n\n\n\nA comparative analysis of classical vs. modern time series models (ARIMA, SARIMA, Prophet) for predicting housing prices using Zillow Economics Data.\n\n\n\n\n\n\n\n\n\n\n\n\nMaking an Awesome Transcribing Bot\n\n3 min\n\n\nAI\n\nASR\n\nNVIDIA\n\nTranscription\n\n\n\n\n\n\n\nApr 4, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nMaking an Awesome TTS Chatbot\n\n3 min\n\n\nAI\n\nTTS\n\nNVIDIA\n\nVoice-Assistant\n\n\n\n\n\n\n\nApr 4, 2026\n\n\n\n\n\n\n\n\n\n\n\nMaking an Awesome Quarto Website\n\n5 min\n\n\nAgentic-AI\n\nQuarto\n\nDevOps\n\n\n\n\n\n\n\nApr 2, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\nPredicting stroke risk from common health indicators:\n\n55 min\n\n\nData-Science\n\n\n\nDevelopment and evaluation of a Logistic Regression model to predict stroke risk using common health indicators, with a focus on addressing class imbalance using SMOTE.\n\n\n\n\n\n\n\n\n\n\nPower Grid Vulnerability Analysis, A Complex Network Story\n\n9 min\n\n\nData-Science\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nForecasting the Real Estate Market\n\n36 min\n\n\nData-Science\n\n\n\nA comparative analysis of classical vs. modern time series models (ARIMA, SARIMA, Prophet) for predicting housing prices using Zillow Economics Data.\n\n\n\n\n\n\n\n\n\n\n\n\nMaking an Awesome Transcribing Bot\n\n4 min\n\n\nAI\n\nASR\n\nNVIDIA\n\nTranscription\n\n\n\n\n\n\n\nApr 4, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nMaking an Awesome TTS Chatbot\n\n3 min\n\n\nAI\n\nTTS\n\nNVIDIA\n\nVoice-Assistant\n\n\n\n\n\n\n\nApr 4, 2026\n\n\n\n\n\n\n\n\n\n\n\nMaking an Awesome Quarto Website\n\n5 min\n\n\nAgentic-AI\n\nQuarto\n\nDevOps\n\n\n\n\n\n\n\nApr 2, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects/making-awesome-tts-chatbot/index.html",
@@ -480,7 +480,14 @@
     "href": "projects/making-awesome-transcribing-bot/index.html#installation-guide",
     "title": "Making an Awesome Transcribing Bot",
     "section": "Installation Guide",
-    "text": "Installation Guide\nSetting up a modern ASR pipeline can be intimidating, but I’ve broken it down into a few simple options depending on your preferred environment.\n\nOption A: Using uv (Recommended)Option B: Using condaOption C: Using Docker\n\n\nuv is the modern way to manage Python environments. It’s fast and reliable.\n# Install uv\ncurl -LsSf https://astral.sh/uv/install.sh | sh\nsource $HOME/.local/bin/env\n\n# Create environment and install NeMo\nuv venv\nsource .venv/bin/activate\nuv pip install -U nemo_toolkit['asr'] torch\n\n\nIf you prefer a more traditional data science environment:\n# Create and activate environment\nconda create -n transcribing-bot python=3.10 -y\nconda activate transcribing-bot\n\n# Install dependencies\npip install -U nemo_toolkit['asr'] torch\n\n\nFor a “set it and forget it” setup with all drivers pre-configured:\n# Pull the NVIDIA PyTorch container\ndocker pull nvcr.io/nvidia/pytorch:24.01-py3\n\n# Run with GPU access\ndocker run --gpus all -it --rm -v $(pwd):/workspace nvcr.io/nvidia/pytorch:24.01-py3"
+    "text": "Installation Guide\nSetting up a modern ASR pipeline can be intimidating, but I’ve broken it down into a few simple options depending on your preferred environment.\n\nOption A: Using uv (Recommended)Option B: Using condaOption C: Using Docker\n\n\nuv is the modern way to manage Python environments. It’s fast and reliable.\n# Install uv\ncurl -LsSf https://astral.sh/uv/install.sh | sh\nsource $HOME/.local/bin/env\n\n# Create environment and install NeMo\nuv venv\nsource .venv/bin/activate\nuv pip install -U nemo_toolkit['asr'] torch\n\n\nIf you prefer a more traditional data science environment:\n# Create and activate environment\nconda create -n transcribing-bot python=3.10 -y\nconda activate transcribing-bot\n\n# Install dependencies\npip install -U nemo_toolkit['asr'] torch\n\n\nFor a “set it and forget it” setup with all drivers pre-configured:\n# Pull the NVIDIA PyTorch container\ndocker pull nvcr.io/nvidia/pytorch:24.01-py3\n\n# Run with GPU access\ndocker run --gpus all -it --rm -v \"$(pwd):/workspace\" nvcr.io/nvidia/pytorch:24.01-py3\n\ndocker run --gpus all -it --rm nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04\nThen inside the container:\npip install -U nemo_toolkit['asr']\nimport nemo.collections.asr as nemo_asr\nasr_model = nemo_asr.models.ASRModel.from_pretrained(model_name=\"nvidia/parakeet-tdt-0.6b-v3\")\nwget https://dldata-public.s3.us-east-2.amazonaws.com/2086-149220-0033.wav\noutput = asr_model.transcribe(['2086-149220-0033.wav'])\nprint(output[0].text)\n\n\n\n\n\n\n\n\n\nNoteIssues running the model\n\n\n\nThe current code suggest does not work. Working on fixes"
+  },
+  {
+    "objectID": "projects/making-awesome-transcribing-bot/index.html#notes",
+    "href": "projects/making-awesome-transcribing-bot/index.html#notes",
+    "title": "Making an Awesome Transcribing Bot",
+    "section": "NOTES",
+    "text": "NOTES\nOn installing\ndocker run --gpus all -it --rm \\\n  nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04\n\napt update && apt install -y python3-pip\npip install --upgrade pip\n\npip install torch==2.3.0 torchvision==0.18.0 torchaudio==2.3.0 \\\n  --index-url https://download.pytorch.org/whl/cu121\n\npip install nemo_toolkit[asr]\n\nimport nemo.collections.asr as nemo_asr"
   },
   {
     "objectID": "projects/making-awesome-transcribing-bot/index.html#using-the-bot",
@@ -495,6 +502,13 @@
     "title": "Making an Awesome Transcribing Bot",
     "section": "Why This Matters",
     "text": "Why This Matters\nFor engineers, ASR is a building block for countless applications: * Meeting Summarizers: Automatically capture and summarize team discussions. * Accessibility Tools: Provide real-time captions for video content. * Searchable Archives: Turn years of audio recordings into a searchable database.\nBy using an open-source, high-performance model like Parakeet, you’re not just building a bot; you’re creating a scalable solution that respects data privacy and offers professional-grade performance.\nThe world is full of audio waiting to be understood—let’s get to work!"
+  },
+  {
+    "objectID": "projects/making-awesome-transcribing-bot/index.html#putting-what-we-learned-in-practice",
+    "href": "projects/making-awesome-transcribing-bot/index.html#putting-what-we-learned-in-practice",
+    "title": "Making an Awesome Transcribing Bot",
+    "section": "Putting what we learned in Practice",
+    "text": "Putting what we learned in Practice\nThere is a very insightful segment from the movie Waking Life (2001)[1] that I think captures a lot of the recent events and how fast we seem to evolving.\nTelescopic Evolution Waking Life\n\n\n1. Linklater, R. (2001). Waking life (2001). https://www.imdb.com/title/tt0243017/"
   },
   {
     "objectID": "projects/forecasting-the-real-estate-market/index.html",
