@@ -61,6 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -359,11 +360,13 @@ div.csl-indent {
   <li><a href="#key-features" id="toc-key-features" class="nav-link" data-scroll-target="#key-features">Key Features:</a></li>
   </ul></li>
   <li><a href="#installation-guide" id="toc-installation-guide" class="nav-link" data-scroll-target="#installation-guide">Installation Guide</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">NOTES</a></li>
   <li><a href="#using-the-bot" id="toc-using-the-bot" class="nav-link" data-scroll-target="#using-the-bot">Using the Bot</a>
   <ul class="collapse">
   <li><a href="#pro-tip-timestamps" id="toc-pro-tip-timestamps" class="nav-link" data-scroll-target="#pro-tip-timestamps">Pro Tip: Timestamps</a></li>
   </ul></li>
   <li><a href="#why-this-matters" id="toc-why-this-matters" class="nav-link" data-scroll-target="#why-this-matters">Why This Matters</a></li>
+  <li><a href="#putting-what-we-learned-in-practice" id="toc-putting-what-we-learned-in-practice" class="nav-link" data-scroll-target="#putting-what-we-learned-in-practice">Putting what we learned in Practice</a></li>
   </ul>
 </nav>
     </div>
@@ -410,6 +413,22 @@ div.csl-indent {
 
 
 <p>Transcription used to be a tedious task, often requiring expensive services or clunky software that struggled with accents and multiple languages. Today, we have access to state-of-the-art models that can handle these challenges with ease. In this project, we’ll explore how to build a powerful transcribing bot using <strong>NVIDIA Parakeet</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Current work in progress
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>There are several problems with the codebase and the workflow to deploy the model.</li>
+<li>Several work needed still</li>
+</ul>
+</div>
+</div>
 <section id="what-is-parakeet" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-parakeet">What is Parakeet?</h2>
 <p><strong>Parakeet</strong> is a family of state-of-the-art Automatic Speech Recognition (ASR) models developed by NVIDIA. Specifically, we’ll be looking at the <code>parakeet-tdt-0.6b-v3</code> model.</p>
@@ -456,28 +475,66 @@ div.csl-indent {
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull nvcr.io/nvidia/pytorch:24.01-py3</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run with GPU access</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--gpus</span> all <span class="at">-it</span> <span class="at">--rm</span> <span class="at">-v</span> <span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/workspace nvcr.io/nvidia/pytorch:24.01-py3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--gpus</span> all <span class="at">-it</span> <span class="at">--rm</span> <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/workspace"</span> nvcr.io/nvidia/pytorch:24.01-py3</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--gpus</span> all <span class="at">-it</span> <span class="at">--rm</span> nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then inside the container:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> nemo_toolkit<span class="pp">[</span><span class="st">'asr'</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nemo.collections.asr <span class="im">as</span> nemo_asr</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>asr_model <span class="op">=</span> nemo_asr.models.ASRModel.from_pretrained(model_name<span class="op">=</span><span class="st">"nvidia/parakeet-tdt-0.6b-v3"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://dldata-public.s3.us-east-2.amazonaws.com/2086-149220-0033.wav</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> asr_model.transcribe([<span class="st">'2086-149220-0033.wav'</span>])</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(output[<span class="dv">0</span>].text)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Issues running the model
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The current code suggest does not work. Working on fixes</p>
+</div>
+</div>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">NOTES</h2>
+<p>On installing</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--gpus</span> all <span class="at">-it</span> <span class="at">--rm</span> <span class="dt">\</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> update <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> install <span class="at">-y</span> python3-pip</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> pip</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install torch==2.3.0 torchvision==0.18.0 torchaudio==2.3.0 <span class="dt">\</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">--index-url</span> https://download.pytorch.org/whl/cu121</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install nemo_toolkit<span class="pp">[</span><span class="ss">asr</span><span class="pp">]</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="ex">import</span> nemo.collections.asr as nemo_asr</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="using-the-bot" class="level2">
 <h2 class="anchored" data-anchor-id="using-the-bot">Using the Bot</h2>
 <p>Once you have your environment set up, transcribing audio is remarkably simple with the <strong>NeMo</strong> library. Here is a basic script to get you started:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nemo.collections.asr <span class="im">as</span> nemo_asr</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Load the Parakeet model</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This will automatically download the weights from HuggingFace</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>model_name <span class="op">=</span> <span class="st">"nvidia/parakeet-tdt-0.6b-v3"</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>asr_model <span class="op">=</span> nemo_asr.models.ASRModel.from_pretrained(model_name<span class="op">=</span>model_name)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Transcribe your audio file</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: 16kHz mono .wav files are recommended for best results</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>audio_file <span class="op">=</span> <span class="st">"my_meeting_recording.wav"</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>transcription <span class="op">=</span> asr_model.transcribe([audio_file])</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. See the results!</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Result: </span><span class="sc">{</span>transcription[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nemo.collections.asr <span class="im">as</span> nemo_asr</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Load the Parakeet model</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This will automatically download the weights from HuggingFace</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>model_name <span class="op">=</span> <span class="st">"nvidia/parakeet-tdt-0.6b-v3"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>asr_model <span class="op">=</span> nemo_asr.models.ASRModel.from_pretrained(model_name<span class="op">=</span>model_name)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Transcribe your audio file</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: 16kHz mono .wav files are recommended for best results</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>audio_file <span class="op">=</span> <span class="st">"my_meeting_recording.wav"</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>transcription <span class="op">=</span> asr_model.transcribe([audio_file])</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. See the results!</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Result: </span><span class="sc">{</span>transcription[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="pro-tip-timestamps" class="level3">
 <h3 class="anchored" data-anchor-id="pro-tip-timestamps">Pro Tip: Timestamps</h3>
 <p>If you need to know <em>when</em> exactly a word was said (e.g., for generating subtitles), the TDT architecture allows you to extract timestamps with high precision. You can enable this by passing extra parameters to the <code>transcribe</code> method.</p>
@@ -488,8 +545,15 @@ div.csl-indent {
 <p>For engineers, ASR is a building block for countless applications: * <strong>Meeting Summarizers:</strong> Automatically capture and summarize team discussions. * <strong>Accessibility Tools:</strong> Provide real-time captions for video content. * <strong>Searchable Archives:</strong> Turn years of audio recordings into a searchable database.</p>
 <p>By using an open-source, high-performance model like Parakeet, you’re not just building a bot; you’re creating a scalable solution that respects data privacy and offers professional-grade performance.</p>
 <p>The world is full of audio waiting to be understood—let’s get to work!</p>
-<div id="refs" role="list">
-
+</section>
+<section id="putting-what-we-learned-in-practice" class="level2">
+<h2 class="anchored" data-anchor-id="putting-what-we-learned-in-practice">Putting what we learned in Practice</h2>
+<p>There is a very insightful segment from the movie Waking Life (2001)<span class="citation" data-cites="WakingLife_IMDb"><sup>[<a href="#ref-WakingLife_IMDb" role="doc-biblioref">1</a>]</sup></span> that I think captures a lot of the recent events and how fast we seem to evolving.</p>
+<p><a href="https://www.youtube.com/watch?v=iJHXDfVFlZs">Telescopic Evolution Waking Life</a></p>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-WakingLife_IMDb" class="csl-entry" role="listitem">
+1. Linklater, R. (2001). <em>Waking life (2001)</em>. <a href="https://www.imdb.com/title/tt0243017/">https://www.imdb.com/title/tt0243017/</a>
+</div>
 </div>
 
 
