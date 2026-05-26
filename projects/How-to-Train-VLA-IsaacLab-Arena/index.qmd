@@ -1,0 +1,346 @@
+---
+title: "Beginner Guide to Training VLA in IsaacLab Arena"
+subtitle: "A Comprehensive Beginner Guide to train your VLA in IsaacLab Arena, covering everything from setup to advanced techniques."
+author:
+  - name: Renan Monteiro Barbosa
+date: "2026-05-26"
+categories: [Physical-AI]
+draft: false
+bibliography: references.bib
+link-citations: true
+---
+
+This is a step by step Tutorial on how to train your own model and validate in the benchmarking tool IsaacLab-Arena and derivatives like LW-BenchHub
+
+First will cover how to install and run each benchmark tool with pre-trained examples and then we will go through the training process and how to validate your model in the benchmarking tool.
+
+# IsaacLab-Arena Guide
+
+For best practice to develop you should fork the repo
+
+[IsaacLab-Arena](https://github.com/isaac-sim/IsaacLab-Arena) @isaaclab-arena2025
+
+## Installation
+
+These are the steps to install the project from the main branch, later will show how to switch branch to a more stable version.
+
+### Step 1 - Fork and Clone Repo
+
+```{{bash}}
+git clone https://github.com/isaac-sim/IsaacLab-Arena.git
+```
+If you forked you should clone your forked repo
+
+Can also use Github CLI
+
+```{{bash}}
+gh repo clone https://github.com/isaac-sim/IsaacLab-Arena.git
+```
+
+Go into the cloned repo
+
+```{{bash}}
+cd IsaacLab-Arena
+```
+
+Get all the submodules
+
+```{{bash}}
+git submodule update --init --recursive
+```
+
+Attention
+
+There is an error, sometimes it appears as you dont have permission to clone repo so we can run the following
+
+```{{bash}}
+git config --global url."https://github.com/".insteadOf "git@github.com:"
+```
+
+This tells your local Git configuration, "Whenever you see an SSH URL for GitHub, quietly swap it to HTTPS instead."
+
+
+### Step-2 Launch the Docker container
+
+Base container (recommended for development):
+
+```{{bash}}
+./docker/run_docker.sh
+```
+
+Or with GR00T dependencies (for policy training/evaluation):
+
+```{{bash}}
+./docker/run_docker.sh -g
+```
+
+### Step-3 Verify the installation
+
+```{{bash}}
+/isaac-sim/python.sh -m pytest -sv -m "not with_cameras" isaaclab_arena/tests/
+```
+
+## Setting Up and Configuration
+
+Now we must switch to a more stable version of the Project
+
+Switch to branch release/0.2.1
+
+If you forked using Github you should go to your repository online and create a New Branch and select from which branch or tag it is from
+
+GitHub Desktop handles this automatically. 
+When you use the branch dropdown at the top of the GitHub Desktop interface to switch branches, it automatically runs the equivalent of --recurse-submodules in the background.
+
+To Switch with git commands
+
+```{{bash}}
+git switch <branch-name>
+git submodule update
+git switch --recurse-submodules <branch-name>
+```
+
+Useful Commands
+
+```{{bash}}
+git branch --show-current        # what branch am I on?
+git tag                          # list all tags
+git branch -a                    # list all branches (local + remote)
+git tag | grep n1.5              # filter
+git branch -a | grep 0.2.0        # filter
+```
+
+Fixing if you messed up the repository
+
+If someone did --single-branch and you inherit it, repair the refspec:
+
+```{{bash}}
+git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+git fetch origin --tags --prune
+```
+
+
+```{{bash}}
+
+```
+
+# LW-BenchHub Guide
+
+LW-BenchHub is built on IsaacLab-Arena and it is a little different than IsaacLab-Arena
+
+They are running GR00T differently, it is decouple from the Benchmark and it is using ICP to communicate
+
+LW-BenchHub is version sensitive to WHICH VLA you are using since the model is decoupled from the benchmark
+
+[LW-BenchHub](https://github.com/LightwheelAI/LW-BenchHub) @Lightwheel_Team_LW-BenchHub_Lightwheel_s_End-to-End
+
+## Installation
+
+Firstly we will run an initial example to make sure everything runs as inted. This example demonstrates the power of LW-BenchHub's decoupled architecture - you can run a complex policy like GR00T without installing the full simulation stack in the policy environment!
+
+
+### Step 1: Fork and Clone Repo
+
+
+Make sure to have the github lfs installed.
+
+```{{bash}}
+sudo apt-get update
+sudo apt-get install git-lfs
+git lfs install
+```
+
+```{{bash}}
+git clone https://github.com/LightwheelAI/lw_benchhub
+cd lw_benchhub
+git lfs pull
+```
+
+Checkout the correct branch for GR00T N1.5 support
+
+```{{bash}}
+git tag | grep v1.0.1              # filter
+git checkout tags/v1.0.1
+```
+
+Create the environment
+
+```{{bash}}
+conda create -n lw_benchhub python=3.11 -y
+conda activate lw_benchhub
+```
+
+Run the installation script.
+
+```{{bash}}
+bash ./install.sh
+```
+
+
+### Step 2: Set Up GR00T Environment
+
+Install the GR00T framework following the official guide:
+
+Couple issues currently, the numpy must be downgraded and the install must use the correct branch and structure.
+
+```{{bash}}
+git clone https://github.com/NVIDIA/Isaac-GR00T
+cd Isaac-GR00T
+```
+
+Install GR00T, this need review
+
+```{{bash}}
+conda create -n gr00t-n1.5 python=3.10
+conda activate gr00t-n1.5
+pip install --upgrade setuptools
+pip install -e .[base]
+pip install --no-build-isolation flash-attn==2.7.1.post4
+```
+
+### Step 3: Download Pre-trained Checkpoint
+
+Download the GR00T checkpoint from Hugging Face, we will be using the example [gr00t15_LiftCube](https://huggingface.co/LightwheelAI/gr00t15_LiftCube/tree/main)
+
+You can donwload using git or ...
+
+```{{bash}}
+git lfs install
+git clone https://huggingface.co/LightwheelAI/gr00t15_LiftCube
+```
+
+Using hugginface CLI:
+
+```{{bash}}
+hf download LightwheelAI/gr00t15_LiftCube --local-dir 
+```
+
+Or download directly from huggingface
+
+https://huggingface.co/LightwheelAI/gr00t15_LiftCube/tree/main/checkpoint-9000
+
+### Step 4: Install LW-BenchHub in GR00T Environment
+
+Activate your GR00T Python environment
+
+```{{bash}}
+conda activate groot # or your GR00T environment name
+```
+
+Install lw_benchhub (lightweight installation - no simulation dependencies needed)
+
+Go to your repo
+
+```{{bash}}
+cd /path/to/lw_benchhub
+```
+
+Make sure you checkout the version that supports GR00T N1.5
+
+```{{bash}}
+git checkout v1.0.1
+```
+
+Then install in editable mode:
+
+```{{bash}}
+pip install -e .
+```
+
+Note
+
+- You only need LW-BenchHub's client library in the GR00T environment, not Isaac Lab or Isaac Sim.
+- Using lw_benchhub v1.0.1
+- BenchHub forces to upgrade the numpy which causes issues
+
+### Step 5: Start Environment Server
+
+In a separate terminal, activate your lw_benchhub environment (with Isaac Lab) and start the server:
+
+Activate lw_benchhub environment (with Isaac Lab installed)
+
+```{{bash}}
+conda activate lw_benchhub
+```
+
+Navigate to lw_benchhub directory
+
+```{{bash}}
+cd /path/to/lw_benchhub
+```
+
+Start environment server (no task config needed!)
+
+```{{bash}}
+python lw_benchhub/scripts/env_server.py --enable_cameras
+```
+
+The server will start and display:
+
+```{{bash}}
+Waiting for connection on ('127.0.0.1', 50000)...
+Press Ctrl+C to stop the server
+```
+
+Notes
+
+It is different than the demo and LeIsaac as it is not Using ZMQ. Instead it uses ICP
+
+
+### Step 6: Run GR00T Policy Evaluation
+
+In a new terminal, activate your GR00T environment and run the evaluation:
+
+Activate GR00T environment
+
+```{{bash}}
+conda activate gr00t
+```
+
+Navigate to lw_benchhub directory
+
+```{{bash}}
+cd /path/to/lw_benchhub
+```
+
+Run policy evaluation (env config is in the policy config file). Set the checkpoint absolute path in deploy_policy_lerobot.yml
+
+```{{bash}}
+python lw_benchhub/scripts/policy/eval_policy.py \
+--config policy/GR00T/deploy_policy_lerobot.yml
+```
+
+### Environment Summary
+
+Below is a summary showing the server runs separately and communicates with the policy via zero-copy IPC using shared memory, allowing for decoupled development and flexibility in policy implementation.
+
+```{{bash}}
+Terminal 1 (lw_benchhub env with Isaac Lab):
+└─ env_server.py → Waits for attach(), then runs simulation on GPU
+
+Terminal 2 (GR00T env, lightweight):
+└─ eval_policy.py → Sends env_cfg via attach(), runs policy inference
+
+Communication: Zero-copy IPC via shared memory
+Lifecycle: attach() → step/reset → close_connection()
+```
+
+# Isaac-GR00T Guide
+
+The NVIDIA Isaac-GR00T (Generalist Robot 00 Technology) project is an advanced artificial intelligence platform and foundation model designed to empower developers to create highly adaptable, general-purpose robots capable of reasoning through dynamic environments and performing intricate, multi-step tasks across various robotic hardware designs.
+
+[NVIDIA Isaac-GR00T](https://github.com/Nvidia/Isaac-GR00T) @gr00tn1_2025
+
+```{{bash}}
+
+```
+
+# Additional
+
+[LightWheel Sample Datasets](https://huggingface.co/datasets/LightwheelAI/lightwheel_tasks/tree/main)
+
+
+
+## References
+
+::: {#refs}
+:::
