@@ -33,6 +33,6 @@
     }
   },
 
-  // Install the Gemini CLI automatically when the container builds
-  "postCreateCommand": "apt update && apt install -y libmagick++-dev && npm install -g @google/gemini-cli && echo 'Gemini CLI installed!' && Rscript -e 'install.packages(c(\"languageserver\", \"renv\"), repos=\"https://cloud.r-project.org\")' && if [ -f renv.lock ]; then Rscript -e 'renv::restore()'; fi && pip install jupyter ipykernel"
+  // Install system dependencies, then Gemini CLI, then R packages, then pip packages
+  "postCreateCommand": "apt update && apt install -y libmagick++-dev libuv1-dev cmake pandoc && npm install -g @google/gemini-cli && echo 'Gemini CLI installed!' && Rscript -e 'install.packages(c(\"languageserver\", \"renv\"), repos=\"https://cloud.r-project.org\")' && if [ -f renv.lock ]; then Rscript -e 'renv::restore()'; fi && pip install jupyter ipykernel"
 }

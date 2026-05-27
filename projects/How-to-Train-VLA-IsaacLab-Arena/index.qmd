@@ -16,6 +16,8 @@ First will cover how to install and run each benchmark tool with pre-trained exa
 
 # IsaacLab-Arena Guide
 
+[Nvidia IsaacLab-Arena](https://github.com/isaac-sim/IsaacLab-Arena) @isaaclab-arena2025 is an open-source robotics simulation framework designed as an extension to NVIDIA Isaac Lab for simplified task curation and large-scale policy evaluation. It provides a highly modular, "LEGO-like" composable architecture where users can assemble scenes, robot embodiments, and tasks on the fly, eliminating redundant configuration files and boilerplate code. This setup allows developers to easily swap objects, environments, or robot designs to train and evaluate generalist robot policies (like GR00T and pi0) for both reinforcement learning and imitation learning, significantly speeding up the prototyping and testing of complex, long-horizon robotic tasks.
+
 For best practice to develop you should fork the repo
 
 [IsaacLab-Arena](https://github.com/isaac-sim/IsaacLab-Arena) @isaaclab-arena2025
@@ -130,6 +132,8 @@ LW-BenchHub is built on IsaacLab-Arena and it is a little different than IsaacLa
 They are running GR00T differently, it is decouple from the Benchmark and it is using ICP to communicate
 
 LW-BenchHub is version sensitive to WHICH VLA you are using since the model is decoupled from the benchmark
+
+[LW-BenchHub](https://github.com/LightwheelAI/LW-BenchHub) @Lightwheel_Team_LW-BenchHub_Lightwheel_s_End-to-End is an end-to-end robotics simulation benchmark built on NVIDIA's Isaac Lab-Arena by the Lightwheel team, it provides a comprehensive platform that integrates teleoperation data collection with reinforcement learning and imitation learning workflows. The repository features support for multiple robots (such as Unitree G1, Panda, Agilex Piper, and LeRobot variants), and 268 ready-to-use tasks (including Lightwheel-LIBERO and Robocasa tasks). It also offers a decoupled policy API for ultra-low latency, flexible input device support (keyboard, VR, leader-follower arms), and a massive accompanying dataset of over 21,500 demonstration episodes.
 
 [LW-BenchHub](https://github.com/LightwheelAI/LW-BenchHub) @Lightwheel_Team_LW-BenchHub_Lightwheel_s_End-to-End
 
