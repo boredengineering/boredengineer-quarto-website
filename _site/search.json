@@ -593,5 +593,40 @@
     "title": "Welcome to BoredEngineer",
     "section": "Schedule a Meeting",
     "text": "Schedule a Meeting"
+  },
+  {
+    "objectID": "TRACKER.html",
+    "href": "TRACKER.html",
+    "title": "🚀 Bored Engineer - Internal Project Tracker",
+    "section": "",
+    "text": "This file is for internal tracking of projects, blog posts, and site improvements.\n\n\n\nCal.com Integration Validation (Priority: High)\n\nImplement inline embeds on Home/About\nFix loading issues (Handle: boredengineer)\nFinal verification of mobile responsiveness\n\nProject: How-to-Train-VLA-IsaacLab-Arena\n\nDraft content\nAdd images to images/ folder\n\n\n\n\n\n\n\n\nworker-safety-cosmos-reason-2\nto-vibe-code-or-not-to-vibe-code\n\n\n\n\n\ngetting-started-isaac-sim-isaac-lab\nclaude-code-leak-npm-sourcemap\n\n\n\n\n\n\n\n\nHow-to-Train-VLA-IsaacLab-Arena\nmaking-awesome-transcribing-bot\nmaking-awesome-tts-chatbot\n\n\n\n\n\nforecasting-the-real-estate-market\nhow-to-make-quarto-website\npredicting-stroke-risk-logistic-regression\nPower-Grid-Vulnerability-Analysis-A-Complex-Network-Story\n\n\n\n\n\n\nAdd a newsletter subscription block\nOptimize image loading for mobile\nImplement a global search feature for the site\n\n\nLast Updated: 2026-06-05"
+  },
+  {
+    "objectID": "TRACKER.html#currently-in-progress",
+    "href": "TRACKER.html#currently-in-progress",
+    "title": "🚀 Bored Engineer - Internal Project Tracker",
+    "section": "",
+    "text": "Cal.com Integration Validation (Priority: High)\n\nImplement inline embeds on Home/About\nFix loading issues (Handle: boredengineer)\nFinal verification of mobile responsiveness\n\nProject: How-to-Train-VLA-IsaacLab-Arena\n\nDraft content\nAdd images to images/ folder"
+  },
+  {
+    "objectID": "TRACKER.html#blog-posts-status",
+    "href": "TRACKER.html#blog-posts-status",
+    "title": "🚀 Bored Engineer - Internal Project Tracker",
+    "section": "",
+    "text": "worker-safety-cosmos-reason-2\nto-vibe-code-or-not-to-vibe-code\n\n\n\n\n\ngetting-started-isaac-sim-isaac-lab\nclaude-code-leak-npm-sourcemap"
+  },
+  {
+    "objectID": "TRACKER.html#projects-status",
+    "href": "TRACKER.html#projects-status",
+    "title": "🚀 Bored Engineer - Internal Project Tracker",
+    "section": "",
+    "text": "How-to-Train-VLA-IsaacLab-Arena\nmaking-awesome-transcribing-bot\nmaking-awesome-tts-chatbot\n\n\n\n\n\nforecasting-the-real-estate-market\nhow-to-make-quarto-website\npredicting-stroke-risk-logistic-regression\nPower-Grid-Vulnerability-Analysis-A-Complex-Network-Story"
+  },
+  {
+    "objectID": "TRACKER.html#future-ideas-site-improvements",
+    "href": "TRACKER.html#future-ideas-site-improvements",
+    "title": "🚀 Bored Engineer - Internal Project Tracker",
+    "section": "",
+    "text": "Add a newsletter subscription block\nOptimize image loading for mobile\nImplement a global search feature for the site\n\n\nLast Updated: 2026-06-05"
   }
 ]
