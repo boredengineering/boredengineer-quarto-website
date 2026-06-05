@@ -599,14 +599,14 @@
     "href": "TRACKER.html",
     "title": "🚀 Bored Engineer - Internal Project Tracker",
     "section": "",
-    "text": "This file is for internal tracking of projects, blog posts, and site improvements.\n\n\n\nCal.com Integration Validation (Priority: High)\n\nImplement inline embeds on Home/About\nFix loading issues (Handle: boredengineer)\nFinal verification of mobile responsiveness\n\nProject: How-to-Train-VLA-IsaacLab-Arena\n\nDraft content\nAdd images to images/ folder\n\n\n\n\n\n\n\n\nworker-safety-cosmos-reason-2\nto-vibe-code-or-not-to-vibe-code\n\n\n\n\n\ngetting-started-isaac-sim-isaac-lab\nclaude-code-leak-npm-sourcemap\n\n\n\n\n\n\n\n\nHow-to-Train-VLA-IsaacLab-Arena\nmaking-awesome-transcribing-bot\nmaking-awesome-tts-chatbot\n\n\n\n\n\nforecasting-the-real-estate-market\nhow-to-make-quarto-website\npredicting-stroke-risk-logistic-regression\nPower-Grid-Vulnerability-Analysis-A-Complex-Network-Story\n\n\n\n\n\n\nAdd a newsletter subscription block\nOptimize image loading for mobile\nImplement a global search feature for the site\n\n\nLast Updated: 2026-06-05"
+    "text": "This file is for internal tracking of projects, blog posts, and site improvements.\n\n\n\nStripe Integration (Priority: High)\n\nDesign tiered membership UI in sponsor.qmd\nCreate Stripe Payment Links in Dashboard\nReplace STRIPE_ID placeholders in sponsor.qmd\n\nCal.com Integration Validation (Priority: High)\n\nImplement inline embeds on Home/About\nFix loading issues (Handle: boredengineer)\nSynchronize with site theme logic\n\nProject: How-to-Train-VLA-IsaacLab-Arena\n\nDraft content\nAdd images to images/ folder\n\n\n\n\n\n\n\n\nworker-safety-cosmos-reason-2\nto-vibe-code-or-not-to-vibe-code\n\n\n\n\n\ngetting-started-isaac-sim-isaac-lab\nclaude-code-leak-npm-sourcemap\n\n\n\n\n\n\n\n\nHow-to-Train-VLA-IsaacLab-Arena\nmaking-awesome-transcribing-bot\nmaking-awesome-tts-chatbot\n\n\n\n\n\nforecasting-the-real-estate-market\nhow-to-make-quarto-website\npredicting-stroke-risk-logistic-regression\nPower-Grid-Vulnerability-Analysis-A-Complex-Network-Story\n\n\n\n\n\n\nAdd a newsletter subscription block\nOptimize image loading for mobile\nImplement a global search feature for the site\n\n\nLast Updated: 2026-06-05"
   },
   {
     "objectID": "TRACKER.html#currently-in-progress",
     "href": "TRACKER.html#currently-in-progress",
     "title": "🚀 Bored Engineer - Internal Project Tracker",
     "section": "",
-    "text": "Cal.com Integration Validation (Priority: High)\n\nImplement inline embeds on Home/About\nFix loading issues (Handle: boredengineer)\nFinal verification of mobile responsiveness\n\nProject: How-to-Train-VLA-IsaacLab-Arena\n\nDraft content\nAdd images to images/ folder"
+    "text": "Stripe Integration (Priority: High)\n\nDesign tiered membership UI in sponsor.qmd\nCreate Stripe Payment Links in Dashboard\nReplace STRIPE_ID placeholders in sponsor.qmd\n\nCal.com Integration Validation (Priority: High)\n\nImplement inline embeds on Home/About\nFix loading issues (Handle: boredengineer)\nSynchronize with site theme logic\n\nProject: How-to-Train-VLA-IsaacLab-Arena\n\nDraft content\nAdd images to images/ folder"
   },
   {
     "objectID": "TRACKER.html#blog-posts-status",
@@ -628,5 +628,19 @@
     "title": "🚀 Bored Engineer - Internal Project Tracker",
     "section": "",
     "text": "Add a newsletter subscription block\nOptimize image loading for mobile\nImplement a global search feature for the site\n\n\nLast Updated: 2026-06-05"
+  },
+  {
+    "objectID": "sponsor.html#support-via-stripe",
+    "href": "sponsor.html#support-via-stripe",
+    "title": "Powering the Gap Between Pixels and Actuators",
+    "section": "Support via Stripe",
+    "text": "Support via Stripe\nChoose a support level that works for you. One-time donations help with immediate hardware needs, while monthly subscriptions provide the consistent “fuel” for ongoing research.\n\n\n\n\nTier 0\nFuel the Robot\n\nChoose your own amount to support a specific hardware purchase or cloud run.\n\n\n\n\n\n\n\n\n\n\nTier 1\nCoffee for the Robot\n\n$5 / mo\n\n\nA small contribution that keeps the simulation cycles running.\n\n\n\n\n\n\n\n\n\n\n\nTier 2\nCloud Credit Fuel\n\n$10 / mo\n\n\nDirectly powers long-running Reinforcement Learning training sessions."
+  },
+  {
+    "objectID": "sponsor.html",
+    "href": "sponsor.html",
+    "title": "Powering the Gap Between Pixels and Actuators",
+    "section": "",
+    "text": ":::"
   }
 ]

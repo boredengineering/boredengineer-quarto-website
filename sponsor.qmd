@@ -256,6 +256,94 @@ Your sponsorship directly impacts the ability to:
 :::
 
 ::: {.glass-container}
+## Support via Stripe
+
+Choose a support level that works for you. One-time donations help with immediate hardware needs, while monthly subscriptions provide the consistent "fuel" for ongoing research.
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6 .g-col-lg-4}
+::: {.glass-card style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;"}
+<div>
+#### Tier 0
+**Fuel the Robot**
+<p style="font-size: 0.9em; opacity: 0.8; margin-top: 10px;">Choose your own amount to support a specific hardware purchase or cloud run.</p>
+</div>
+
+```{=html}
+<script async src="https://js.stripe.com/v3/buy-button.js"></script>
+<stripe-buy-button
+  buy-button-id="buy_btn_1Tf1OoBysjHD72gXijhXGnJX"
+  publishable-key="pk_live_51M0KBUBysjHD72gX1WcNPh2Tee4rJSrJaQFNMzXlLg5fTd3r49FgBk6pHyeX2qQEeKz52nnEAa278W7TatHRFpGy00YjGz94zD"
+>
+</stripe-buy-button>
+```
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6 .g-col-lg-4}
+::: {.glass-card style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;"}
+<div>
+#### Tier 1
+**Coffee for the Robot**
+<p style="font-size: 1.2em; font-weight: bold; color: #3d95ce;">$5 / mo</p>
+<p style="font-size: 0.9em; opacity: 0.8; margin-top: 10px;">A small contribution that keeps the simulation cycles running.</p>
+</div>
+
+```{=html}
+<stripe-buy-button
+  buy-button-id="buy_btn_1Tf199BysjHD72gXM6z10B0q"
+  publishable-key="pk_live_51M0KBUBysjHD72gX1WcNPh2Tee4rJSrJaQFNMzXlLg5fTd3r49FgBk6pHyeX2qQEeKz52nnEAa278W7TatHRFpGy00YjGz94zD"
+>
+</stripe-buy-button>
+```
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6 .g-col-lg-4}
+::: {.glass-card style="border: 2px solid #3d95ce; height: 100%; display: flex; flex-direction: column; justify-content: space-between;"}
+<div>
+<!-- <span class="badge bg-primary" style="margin-bottom: 10px;">Recommended</span> -->
+#### Tier 2
+**Cloud Credit Fuel**
+<p style="font-size: 1.2em; font-weight: bold; color: #3d95ce;">$10 / mo</p>
+<p style="font-size: 0.9em; opacity: 0.8; margin-top: 10px;">Directly powers long-running Reinforcement Learning training sessions.</p>
+</div>
+
+```{=html}
+<stripe-buy-button
+  buy-button-id="buy_btn_1Tf1BJBysjHD72gXBoMaRj3T"
+  publishable-key="pk_live_51M0KBUBysjHD72gX1WcNPh2Tee4rJSrJaQFNMzXlLg5fTd3r49FgBk6pHyeX2qQEeKz52nnEAa278W7TatHRFpGy00YjGz94zD"
+>
+</stripe-buy-button>
+```
+:::
+:::
+
+<!-- ::: {.g-col-12 .g-col-md-6 .g-col-lg-3}
+::: {.glass-card style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;"}
+<div>
+#### Tier 3
+**Hardware Hero**
+<p style="font-size: 1.2em; font-weight: bold; color: #3d95ce;">$20 / mo</p>
+<p style="font-size: 0.9em; opacity: 0.8; margin-top: 10px;">Funding for the "Sim-to-Real" gap — sensors, actuators, and robot kits.</p>
+</div>
+
+```{=html}
+<stripe-buy-button
+  buy-button-id="buy_btn_1Tf1C6BysjHD72gXcjN6DIwT"
+  publishable-key="pk_live_51M0KBUBysjHD72gX1WcNPh2Tee4rJSrJaQFNMzXlLg5fTd3r49FgBk6pHyeX2qQEeKz52nnEAa278W7TatHRFpGy00YjGz94zD"
+>
+</stripe-buy-button>
+```
+:::
+::: -->
+
+:::
+:::
+
+<!-- 
+::: {.glass-container}
 ## Support via Venmo
 
 If my work has helped you, or if you believe in the future of accessible Physical AI research, consider a direct contribution via Venmo.
@@ -268,9 +356,9 @@ If my work has helped you, or if you believe in the future of accessible Physica
 
 ![Scan to Donate](/files/images/venmo_qr.png){width=200px style="border-radius: 10px; background: white; padding: 15px;"}
 :::
-:::
+::: -->
 
-::: {.g-col-12 .g-col-md-6}
+<!-- ::: {.g-col-12 .g-col-md-6}
 ::: {.glass-card}
 #### 🚀 Direct Link
 Simply click the button below or search for my handle directly on Venmo.
@@ -281,11 +369,9 @@ Simply click the button below or search for my handle directly on Venmo.
 
 <p style="margin-top: 25px; font-size: 0.9em; opacity: 0.8;">
 *Every contribution, no matter the size, makes a massive difference in hardware budget and cloud compute time.*
-</p>
-:::
-:::
+</p> 
+-->
 
-:::
 :::
 
 ::: {.glass-container}

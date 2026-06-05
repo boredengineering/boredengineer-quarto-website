@@ -3,7 +3,14 @@
 This file is for internal tracking of projects, blog posts, and site improvements.
 
 ## 🛠 Currently In Progress
-
+- [ ] **Stripe Integration** (Priority: High)
+    - [x] Design tiered membership UI in `sponsor.qmd`
+    - [ ] Create Stripe Payment Links in Dashboard
+    - [ ] Replace `STRIPE_ID` placeholders in `sponsor.qmd`
+- [x] **Cal.com Integration Validation** (Priority: High)
+    - [x] Implement inline embeds on Home/About
+    - [x] Fix loading issues (Handle: boredengineer)
+    - [x] Synchronize with site theme logic
 - [ ] **Project: How-to-Train-VLA-IsaacLab-Arena**
     - [ ] Draft content
     - [ ] Add images to `images/` folder
