@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,6 +10,9 @@
 
 <title>Powering the Gap Between Pixels and Actuators – BoredEngineer</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -34,19 +37,18 @@ ul.task-list li input[type="checkbox"] {
 <link href=".//files/images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-20e21bca0d046588e63e4208287e1715.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-8d659ec753a771ba9678235caaecc63f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-20e21bca0d046588e63e4208287e1715.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-fe2f910ccda8e5c1f9928dced0ac62c7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-706ea56e51c8a566ffa0a4db968a2de1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-fe2f910ccda8e5c1f9928dced0ac62c7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -329,8 +331,8 @@ ul.task-list li input[type="checkbox"] {
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page">
       <h1 class="title">Powering the Gap Between Pixels and Actuators</h1>
-            <p class="subtitle lead"></p><p>Help Sponsor Physical AI Research<br>
-Fuel the next generation of robotic and AI development.</p><p></p>
+            <p class="subtitle lead">Help Sponsor Physical AI Research<br>
+Fuel the next generation of robotic and AI development.</p>
                   <div>
         <div class="description">
           Bridging simulation-to-real workflows with Isaac Sim, Omniverse, and RL.
@@ -569,34 +571,108 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 </div>
 </section>
-<section id="support-via-venmo" class="level2 glass-container">
-<h2 class="anchored" data-anchor-id="support-via-venmo">Support via Venmo</h2>
-<p>If my work has helped you, or if you believe in the future of accessible Physical AI research, consider a direct contribution via Venmo.</p>
+<section id="support-via-stripe" class="level2 glass-container">
+<h2 class="anchored" data-anchor-id="support-via-stripe">Support via Stripe</h2>
+<p>Choose a support level that works for you. One-time donations help with immediate hardware needs, while monthly subscriptions provide the consistent “fuel” for ongoing research.</p>
 <div class="grid">
-<div class="g-col-12 g-col-md-6">
-<section id="scan-to-donate" class="level4 glass-card">
-<h4 class="anchored" data-anchor-id="scan-to-donate">📱 Scan to Donate</h4>
-<div class="quarto-figure quarto-figure-center" style="border-radius: 10px; background: white; padding: 15px;">
-<figure class="figure">
-<p><img src="./files/images/venmo_qr.png" class="img-fluid figure-img" width="200"></p>
-<figcaption>Scan to Donate</figcaption>
-</figure>
-</div>
+<div class="g-col-12 g-col-md-6 g-col-lg-4">
+<div class="glass-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+<section id="tier-0" class="level4">
+<h4 class="anchored" data-anchor-id="tier-0">Tier 0</h4>
+<strong>Fuel the Robot</strong>
+<p style="font-size: 0.9em; opacity: 0.8; margin-top: 10px;">
+Choose your own amount to support a specific hardware purchase or cloud run.
+</p>
 </section>
+<script async="" src="https://js.stripe.com/v3/buy-button.js"></script>
+<stripe-buy-button buy-button-id="buy_btn_1Tf1OoBysjHD72gXijhXGnJX" publishable-key="pk_live_51M0KBUBysjHD72gX1WcNPh2Tee4rJSrJaQFNMzXlLg5fTd3r49FgBk6pHyeX2qQEeKz52nnEAa278W7TatHRFpGy00YjGz94zD">
+</stripe-buy-button>
 </div>
-<div class="g-col-12 g-col-md-6">
-<section id="direct-link" class="level4 glass-card">
-<h4 class="anchored" data-anchor-id="direct-link">🚀 Direct Link</h4>
-<p>Simply click the button below or search for my handle directly on Venmo.</p>
-<p><strong>Venmo Handle:</strong> <code>@Renan-Barbosa</code></p>
-<p><a href="https://venmo.com/u/Renan-Barbosa" class="btn btn-venmo btn-lg" role="button" style="margin-top: 15px;">Donate via Venmo</a></p>
-<p style="margin-top: 25px; font-size: 0.9em; opacity: 0.8;">
-<em>Every contribution, no matter the size, makes a massive difference in hardware budget and cloud compute time.</em>
+</div>
+<div class="g-col-12 g-col-md-6 g-col-lg-4">
+<div class="glass-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+<section id="tier-1" class="level4">
+<h4 class="anchored" data-anchor-id="tier-1">Tier 1</h4>
+<strong>Coffee for the Robot</strong>
+<p style="font-size: 1.2em; font-weight: bold; color: #3d95ce;">
+$5 / mo
+</p>
+<p style="font-size: 0.9em; opacity: 0.8; margin-top: 10px;">
+A small contribution that keeps the simulation cycles running.
+</p>
+</section>
+<stripe-buy-button buy-button-id="buy_btn_1Tf199BysjHD72gXM6z10B0q" publishable-key="pk_live_51M0KBUBysjHD72gX1WcNPh2Tee4rJSrJaQFNMzXlLg5fTd3r49FgBk6pHyeX2qQEeKz52nnEAa278W7TatHRFpGy00YjGz94zD">
+</stripe-buy-button>
+</div>
+</div>
+<div class="g-col-12 g-col-md-6 g-col-lg-4">
+<div class="glass-card" style="border: 2px solid #3d95ce; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+<div>
+<!-- <span class="badge bg-primary" style="margin-bottom: 10px;">Recommended</span> -->
+<section id="tier-2" class="level4">
+<h4 class="anchored" data-anchor-id="tier-2">Tier 2</h4>
+<strong>Cloud Credit Fuel</strong>
+<p style="font-size: 1.2em; font-weight: bold; color: #3d95ce;">
+$10 / mo
+</p>
+<p style="font-size: 0.9em; opacity: 0.8; margin-top: 10px;">
+Directly powers long-running Reinforcement Learning training sessions.
 </p>
 </section>
 </div>
+<stripe-buy-button buy-button-id="buy_btn_1Tf1BJBysjHD72gXBoMaRj3T" publishable-key="pk_live_51M0KBUBysjHD72gX1WcNPh2Tee4rJSrJaQFNMzXlLg5fTd3r49FgBk6pHyeX2qQEeKz52nnEAa278W7TatHRFpGy00YjGz94zD">
+</stripe-buy-button>
+</div>
+</div>
+<!-- ::: {.g-col-12 .g-col-md-6 .g-col-lg-3}
+::: {.glass-card style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;"}
+<div>
+#### Tier 3
+**Hardware Hero**
+<p style="font-size: 1.2em; font-weight: bold; color: #3d95ce;">$20 / mo</p>
+<p style="font-size: 0.9em; opacity: 0.8; margin-top: 10px;">Funding for the "Sim-to-Real" gap — sensors, actuators, and robot kits.</p>
+</div>
+
+```{=html}
+<stripe-buy-button
+  buy-button-id="buy_btn_1Tf1C6BysjHD72gXcjN6DIwT"
+  publishable-key="pk_live_51M0KBUBysjHD72gX1WcNPh2Tee4rJSrJaQFNMzXlLg5fTd3r49FgBk6pHyeX2qQEeKz52nnEAa278W7TatHRFpGy00YjGz94zD"
+>
+</stripe-buy-button>
+```
+:::
+::: -->
 </div>
 </section>
+<!-- 
+::: {.glass-container}
+## Support via Venmo
+
+If my work has helped you, or if you believe in the future of accessible Physical AI research, consider a direct contribution via Venmo.
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+::: {.glass-card}
+#### 📱 Scan to Donate
+
+![Scan to Donate](/files/images/venmo_qr.png){width=200px style="border-radius: 10px; background: white; padding: 15px;"}
+:::
+::: -->
+<!-- ::: {.g-col-12 .g-col-md-6}
+::: {.glass-card}
+#### 🚀 Direct Link
+Simply click the button below or search for my handle directly on Venmo.
+
+**Venmo Handle:** `@Renan-Barbosa`
+
+<a href="https://venmo.com/u/Renan-Barbosa" class="btn btn-venmo btn-lg" role="button" style="margin-top: 15px;">Donate via Venmo</a>
+
+<p style="margin-top: 25px; font-size: 0.9em; opacity: 0.8;">
+*Every contribution, no matter the size, makes a massive difference in hardware budget and cloud compute time.*
+</p> 
+-->
+</div>
 <div class="glass-container">
 <section id="impact-roadmap" class="level2">
 <h2 class="anchored" data-anchor-id="impact-roadmap">Impact Roadmap</h2>
@@ -671,7 +747,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <p><a href="./projects.html" class="btn btn-outline-secondary">Back to Projects</a> <a href="./blog.html" class="btn btn-outline-secondary">Check the Blog</a></p>
 </div>
 </section>
-</div>
+<p>:::</p>
 
 
 

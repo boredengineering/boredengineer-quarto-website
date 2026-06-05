@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,6 +11,9 @@
 
 <title>Getting Started on IsaacSim and IsaacLab – BoredEngineer</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -21,6 +24,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -55,19 +93,18 @@ div.csl-indent {
 <link href="../..//files/images/favicon.ico" rel="icon">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-20e21bca0d046588e63e4208287e1715.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-8d659ec753a771ba9678235caaecc63f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-20e21bca0d046588e63e4208287e1715.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-fe2f910ccda8e5c1f9928dced0ac62c7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-706ea56e51c8a566ffa0a4db968a2de1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-fe2f910ccda8e5c1f9928dced0ac62c7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -390,13 +427,17 @@ div.csl-indent {
 <h3 class="anchored" data-anchor-id="method-1-the-pip-package-method-preferred">Method 1: The Pip Package Method (Preferred)</h3>
 <p>The <code>pip</code> installation is the entry level “easy” approach for those trying to get started. Later I will touch on the issues with this approach. It treats the simulator as a standard Python module and manages dependencies automatically as long the project is built correctly.</p>
 <ol type="1">
-<li><strong>Environment Setup:</strong> Create a clean virtual environment.
+<li><p><strong>Environment Setup:</strong> Create a clean virtual environment.</p>
 <ul>
 <li>For Isaac Sim 4.x: Use <strong>Python 3.10</strong>.</li>
 <li>For Isaac Sim 5.x: Use <strong>Python 3.11</strong>.</li>
 </ul></li>
-<li><strong>Installation:</strong> Use the NVIDIA PyPI index to pull the package: <code>bash     pip install --upgrade pip     pip install --extra-index-url https://pypi.nvidia.com isaacsim</code></li>
-<li><strong>Verification:</strong> You can verify the installation by importing the library in a script: <code>python     import isaacsim     print("Isaac Sim is ready!")</code></li>
+<li><p><strong>Installation:</strong> Use the NVIDIA PyPI index to pull the package:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> pip</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--extra-index-url</span> https://pypi.nvidia.com isaacsim</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Verification:</strong> You can verify the installation by importing the library in a script:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> isaacsim</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Isaac Sim is ready!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 </section>
 <section id="method-2-standalone-binaries-direct-download" class="level3">
@@ -430,9 +471,13 @@ div.csl-indent {
 <h3 class="anchored" data-anchor-id="method-3-containerized-deployment-nvidia-ngc">Method 3: Containerized Deployment (NVIDIA NGC)</h3>
 <p>For cloud-scale training or headless server deployments, NVIDIA provides official container images through the <strong>NVIDIA NGC (NVIDIA GPU Cloud)</strong> catalog. This method is preferred for remote workstations and high-performance computing (HPC) clusters.</p>
 <ol type="1">
-<li><strong>Pull the Image:</strong> <code>bash     docker pull nvcr.io/nvidia/isaac-sim:5.1.0</code></li>
-<li><strong>Launch Headless:</strong> Containers are typically run headless with livestreaming enabled: <code>bash     docker run --name isaac-sim --runtime=nvidia -it --rm -e "ACCEPT_EULA=Y" \                -p 8211:8211 -p 8212:8212 -p 8213:8213 \                nvcr.io/nvidia/isaac-sim:5.1.0</code></li>
-<li><strong>Custom Container Builds:</strong> While the NGC images are ready to use, NVIDIA also provides Dockerfiles in the <a href="https://github.com/isaac-sim/IsaacSim">Isaac Sim repository</a> to help you build custom images. This is useful if you need to bake in specific ROS 2 packages or custom Python dependencies.</li>
+<li><p><strong>Pull the Image:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull nvcr.io/nvidia/isaac-sim:5.1.0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Launch Headless:</strong> Containers are typically run headless with livestreaming enabled:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--name</span> isaac-sim <span class="at">--runtime</span><span class="op">=</span>nvidia <span class="at">-it</span> <span class="at">--rm</span> <span class="at">-e</span> <span class="st">"ACCEPT_EULA=Y"</span> <span class="dt">\</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">-p</span> 8211:8211 <span class="at">-p</span> 8212:8212 <span class="at">-p</span> 8213:8213 <span class="dt">\</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>           nvcr.io/nvidia/isaac-sim:5.1.0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Custom Container Builds:</strong> While the NGC images are ready to use, NVIDIA also provides Dockerfiles in the <a href="https://github.com/isaac-sim/IsaacSim">Isaac Sim repository</a> to help you build custom images. This is useful if you need to bake in specific ROS 2 packages or custom Python dependencies.</p></li>
 </ol>
 </section>
 </section>
@@ -497,9 +542,14 @@ div.csl-indent {
 <h3 class="anchored" data-anchor-id="installation-with-conda-and-uv">Installation with Conda and UV</h3>
 <p>For the most robust experience, it is highly recommended to use <strong>pre-built binaries</strong> of Isaac Sim combined with a managed Python environment like <strong>Conda</strong> or the high-speed <strong>UV</strong> package manager.<span class="citation" data-cites="isaac_lab_docs"><sup>[<a href="#ref-isaac_lab_docs" role="doc-biblioref">4</a>]</sup></span></p>
 <ol type="1">
-<li><strong>Clone Isaac Lab:</strong> <code>bash     git clone https://github.com/isaac-sim/IsaacLab.git     cd IsaacLab</code></li>
-<li><strong>Environment Creation:</strong> Using Conda: <code>bash     conda create -n isaaclab python=3.10     conda activate isaaclab</code></li>
-<li><strong>Install Dependencies:</strong> Install the Isaac Lab package in editable mode: <code>bash     pip install -e .</code></li>
+<li><p><strong>Clone Isaac Lab:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/isaac-sim/IsaacLab.git</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> IsaacLab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Environment Creation:</strong> Using Conda:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> isaaclab python=3.10</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate isaaclab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Install Dependencies:</strong> Install the Isaac Lab package in editable mode:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 </section>
 <section id="the-versatility-of-isaaclab.sh" class="level3">

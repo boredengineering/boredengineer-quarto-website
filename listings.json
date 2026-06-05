@@ -2,9 +2,10 @@
   {
     "listing": "/projects.html",
     "items": [
-      "/projects/predicting-stroke-risk-logistic-regression/index.html",
-      "/projects/Power-Grid-Vulnerability-Analysis-A-Complex-Network-Story/index.html",
       "/projects/forecasting-the-real-estate-market/index.html",
+      "/projects/Power-Grid-Vulnerability-Analysis-A-Complex-Network-Story/index.html",
+      "/projects/predicting-stroke-risk-logistic-regression/index.html",
+      "/projects/How-to-Train-VLA-IsaacLab-Arena/index.html",
       "/projects/making-awesome-transcribing-bot/index.html",
       "/projects/making-awesome-tts-chatbot/index.html",
       "/projects/how-to-make-quarto-website/index.html"

@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Renan Monteiro Barbosa">
-<meta name="dcterms.date" content="2026-04-04">
 
-<title>Making an Awesome TTS Chatbot – BoredEngineer</title>
+<title>tracker – BoredEngineer</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,85 +23,31 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../..//files/images/favicon.ico" rel="icon">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-fe2f910ccda8e5c1f9928dced0ac62c7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-706ea56e51c8a566ffa0a4db968a2de1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-fe2f910ccda8e5c1f9928dced0ac62c7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href=".//files/images/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-fe2f910ccda8e5c1f9928dced0ac62c7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-706ea56e51c8a566ffa0a4db968a2de1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-fe2f910ccda8e5c1f9928dced0ac62c7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -133,7 +77,7 @@ div.csl-indent {
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -305,11 +249,11 @@ div.csl-indent {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../files/images/worker.png" alt="" class="navbar-logo light-content">
-    <img src="../../files/images/worker.png" alt="" class="navbar-logo dark-content">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./files/images/worker.png" alt="" class="navbar-logo light-content">
+    <img src="./files/images/worker.png" alt="" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">BoredEngineer</span>
     </a>
   </div>
@@ -320,23 +264,23 @@ div.csl-indent {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects.html"> 
+    <a class="nav-link" href="./projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html"> 
+    <a class="nav-link" href="./blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../sponsor.html"> 
+    <a class="nav-link" href="./sponsor.html"> 
 <span class="menu-text">Sponsor</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -356,142 +300,105 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-evolution-of-voice" id="toc-the-evolution-of-voice" class="nav-link active" data-scroll-target="#the-evolution-of-voice">The Evolution of Voice</a></li>
-  <li><a href="#introducing-personaplex" id="toc-introducing-personaplex" class="nav-link" data-scroll-target="#introducing-personaplex">Introducing PersonaPlex</a>
+  <li><a href="#bored-engineer---internal-project-tracker" id="toc-bored-engineer---internal-project-tracker" class="nav-link active" data-scroll-target="#bored-engineer---internal-project-tracker">🚀 Bored Engineer - Internal Project Tracker</a>
   <ul class="collapse">
-  <li><a href="#how-to-install-and-run-personaplex" id="toc-how-to-install-and-run-personaplex" class="nav-link" data-scroll-target="#how-to-install-and-run-personaplex">How to Install and Run PersonaPlex</a></li>
-  <li><a href="#running-the-assistant" id="toc-running-the-assistant" class="nav-link" data-scroll-target="#running-the-assistant">Running the Assistant</a></li>
+  <li><a href="#currently-in-progress" id="toc-currently-in-progress" class="nav-link" data-scroll-target="#currently-in-progress">🛠 Currently In Progress</a></li>
+  <li><a href="#blog-posts-status" id="toc-blog-posts-status" class="nav-link" data-scroll-target="#blog-posts-status">📝 Blog Posts Status</a>
+  <ul class="collapse">
+  <li><a href="#in-development" id="toc-in-development" class="nav-link" data-scroll-target="#in-development">🏗 In Development</a></li>
+  <li><a href="#backlog-to-be-started" id="toc-backlog-to-be-started" class="nav-link" data-scroll-target="#backlog-to-be-started">📋 Backlog (To Be Started)</a></li>
   </ul></li>
-  <li><a href="#exploring-magpie-tts" id="toc-exploring-magpie-tts" class="nav-link" data-scroll-target="#exploring-magpie-tts">Exploring Magpie TTS</a></li>
-  <li><a href="#why-this-matters" id="toc-why-this-matters" class="nav-link" data-scroll-target="#why-this-matters">Why This Matters</a></li>
+  <li><a href="#projects-status" id="toc-projects-status" class="nav-link" data-scroll-target="#projects-status">📂 Projects Status</a>
+  <ul class="collapse">
+  <li><a href="#in-development-1" id="toc-in-development-1" class="nav-link" data-scroll-target="#in-development-1">🏗 In Development</a></li>
+  <li><a href="#completed" id="toc-completed" class="nav-link" data-scroll-target="#completed">✅ Completed</a></li>
+  </ul></li>
+  <li><a href="#future-ideas-site-improvements" id="toc-future-ideas-site-improvements" class="nav-link" data-scroll-target="#future-ideas-site-improvements">💡 Future Ideas &amp; Site Improvements</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Making an Awesome TTS Chatbot</h1>
-<p class="subtitle lead">From Basic Synthesis to Human-Like Conversations with NVIDIA PersonaPlex and Magpie</p>
-  <div class="quarto-categories">
-    <div class="quarto-category">AI</div>
-    <div class="quarto-category">TTS</div>
-    <div class="quarto-category">NVIDIA</div>
-    <div class="quarto-category">Voice-Assistant</div>
-  </div>
-  </div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Renan Monteiro Barbosa </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">April 4, 2026</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<p>Creating a voice assistant that doesn’t sound like a monotone robot has been a personal quest of mine for years. If you’ve been following my work, you might remember my previous explorations into this field.</p>
-<section id="the-evolution-of-voice" class="level2">
-<h2 class="anchored" data-anchor-id="the-evolution-of-voice">The Evolution of Voice</h2>
-<p>A few years ago, I shared a project using <strong>NVIDIA Riva TTS</strong> and <strong>Audio2Face</strong>. It was a breakthrough at the time, allowing for real-time speech synthesis synchronized with facial animations.</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/RWeuQ34B3lc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p>Back then, while impressive, the interaction still felt a bit “mechanical.” Fast forward to today, and the landscape has completely shifted. We’ve moved beyond simple text-to-speech into the realm of <strong>Natural, Full-Duplex Conversational Speech</strong>. With the latest tools from NVIDIA, we can now build chatbots that not only sound human but also handle the nuances of real conversation—like interruptions and emotional inflection—with incredible fluidness.</p>
-</section>
-<section id="introducing-personaplex" class="level2">
-<h2 class="anchored" data-anchor-id="introducing-personaplex">Introducing PersonaPlex</h2>
-<p>The star of the show in this project is <strong>NVIDIA PersonaPlex</strong>. It’s a framework designed for voice and role control in conversational models. Unlike traditional TTS, PersonaPlex allows you to define a “persona” for your assistant, giving it a consistent voice and personality across different interactions.</p>
-<p>It excels in <strong>Full Duplex</strong> communication, meaning the system can listen and speak simultaneously, just like a human. This eliminates the awkward “walkie-talkie” style of interaction common in older voice assistants.</p>
-<section id="how-to-install-and-run-personaplex" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-install-and-run-personaplex">How to Install and Run PersonaPlex</h3>
-<p>Coming from an engineering background, I know how frustrating complex setups can be. Here is a streamlined guide to getting PersonaPlex up and running on your local machine.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Option A: Using <code>uv</code> (Recommended)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Option B: Using <code>conda</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Option C: Using Docker/Container</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p><code>uv</code> is an extremely fast Python package manager that simplifies environment management.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install uv if you haven't already</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="va">$HOME</span>/.local/bin/env</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Clone the repository</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NVIDIA/personaplex.git</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> personaplex</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a virtual environment and install dependencies</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> pip install <span class="at">-e</span> .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>If you are more comfortable with the Conda ecosystem:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create and activate the environment</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> personaplex python=3.10 <span class="at">-y</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate personaplex</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Clone and install</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NVIDIA/personaplex.git</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> personaplex</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<p>For those who want a completely isolated environment without worrying about local dependencies:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull the official NVIDIA PyTorch container</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull nvcr.io/nvidia/pytorch:24.01-py3</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the container with GPU support</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--gpus</span> all <span class="at">-it</span> <span class="at">--rm</span> <span class="at">-v</span> <span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/workspace nvcr.io/nvidia/pytorch:24.01-py3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</section>
-<section id="running-the-assistant" class="level3">
-<h3 class="anchored" data-anchor-id="running-the-assistant">Running the Assistant</h3>
-<p>Once installed, you can launch the interactive demo. PersonaPlex provides several examples to get you started.</p>
-<ol type="1">
-<li><strong>Configure your Persona:</strong> You can modify the configuration files to define the voice characteristics.</li>
-<li><strong>Launch the Service:</strong> Use the provided scripts to start the speech-to-speech loop.</li>
-<li><strong>Talk!</strong> The system will utilize your microphone and speakers for a real-time conversation.</li>
-</ol>
-<p>For a deep dive into the technical details, I highly recommend checking out the <a href="https://www.datacamp.com/de/tutorial/nvidia-personaplex-tutorial">DataCamp tutorial on NVIDIA PersonaPlex</a>.</p>
-</section>
-</section>
-<section id="exploring-magpie-tts" class="level2">
-<h2 class="anchored" data-anchor-id="exploring-magpie-tts">Exploring Magpie TTS</h2>
-<p>Another exciting model in this space is <strong>Magpie TTS</strong>. This is a flow-based model that offers incredible multilingual support and high-fidelity audio.</p>
-<p>What makes Magpie special is its ability to generate speech that captures the “prosody” (the rhythm and intonation) of natural language. It’s available as a flow model overview on NVIDIA’s build site and can also be found on HuggingFace for those who want to experiment with the weights directly.</p>
-<ul>
-<li><strong>Model Card:</strong> <a href="https://build.nvidia.com/nvidia/magpie-tts-flow/modelcard">NVIDIA Magpie TTS Flow</a></li>
-<li><strong>HuggingFace:</strong> <a href="https://huggingface.co/nvidia/magpie_tts_multilingual_357m">nvidia/magpie_tts_multilingual_357m</a></li>
+<section id="bored-engineer---internal-project-tracker" class="level1">
+<h1>🚀 Bored Engineer - Internal Project Tracker</h1>
+<p>This file is for internal tracking of projects, blog posts, and site improvements.</p>
+<section id="currently-in-progress" class="level2">
+<h2 class="anchored" data-anchor-id="currently-in-progress">🛠 Currently In Progress</h2>
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>Stripe Integration</strong> (Priority: High)</label>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Design tiered membership UI in <code>sponsor.qmd</code></label></li>
+<li><label><input type="checkbox">Create Stripe Payment Links in Dashboard</label></li>
+<li><label><input type="checkbox">Replace <code>STRIPE_ID</code> placeholders in <code>sponsor.qmd</code></label></li>
+</ul></li>
+<li><label><input type="checkbox" checked=""><strong>Cal.com Integration Validation</strong> (Priority: High)</label>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Implement inline embeds on Home/About</label></li>
+<li><label><input type="checkbox" checked="">Fix loading issues (Handle: boredengineer)</label></li>
+<li><label><input type="checkbox" checked="">Synchronize with site theme logic</label></li>
+</ul></li>
+<li><label><input type="checkbox"><strong>Project: How-to-Train-VLA-IsaacLab-Arena</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">Draft content</label></li>
+<li><label><input type="checkbox">Add images to <code>images/</code> folder</label></li>
+</ul></li>
 </ul>
 </section>
-<section id="why-this-matters" class="level2">
-<h2 class="anchored" data-anchor-id="why-this-matters">Why This Matters</h2>
-<p>As engineers, we often focus on the “how,” but the “why” is just as important. Creating natural interfaces makes technology accessible to a broader audience. Whether it’s for an interactive museum exhibit, a virtual tutor, or a highly personalized home assistant, the combination of PersonaPlex and Magpie brings us one step closer to truly seamless human-computer interaction.</p>
-<p>The future of voice isn’t just about understanding words—it’s about understanding <em>people</em>.</p>
-<div id="refs" role="list">
+<section id="blog-posts-status" class="level2">
+<h2 class="anchored" data-anchor-id="blog-posts-status">📝 Blog Posts Status</h2>
+<section id="in-development" class="level3">
+<h3 class="anchored" data-anchor-id="in-development">🏗 In Development</h3>
+<ul>
+<li><code>worker-safety-cosmos-reason-2</code></li>
+<li><code>to-vibe-code-or-not-to-vibe-code</code></li>
+</ul>
+</section>
+<section id="backlog-to-be-started" class="level3">
+<h3 class="anchored" data-anchor-id="backlog-to-be-started">📋 Backlog (To Be Started)</h3>
+<ul>
+<li><code>getting-started-isaac-sim-isaac-lab</code></li>
+<li><code>claude-code-leak-npm-sourcemap</code></li>
+</ul>
+</section>
+</section>
+<section id="projects-status" class="level2">
+<h2 class="anchored" data-anchor-id="projects-status">📂 Projects Status</h2>
+<section id="in-development-1" class="level3">
+<h3 class="anchored" data-anchor-id="in-development-1">🏗 In Development</h3>
+<ul>
+<li><code>How-to-Train-VLA-IsaacLab-Arena</code></li>
+<li><code>making-awesome-transcribing-bot</code></li>
+<li><code>making-awesome-tts-chatbot</code></li>
+</ul>
+</section>
+<section id="completed" class="level3">
+<h3 class="anchored" data-anchor-id="completed">✅ Completed</h3>
+<ul>
+<li><code>forecasting-the-real-estate-market</code></li>
+<li><code>how-to-make-quarto-website</code></li>
+<li><code>predicting-stroke-risk-logistic-regression</code></li>
+<li><code>Power-Grid-Vulnerability-Analysis-A-Complex-Network-Story</code></li>
+</ul>
+</section>
+</section>
+<section id="future-ideas-site-improvements" class="level2">
+<h2 class="anchored" data-anchor-id="future-ideas-site-improvements">💡 Future Ideas &amp; Site Improvements</h2>
+<ul class="task-list">
+<li><label><input type="checkbox">Add a newsletter subscription block</label></li>
+<li><label><input type="checkbox">Optimize image loading for mobile</label></li>
+<li><label><input type="checkbox">Implement a global search feature for the site</label></li>
+</ul>
+<hr>
+<p><em>Last Updated: 2026-06-05</em></p>
 
-</div>
 
-
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -908,38 +815,6 @@ div.csl-indent {
     }
   });
   </script>
-<input type="hidden" id="giscus-base-theme" value="dark_high_contrast">
-<input type="hidden" id="giscus-alt-theme" value="dark_high_contrast">
-<script>
-  function loadGiscus() {
-    // Function to get the theme based on body class
-    const getTheme = () => {
-      let baseTheme = document.getElementById('giscus-base-theme').value;
-      let altTheme = document.getElementById('giscus-alt-theme').value;
-      if (authorPrefersDark) {
-          [baseTheme, altTheme] = [altTheme, baseTheme];
-      }
-      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
-    };
-    const script = document.createElement("script");
-    script.src = "https://giscus.app/client.js";
-    script.async = true;
-    script.dataset.repo = "renanmb/boredengineer-quarto-website-test";
-    script.dataset.repoId = "R_kgDORin_Zw";
-    script.dataset.category = "Announcements";
-    script.dataset.categoryId = "DIC_kwDORin_Z84C4YyK";
-    script.dataset.mapping = "pathname";
-    script.dataset.reactionsEnabled = "1";
-    script.dataset.emitMetadata = "0";
-    script.dataset.inputPosition = "bottom";
-    script.dataset.theme = getTheme();
-    script.dataset.lang = "en";
-    script.crossOrigin = "anonymous";
-    // Append the script to the desired div instead of at the end of the body
-    document.getElementById("quarto-content").appendChild(script);
-  }
-  loadGiscus();
-</script>
 </div> <!-- /content -->
 
 
