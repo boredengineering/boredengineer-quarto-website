@@ -4,7 +4,7 @@
     "href": "projects.html",
     "title": "My Projects",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\nForecasting the Real Estate Market\n\n36 min\n\n\nData-Science\n\n\n\nA comparative analysis of classical vs. modern time series models (ARIMA, SARIMA, Prophet) for predicting housing prices using Zillow Economics Data.\n\n\n\n\n\n\n\n\n\n\nPower Grid Vulnerability Analysis, A Complex Network Story\n\n9 min\n\n\nData-Science\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPredicting stroke risk from common health indicators:\n\n55 min\n\n\nData-Science\n\n\n\nDevelopment and evaluation of a Logistic Regression model to predict stroke risk using common health indicators, with a focus on addressing class imbalance using SMOTE.\n\n\n\n\n\n\n\n\n\n\nBeginner Guide to Training VLA in IsaacLab Arena\n\n5 min\n\n\nPhysical-AI\n\n\n\n\n\n\n\nMay 26, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nMaking an Awesome Transcribing Bot\n\n4 min\n\n\nAI\n\nASR\n\nNVIDIA\n\nTranscription\n\n\n\n\n\n\n\nApr 4, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nMaking an Awesome TTS Chatbot\n\n3 min\n\n\nAI\n\nTTS\n\nNVIDIA\n\nVoice-Assistant\n\n\n\n\n\n\n\nApr 4, 2026\n\n\n\n\n\n\n\n\n\n\n\nMaking an Awesome Quarto Website\n\n5 min\n\n\nAgentic-AI\n\nQuarto\n\nDevOps\n\n\n\n\n\n\n\nApr 2, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\nForecasting the Real Estate Market\n\n36 min\n\n\nData-Science\n\n\n\nA comparative analysis of classical vs. modern time series models (ARIMA, SARIMA, Prophet) for predicting housing prices using Zillow Economics Data.\n\n\n\n\n\n\n\n\n\n\nPower Grid Vulnerability Analysis, A Complex Network Story\n\n9 min\n\n\nData-Science\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPredicting stroke risk from common health indicators:\n\n55 min\n\n\nData-Science\n\n\n\nDevelopment and evaluation of a Logistic Regression model to predict stroke risk using common health indicators, with a focus on addressing class imbalance using SMOTE.\n\n\n\n\n\n\n\n\n\n\nBeginner Guide to Training VLA in IsaacLab Arena\n\n6 min\n\n\nPhysical-AI\n\n\n\n\n\n\n\nMay 26, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nMaking an Awesome Transcribing Bot\n\n4 min\n\n\nAI\n\nASR\n\nNVIDIA\n\nTranscription\n\n\n\n\n\n\n\nApr 4, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nMaking an Awesome TTS Chatbot\n\n3 min\n\n\nAI\n\nTTS\n\nNVIDIA\n\nVoice-Assistant\n\n\n\n\n\n\n\nApr 4, 2026\n\n\n\n\n\n\n\n\n\n\n\nMaking an Awesome Quarto Website\n\n5 min\n\n\nAgentic-AI\n\nQuarto\n\nDevOps\n\n\n\n\n\n\n\nApr 2, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects/making-awesome-tts-chatbot/index.html",
@@ -586,5 +586,12 @@
     "title": "Beginner Guide to Training VLA in IsaacLab Arena",
     "section": "References",
     "text": "References\n\n\n1. NVIDIA Isaac Lab-Arena Contributors. (2025). Isaac lab-arena: Composable environment creation and policy evaluation for robotics. https://github.com/isaac-sim/IsaacLab-Arena\n\n\n2. Lightwheel Team. (n.d.). LW-BenchHub: Lightwheel’s End-to-End Embodied AI Simulation Platform [Computer software]. https://github.com/lightwheel-ai/lw_benchhub\n\n\n3. NVIDIA, Bjorck, J., Fernando Castañeda, N. C., Da, X., Ding, R., Fan, L. \"Jim\", Fang, Y., Fox, D., Hu, F., Huang, S., Jang, J., Jiang, Z., Kautz, J., Kundalia, K., Lao, L., Li, Z., Lin, Z., Lin, K., Liu, G., … Zhu, Y. (2025). GR00T N1: An open foundation model for generalist humanoid robots. ArXiv Preprint. https://arxiv.org/abs/2503.14734"
+  },
+  {
+    "objectID": "index.html#schedule-a-meeting",
+    "href": "index.html#schedule-a-meeting",
+    "title": "Welcome to BoredEngineer",
+    "section": "Schedule a Meeting",
+    "text": "Schedule a Meeting"
   }
 ]
