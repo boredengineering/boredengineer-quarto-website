@@ -34,5 +34,5 @@
     "source=hermes-home-${devcontainerId},target=/root/.hermes,type=volume",
     "source=antigravity-config-${devcontainerId},target=/root/.gemini,type=volume"
   ],
-  "postCreateCommand": "if [ -f renv.lock ]; then Rscript -e 'renv::restore()'; fi && echo 'Devcontainer setup completed!'"
+  "postCreateCommand": "if [ -f renv.lock ]; then Rscript -e 'renv::record(\"Rcpp@latest\"); renv::restore()'; fi && echo 'Devcontainer setup completed!'"
 }
