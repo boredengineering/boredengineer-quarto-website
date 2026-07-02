@@ -1,30 +1,17 @@
 {
-  "name": "Gemini Playwright Sandbox",
-  // Use the official Playwright image. It includes Node.js and all browser binaries.
-  "image": "mcr.microsoft.com/playwright:v1.58.2-jammy",
-  "features": {
-    "ghcr.io/rocker-org/devcontainer-features/r-apt:latest": {
-      "installRStudio": false
-    },
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "latest"
-    },
-    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers/features/github-cli:1": {
-      "version": "latest"
-    }
+  "name": "AI Playwright Sandbox (Antigravity + Claude + Hermes + HF CLI)",
+  "build": {
+    "dockerfile": "Dockerfile"
   },
   "customizations": {
     "vscode": {
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",
         "r.lsp.enabled": true,
-        "python.defaultInterpreterPath": "/usr/local/bin/python"
+        "python.defaultInterpreterPath": "/usr/bin/python3"
       },
       "extensions": [
-        "google.geminicode", // Optional: Google's AI assistant extension
+        "anthropic.claude-code",
         "REditorSupport.r",
         "ms-python.python",
         "quarto.quarto",
@@ -32,7 +19,20 @@
       ]
     }
   },
-
-  // Install system dependencies, then Gemini CLI, then R packages, then pip packages
-  "postCreateCommand": "apt update && apt install -y libmagick++-dev libuv1-dev cmake pandoc && npm install -g @google/gemini-cli && echo 'Gemini CLI installed!' && Rscript -e 'install.packages(c(\"languageserver\", \"renv\"), repos=\"https://cloud.r-project.org\")' && if [ -f renv.lock ]; then Rscript -e 'renv::restore()'; fi && pip install jupyter ipykernel"
+  "remoteEnv": {
+    "ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY}",
+    "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}",
+    "GEMINI_API_KEY": "${localEnv:GEMINI_API_KEY}",
+    "HERMES_HOME": "/root/.hermes",
+    "HF_TOKEN": "${localEnv:HF_TOKEN}"
+  },
+  "mounts": [
+    "source=C:/,target=/c,type=bind,readonly",
+    "source=E:/,target=/e,type=bind,readonly",
+    "source=F:/,target=/f,type=bind,readonly",
+    "source=claude-code-config-${devcontainerId},target=/root/.claude,type=volume",
+    "source=hermes-home-${devcontainerId},target=/root/.hermes,type=volume",
+    "source=antigravity-config-${devcontainerId},target=/root/.gemini,type=volume"
+  ],
+  "postCreateCommand": "if [ -f renv.lock ]; then Rscript -e 'renv::restore()'; fi && echo 'Devcontainer setup completed!'"
 }
