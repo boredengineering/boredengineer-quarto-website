@@ -19,20 +19,18 @@
       ]
     }
   },
-  "remoteEnv": {
-    "ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY}",
-    "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}",
-    "GEMINI_API_KEY": "${localEnv:GEMINI_API_KEY}",
-    "HERMES_HOME": "/root/.hermes",
-    "HF_TOKEN": "${localEnv:HF_TOKEN}"
-  },
-  "mounts": [
-    "source=C:/,target=/c,type=bind,readonly",
-    "source=E:/,target=/e,type=bind,readonly",
-    "source=F:/,target=/f,type=bind,readonly",
-    "source=claude-code-config-${devcontainerId},target=/root/.claude,type=volume",
-    "source=hermes-home-${devcontainerId},target=/root/.hermes,type=volume",
-    "source=antigravity-config-${devcontainerId},target=/root/.gemini,type=volume"
-  ],
-  "postCreateCommand": "if [ -f renv.lock ]; then Rscript -e 'renv::record(\"Rcpp@latest\"); renv::restore()'; fi && echo 'Devcontainer setup completed!'"
+    "remoteEnv": {
+        "ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY}",
+        "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}",
+        "GEMINI_API_KEY": "${localEnv:GEMINI_API_KEY}",
+        "HERMES_HOME": "/root/.hermes",
+        "HF_TOKEN": "${localEnv:HF_TOKEN}",
+        "RENV_CONFIG_R_VERSION_CHECK": "false"
+    },
+    "mounts": [
+        "source=claude-code-config-${devcontainerId},target=/root/.claude,type=volume",
+        "source=hermes-home-${devcontainerId},target=/root/.hermes,type=volume",
+        "source=antigravity-config-${devcontainerId},target=/root/.gemini,type=volume"
+    ],
+    "postCreateCommand": "if [ -f renv.lock ]; then Rscript -e 'renv::record(\"Rcpp@latest\"); renv::restore(prompt = FALSE)'; fi && echo 'Devcontainer setup completed!'"
 }
