@@ -49,8 +49,8 @@ RUN QUARTO_VERSION=$(curl -s https://api.github.com/repos/quarto-dev/quarto-cli/
     dpkg -i quarto-${QUARTO_VERSION#v}-linux-amd64.deb && \
     rm quarto-${QUARTO_VERSION#v}-linux-amd64.deb
 
-# Install global node packages (Claude Code)
-RUN npm install -g @anthropic-ai/claude-code
+# Install global node packages (Claude Code + Playwright MCP)
+RUN npm install -g @anthropic-ai/claude-code @playwright/mcp
 
 # Install Antigravity CLI (agy)
 RUN curl -fsSL https://antigravity.google/cli/install.sh | bash && \
